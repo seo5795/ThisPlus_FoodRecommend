@@ -1,5 +1,4 @@
-
-package coupon;
+package model.coupon;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -7,7 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-import common.JDBCUtil;
+import model.common.JDBCUtil;
 
 public class CpnDAO {
 	Connection conn;
@@ -16,11 +15,11 @@ public class CpnDAO {
 	//공지사항 sql 쿼리
 	
 	//쿠폰 등록
-	static final String cpnInsert = "insert into coupon values(?,?,?,?,?,?,?)";
+	static final String cpnInsert = "insert into coupon values((select nvl(max(cpnId),5000)+1 from coupon),?,?,?,?,?,?,?)";
 	//쿠폰 조회
 	static final String cpnSelectOne = "select * from coupon where cpnId=?";
 	//쿠폰 모두 조회
-	static final String cpnSelectAll = "select * from coupon where cpnId=?";
+	static final String cpnSelectAll = "select * from coupon";
 	//쿠폰 수정
 	static final String cpnUpdate = "update coupon set cpnName=?, cpnDiscount=?, cpnOriPrice=?, cpnDisPrice=? where cpnId=?";
 	//쿠폰 삭제
@@ -58,7 +57,7 @@ public class CpnDAO {
 			pstmt.setInt(1, vo.getCpnId());
 			ResultSet rs = pstmt.executeQuery();
 			if (rs.next()) {
-				if (rs.getInt("cpnId")==(vo.getCpnId())) {
+				
 					data = new CpnVO();
 					data.setCpnId(rs.getInt("cpnId"));
 					data.setResName(rs.getString("resName"));
@@ -67,7 +66,7 @@ public class CpnDAO {
 					data.setCpnOriPrice(rs.getInt("cpnOriPrice"));
 					data.setCpnDisPrice(rs.getInt("cpnDisPrice"));
 					data.setCpnPic(rs.getString("cpnPic"));
-				}
+				
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
