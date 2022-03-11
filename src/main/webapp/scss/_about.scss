@@ -1,0 +1,87 @@
+.single_about_area{
+    padding-top: 150px;
+    padding-bottom: 150px;
+    @media #{$mobile_device} {
+        padding-top: 30px;
+        padding-bottom: 30px;
+    }
+    @media #{$tablet_device} {
+        padding-top: 100px;
+        padding-bottom: 100px;
+    }
+    .single_about_thumb{
+        img{
+            width: 100%;
+        }
+        &.thumb_n1{
+            @media #{$mobile_device} {
+                margin-top: 30px;
+            }
+            @media #{$tablet_device} {
+                margin-top: 30px;
+            }
+        }
+        &.thumb_n2{
+            @media #{$mobile_device} {
+                margin-bottom: 30px;
+            }
+            @media #{$tablet_device} {
+                margin-bottom: 30px;
+            }
+        }
+    }
+    .single_about_text{
+        padding-right: 30px;
+        @media #{$mobile_device} {
+            padding-right: 0;
+        }
+        @media #{$tablet_device} {
+            padding-right: 0;
+        }
+        @media #{$mid_device} {
+            padding-right: 0;
+        }
+        h3{
+            font-size: 60px;
+            color: #000000;
+            line-height: 66px;
+            font-weight: 700;
+            margin-bottom: 37px;
+            @media #{$mobile_device} {
+                font-size: 30px;
+                line-height: 36px;
+                margin-bottom: 20px;
+            }
+            @media #{$tablet_device} {
+                font-size: 50px;
+                line-height: 56px;
+                margin-bottom: 20px;
+            }
+            @media #{$mid_device} {
+                font-size: 50px;
+                line-height: 56px;
+                margin-bottom: 20px;
+            }
+            br{
+                @media #{$mobile_device} {
+                    display: none;
+                }
+            }
+        }
+        p{
+            font-size: 16px;
+            line-height: 28px;
+            color: #777777;
+            margin-bottom: 0;
+        }
+        .about_text1{
+            margin-bottom: 26px;
+        }
+        .about_text2{
+            margin-bottom: 73px;
+            @media #{$mobile_device} {
+                margin-bottom: 25px;
+            }
+        }
+    }
+}
