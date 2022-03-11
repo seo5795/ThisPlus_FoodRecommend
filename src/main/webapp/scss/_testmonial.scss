@@ -1,0 +1,87 @@
+.testmonial_area{
+    padding-top: 150px;
+    padding-bottom: 210px;
+    background-size: cover;
+background-position: center;
+    @media #{$mobile_device} {
+        padding-top: 60px;
+        padding-bottom: 160px;
+    }
+    .section_title{
+
+    }
+    .single_testmonial{
+        background: #fff;
+        padding: 50px 50px 46px 40px;
+        border-radius: 10px;
+        @media #{$mobile_device} {
+            display: block !important;
+        }
+        .testmonial_thumb{
+            margin-right: 25px;
+            @media #{$mobile_device} {
+                margin-bottom: 30px;
+            }
+        }
+        img{
+            width: auto;
+        }
+        .testmonial_author{
+            h3{
+                font-size: 18px;
+                color: #000000;
+                font-weight: 600;
+                margin-bottom: 5px;
+            }
+            span{
+                font-size: 14px;
+                color: #777777;
+                display: block;
+                font-weight: 300;
+                margin-bottom: 18px;
+            }
+            p{
+                font-size:16px;
+                line-height: 28px; 
+                color: #777777;
+                margin-bottom: 0;
+            }
+        }
+
+        background: #fff;
+    }
+    .testmonial_active{
+        .owl-dots{
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            bottom: -72px;
+            .owl-dot{
+                width: 20px;
+                height: 4px;
+                background: #ddd;
+                border-radius: 5px;
+                margin: 0 5px;
+                display: inline-block;
+                &.active{
+                    background: #78b454;
+                }
+            }
+        }
+    }
+}
+
+
+// brand
+.brand_area{
+    padding-top: 150px;
+    padding-bottom: 90px;
+    .single_brand{
+        text-align: center;
+        margin-bottom: 60px;
+        img{
+
+        }
+    }
+
+}

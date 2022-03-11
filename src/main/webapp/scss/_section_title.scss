@@ -1,0 +1,77 @@
+.section_title{
+    h3{
+        font-size: 60px;
+        font-weight: 700;
+        line-height: 60px;
+        color: #000000;
+        margin-bottom: 18px;
+        @media #{$mobile_device} {
+            font-size: 38px;
+            line-height: 46px;
+        }
+        @media #{$tablet_device} {
+            font-size: 48px;
+            line-height: 56px;
+        }
+    }
+    p{
+        font-weight: 300;
+        color: #777777;
+        margin-bottom: 0;
+        br{
+            @media #{$tablet_device} {
+                display: none;
+            }
+        }
+    }
+    &.white{
+        h3,p{
+            color: #fff;
+        }
+    }
+}
+
+.section-padding{
+	padding-top: 150px;
+    padding-bottom: 150px;
+    @media #{$mobile_device} {
+        padding-top: 60px;
+        padding-bottom: 60px;
+    }
+    @media #{$tablet_device} {
+        padding-top: 100px;
+        padding-bottom: 100px;
+    }
+}
+
+.zigzag_bg_1{
+    &::before{
+        background-image: url(../img/zigzag.svg);
+        content: "";
+        position: absolute;
+        left: 0;
+        top: -1px;
+        width: 100%;
+        height: 20px;
+        background-size: cover;
+        background-repeat: no-repeat;
+        z-index: 1;
+
+    }
+}
+.zigzag_bg_2{
+    &::after{
+        background-image: url(../img/zigzag.svg);
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: -1px;
+        width: 100%;
+        height: 20px;
+        background-size: cover;
+        @include transform(rotate(180deg));
+        background-repeat: no-repeat;
+        z-index: 1;
+
+    }
+}
