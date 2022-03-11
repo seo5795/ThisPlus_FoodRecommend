@@ -1,5 +1,4 @@
-
-package coupon;
+package model.coupon;
 
 public class CpnVO {
 	private int cpnId;			//쿠폰 아이디(번호)
