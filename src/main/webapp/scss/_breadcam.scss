@@ -1,0 +1,51 @@
+.breadcam_bg_1{
+    background-image: url(../img/banner/common.png);
+}
+.breadcam_area{
+    height: 500px;
+    display: table;
+    width: 100%;
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    position: relative;
+    @media #{$mobile_device} {
+        height: 400px;
+    }
+    .breadcam_inner{
+        display: table-cell;
+        vertical-align: middle;
+        text-align: center;
+        .breadcam_text{
+            margin-top: 99px;
+            @media #{$tablet_device} {
+                margin-top: 0;
+            }
+            @media #{$mobile_device} {
+                margin-top: 0;
+                padding: 0 20px;
+            }
+            h3{
+                font-size: 60px;
+                font-weight: 700;
+                color: #ffffff;
+                margin-bottom: 14px;
+                @media #{$mobile_device} {
+                    font-size: 30px;
+                    margin-bottom: 8px;
+                }
+            }
+            p{
+                font-size: 16px;
+                color: #fff;
+                line-height: 30px;
+                margin-bottom: 0;
+                br{
+                    @media #{$mobile_device} {
+                        display: none;
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,45 @@
+.service_area{
+    padding-top: 150px;
+    padding-bottom: 90px;
+    @media #{$mobile_device} {
+        padding-top: 30px;
+        padding-bottom: 0px;
+    }
+    .single_service{
+        border: 2px solid #eee;
+        padding: 50px 42px 55px 42px;
+        margin-bottom: 60px;
+        border-radius: 10px;
+        @media #{$mobile_device} {
+            margin-bottom: 30px;
+        }
+        text-align: center;
+        @include transition(.3s);
+        .service_icon{
+            i{
+                color: #78b454;
+                font-size: 50px;
+            }
+        }
+        h4{
+            font-size: 24px;
+            font-weight: 600;
+            margin-top: 30px;
+            margin-bottom: 20px;
+        }
+        p{
+            color: #888888;
+            font-weight: 300;
+            margin-bottom: 0;
+            line-height: 28px;
+        }
+        &:hover{
+            h4,p,i{
+                color: #fff;
+            }
+            background: #78b454;
+            border: 2px solid transparent;
+
+        }
+    }
+}
