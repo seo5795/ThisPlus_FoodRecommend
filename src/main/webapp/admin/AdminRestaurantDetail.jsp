@@ -11,7 +11,7 @@
 <meta content="" name="description">
 
 <!-- Favicon -->
-<link href="img/adminfavicon.ico" rel="icon">
+<link href="img/favicon.ico" rel="icon">
 
 <!-- Google Web Fonts -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -152,7 +152,7 @@
                         <div class="row mb-3">
                            <label for="inputPhone3" class="col-sm-2 col-form-label">식당명</label>
                            <div class="col-sm-10">
-                              <input type="tet" class="form-control" id="inputName3" value="${res.resName}">
+                              <input type="text" class="form-control" id="inputName3" value="${res.resName}">
                            </div>
                         </div>
                         

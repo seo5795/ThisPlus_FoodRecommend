@@ -9,7 +9,7 @@ import net.nurigo.java_sdk.api.Message;
 import net.nurigo.java_sdk.exceptions.CoolsmsException;
 
 public class SmsApi {
-	public void sms(int randomNum, String phone) {
+   public void sms(int randomNum, String phone) {
       System.out.println("sms메서드!");
       //5자리 난수 생성(10000~99999)
       //int randomNum = (int)(Math.random() * (99999 - 10000 + 1)) + 10000;

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>로그인 / 회원가입 폼 템플릿</title>
+<link rel="stylesheet" href="css/style1.css">
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet"
+	href="//cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css">
+<style>
+.btn-social-login {
+	transition: all .2s;
+	outline: 0;
+	border: 1px solid transparent;
+	padding: .5rem !important;
+	border-radius: 50%;
+	color: #fff;
+}
+
+.btn-social-login:focus {
+	box-shadow: 0 0 0 .2rem rgba(0, 123, 255, .25);
+}
+
+.text-dark {
+	color: #343a40 !important;
+}
+</style>
+
+
+
+
+<style>
+.name {
+	text-align: center;
+}
+</style>
+</head>
+<body>
+
+	<div class="wrap">
+
+		<div class="form-wrap">
+			<div class="image">
+				<img src="img/logo.png" alt="logo" style="width: 45px;">
+			</div>
+
+			<br>
+			<div class="name">
+				<h1>ThisPlus_Login</h1>
+			</div>
+			<div class="social-icons">
+				<button class='btn-social-login' style='background: #4267B2'>
+					<i class="xi-2x xi-facebook"></i>
+				</button>
+				<button class='btn-social-login' style='background: #1FC700'>
+					<i class="xi-2x xi-naver"></i>
+				</button>
+				<button class='btn-social-login' style='background: #FFEB00'>
+					<i class="xi-2x xi-kakaotalk text-dark"></i>
+				</button>
+			</div>
+
+			<form id="login" action="" class="input-group">
+				<input type="text" class="input-field"
+					placeholder="User name or Email" required> <input
+					type="password" class="input-field" placeholder="Enter Password"
+					required>
+				<div>
+					<input type="checkbox" class="checkbox">Remember
+						Password
+				</div>
+				
+				<div>
+					<button class="submit">Login</button>
+					<a href="register.jsp">registration</a>
+				</div>
+			</form>
+
+		</div>
+	</div>
+
+</body>
+</html>

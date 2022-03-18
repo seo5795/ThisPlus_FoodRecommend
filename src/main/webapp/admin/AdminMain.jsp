@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -11,7 +12,8 @@
 <meta content="" name="description">
 
 <!-- Favicon -->
-<link href="img/adminfavicon.ico" rel="icon">
+<link href="img/favicon.ico" rel="icon">
+
 
 <!-- Google Web Fonts -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -146,7 +148,7 @@
 									alt="" style="width: 40px; height: 40px;">
 								<div class="w-100 ms-3">
 									<div class="d-flex w-100 justify-content-between">
-										<h6 class="mb-0">Jhon Doe</h6> <small>회원등급</small>
+										<h6 class="mb-0">${mem.memName}</h6> <small>${mem.memRank}</small>
 									</div>
 								</div>
 							</div>

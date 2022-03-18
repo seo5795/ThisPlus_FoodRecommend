@@ -13,7 +13,7 @@ import javax.servlet.http.HttpFilter;
 /**
  * Servlet Filter implementation class EncodingFilter
  */
-@WebFilter({ "*.jsp", "*.do", "*.did" })
+@WebFilter({ "*.jsp", "*.do","*.did" })
 public class EncodingFilter extends HttpFilter implements Filter {
 
 	private String encoding;

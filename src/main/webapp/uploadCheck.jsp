@@ -5,9 +5,9 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR" import="java.io.*"%>
 <%
-	// ì €ì¥í•  ê²½ë¡œ(ë°˜ë“œì‹œ webappì— ë¯¸ë¦¬ í´ë” ë§Œë“¤ì–´ë‘˜ ê²ƒ)
+	// ÀúÀåÇÒ °æ·Î(¹İµå½Ã webapp¿¡ ¹Ì¸® Æú´õ ¸¸µé¾îµÑ °Í)
     String path = request.getRealPath("fileUpload");
-	// íŒŒì¼ ìµœëŒ€ ì‚¬ì´ì¦ˆ ì •ì˜
+	// ÆÄÀÏ ÃÖ´ë »çÀÌÁî Á¤ÀÇ
     int size = 1024 * 1024 * 20; //20MB
     String str, saveName, originalName;
     try{
@@ -15,22 +15,22 @@
     	
     	Enumeration files = multiRequest.getFileNames();
     	str = (String)files.nextElement();
-    	// ì¤‘ë³µë˜ëŠ” ì´ë¦„ ìˆì„ì‹œ íŒŒì¼ëª… ë³€ê²½
+    	// Áßº¹µÇ´Â ÀÌ¸§ ÀÖÀ»½Ã ÆÄÀÏ¸í º¯°æ
     	saveName = multiRequest.getFilesystemName(str);
-    	// ì›ë˜ íŒŒì¼ëª…
+    	// ¿ø·¡ ÆÄÀÏ¸í
     	originalName = multiRequest.getOriginalFileName(str);
     	
-    	out.println("<h1>ì´ë¯¸ì§€ ì—…ë¡œë“œì— ì„±ê³µí–ˆìŠµë‹ˆë‹¤.</h1><br>");
-    	out.println("ì›ë˜ íŒŒì¼ëª… : "+originalName+"<br>");
-    	out.println("ì €ì¥ëœ íŒŒì¼ëª… : "+saveName+"<br>");
-    	out.println("ìš°ì„  ì €ì¥ê²½ë¡œ : "+path+"<br>");
+    	out.println("<h1>ÀÌ¹ÌÁö ¾÷·Îµå¿¡ ¼º°øÇß½À´Ï´Ù.</h1><br>");
+    	out.println("¿ø·¡ ÆÄÀÏ¸í : "+originalName+"<br>");
+    	out.println("ÀúÀåµÈ ÆÄÀÏ¸í : "+saveName+"<br>");
+    	out.println("¿ì¼± ÀúÀå°æ·Î : "+path+"<br>");
     	
-    	// ì›¹í”„ë¡œì íŠ¸ì— ì €ì¥ë˜ëŠ” ê²½ë¡œ(=pathì˜ ë‚´ìš©ê³¼ ë™ì¼)
+    	// À¥ÇÁ·ÎÁ§Æ®¿¡ ÀúÀåµÇ´Â °æ·Î(=pathÀÇ ³»¿ë°ú µ¿ÀÏ)
     	String originPath="D:\\2021_ksj\\resource\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp0\\wtpwebapps\\thisfood\\fileUpload\\";
-    	// ìš°ë¦¬ê°€ ì›í•˜ëŠ” ì €ì¥ ê²½ë¡œ(ì›í•˜ëŠ” í´ë” ê²½ë¡œë¥¼ ì…ë ¥í•´ ì£¼ì„¸ìš”)
+    	// ¿ì¸®°¡ ¿øÇÏ´Â ÀúÀå °æ·Î(¿øÇÏ´Â Æú´õ °æ·Î¸¦ ÀÔ·ÂÇØ ÁÖ¼¼¿ä)
     	String movePath="D:\\2021_ksj\\resource\\thisfood\\src\\main\\webapp\\imgUpload\\";
     	
-    	// Javaë¡œì§ì„ ì´ìš©í•´ íŒŒì¼ ì´ë™
+    	// Java·ÎÁ÷À» ÀÌ¿ëÇØ ÆÄÀÏ ÀÌµ¿
     	try {
     		FileInputStream fis=new FileInputStream(originPath+saveName);
     		FileOutputStream fos=new FileOutputStream(movePath+saveName);
@@ -38,7 +38,7 @@
     		byte[] buff=new byte[3000];
     		int len;
     		while((len=fis.read(buff))!=-1) {
-    			fos.write(buff, 0, len); // buffì˜ ë°ì´í„°ë¥¼ lenë§Œí¼ write();
+    			fos.write(buff, 0, len); // buffÀÇ µ¥ÀÌÅÍ¸¦ len¸¸Å­ write();
     		}
     		
     		fos.flush();
@@ -47,27 +47,27 @@
     		e.printStackTrace();
     	}
     	finally {
-    		System.out.println("ì´ë¯¸ì§€ ë³µì‚¬ ì™„ë£Œ");
+    		System.out.println("ÀÌ¹ÌÁö º¹»ç ¿Ï·á");
     		
-    		// DBì— ì €ì¥ë˜ì–´ì•¼ í•  ë°ì´í„° : ì‹ë‹¹ì´ë¦„, ì‹ë‹¹ì¢…ë¥˜, ì´ë¯¸ì§€ì €ì¥ê²½ë¡œ
-    		out.println("ìµœì¢… ì €ì¥ê²½ë¡œ : "+movePath+"<br><br>");
+    		// DB¿¡ ÀúÀåµÇ¾î¾ß ÇÒ µ¥ÀÌÅÍ : ½Ä´çÀÌ¸§, ½Ä´çÁ¾·ù, ÀÌ¹ÌÁöÀúÀå°æ·Î
+    		out.println("ÃÖÁ¾ ÀúÀå°æ·Î : "+movePath+"<br><br>");
     		
-    		// ì…ë ¥í•œ íŒŒë¼ë¯¸í„°ëŠ” MultiRequestì—ì„œ í˜¸ì¶œí•  ê²ƒ
-    		// ì‚¬ì§„ì€ ì €ì¥í•œ ê²½ë¡œì™€ ì €ì¥ëœ íŒŒì¼ëª…ì„ í•©ì³ì„œ DBì— ë“±ë¡
-    		out.println("<h1>DBì— ì €ì¥í•  ì •ë³´</h1>");
+    		// ÀÔ·ÂÇÑ ÆÄ¶ó¹ÌÅÍ´Â MultiRequest¿¡¼­ È£ÃâÇÒ °Í
+    		// »çÁøÀº ÀúÀåÇÑ °æ·Î¿Í ÀúÀåµÈ ÆÄÀÏ¸íÀ» ÇÕÃÄ¼­ DB¿¡ µî·Ï
+    		out.println("<h1>DB¿¡ ÀúÀåÇÒ Á¤º¸</h1>");
     		if(multiRequest.getParameter("resName")==null){
-    			out.println("ë©”ë‰´ ì´ë¦„ : "+multiRequest.getParameter("menuName")+"<br>");
-        		out.println("ë©”ë‰´ ì¢…ë¥˜ : "+multiRequest.getParameter("menuCategory")+"<br>");
-        		out.println("ë©”ë‰´ ê°€ê²© : "+multiRequest.getParameter("menuPrice")+"<br>");
+    			out.println("¸Ş´º ÀÌ¸§ : "+multiRequest.getParameter("menuName")+"<br>");
+        		out.println("¸Ş´º Á¾·ù : "+multiRequest.getParameter("menuCategory")+"<br>");
+        		out.println("¸Ş´º °¡°İ : "+multiRequest.getParameter("menuPrice")+"<br>");
     		}
     		else{
-    			out.println("ì‹ë‹¹ ì´ë¦„ : "+multiRequest.getParameter("resName")+"<br>");
-        		out.println("ì‹ë‹¹ ì¢…ë¥˜ : "+multiRequest.getParameter("resCategory")+"<br>");
-        		out.println("ì‹ë‹¹ ì£¼ì†Œ : "+multiRequest.getParameter("resAdd")+"<br>");
-        		out.println("ì‹ë‹¹ ì „í™”ë²ˆí˜¸ : "+multiRequest.getParameter("resPhone1")+"-"+multiRequest.getParameter("resPhone2")+"-"+multiRequest.getParameter("resPhone3")+"<br>");
+    			out.println("½Ä´ç ÀÌ¸§ : "+multiRequest.getParameter("resName")+"<br>");
+        		out.println("½Ä´ç Á¾·ù : "+multiRequest.getParameter("resCategory")+"<br>");
+        		out.println("½Ä´ç ÁÖ¼Ò : "+multiRequest.getParameter("resAdd")+"<br>");
+        		out.println("½Ä´ç ÀüÈ­¹øÈ£ : "+multiRequest.getParameter("resPhone1")+"-"+multiRequest.getParameter("resPhone2")+"-"+multiRequest.getParameter("resPhone3")+"<br>");
     		}
     		
-    		out.println("ì‚¬ì§„ : "+movePath+saveName);
+    		out.println("»çÁø : "+movePath+saveName);
     		
     	}
     } catch (Exception e){

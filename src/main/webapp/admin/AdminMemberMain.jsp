@@ -12,7 +12,7 @@
 <meta content="" name="description">
 
 <!-- Favicon -->
-<link href="img/adminfavicon.ico" rel="icon">
+<link href="img/favicon.ico" rel="icon">
 
 <!-- Google Web Fonts -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -123,10 +123,7 @@
 				<div class="bg-light text-center rounded p-4">
 					<div class="d-flex align-items-center justify-content-between mb-4">
 						<h6 class="mb-0">회원 목록</h6>
-						<form class="d-none d-md-flex ms-4">
-							<input class="form-control border-0" type="search"
-								placeholder="회원검색">
-						</form>
+						
 						<a href="">Show All</a>
 					</div>
 					<div class="table-responsive">

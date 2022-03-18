@@ -13,7 +13,6 @@
 <!-- 소셜 버튼 -->
 <link rel="stylesheet"
 	href="//cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css">
-	
 <style>
 .btn-social-login {
 	transition: all .2s;
@@ -80,7 +79,7 @@
 			</form> 
 			</div>
 		<br><br>
-			<form id="login" action="login.do" class="input-group" method="post">
+			<form id="login" action="login.do" class="input-group">
 				<input type="text" class="input-field" name="memName"
 					placeholder="User name" required> <input
 					type="password" class="input-field" name="memPw" placeholder="Enter Password"

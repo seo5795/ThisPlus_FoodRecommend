@@ -5,10 +5,9 @@
 <html>
 <head>
 <meta charset="UTF-8">
-
-    <!-- Favicon -->
-    <link href="../img/favicon.ico" rel="icon">
 <title>공지사항</title>
+<link href="img/adminfavicon.ico" rel="icon">
+
 <!-- 자바스크립트 연결 -->
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"
 	integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="

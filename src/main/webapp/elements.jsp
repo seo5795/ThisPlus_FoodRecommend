@@ -530,6 +530,7 @@
 											<select>
 												<option value=" 1">City</option>
 									<option value="1">Dhaka</option>
+									<option value="1">Dilli</option>
 									<option value="1">Newyork</option>
 									<option value="1">Islamabad</option>
 									</select>

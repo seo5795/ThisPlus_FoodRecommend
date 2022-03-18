@@ -14,7 +14,7 @@
 
 
 <!-- <link rel="manifest" href="site.webmanifest"> -->
-<link rel="shortcut icon" type="image/x-icon" href="img/favicon.ico">
+<link rel="shortcut icon" type="image/x-icon" href="img/favicon.png">
 <!-- Place favicon.ico in the root directory -->
 
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">

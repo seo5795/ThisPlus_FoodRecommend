@@ -17,7 +17,7 @@ public class MainAction implements Action {
 		ActionForward forward=new ActionForward();
 
 
-		forward.setPath("index.jsp");
+		forward.setPath("main.jsp");
 		forward.setRedirect(true);
 
 
