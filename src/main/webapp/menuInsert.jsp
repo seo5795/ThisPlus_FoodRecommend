@@ -1,0 +1,178 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+
+<!doctype html>
+<html class="no-js" lang="zxx">
+
+<head>
+<meta charset="utf-8">
+<meta http-equiv="x-ua-compatible" content="ie=edge">
+<title>flatter</title>
+<meta name="description" content="">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- <link rel="manifest" href="site.webmanifest"> -->
+<link rel="shortcut icon" type="image/x-icon" href="img/favicon.ico">
+<!-- Place favicon.ico in the root directory -->
+
+<!-- CSS here -->
+<link rel="stylesheet" href="css/bootstrap.min.css">
+<link rel="stylesheet" href="css/owl.carousel.min.css">
+<link rel="stylesheet" href="css/magnific-popup.css">
+<link rel="stylesheet" href="css/font-awesome.min.css">
+<link rel="stylesheet" href="css/themify-icons.css">
+<link rel="stylesheet" href="css/nice-select.css">
+<link rel="stylesheet" href="css/flaticon.css">
+<link rel="stylesheet" href="css/animate.css">
+<link rel="stylesheet" href="css/slicknav.css">
+<link rel="stylesheet" href="css/style.css">
+<!-- <link rel="stylesheet" href="css/responsive.css"> -->
+
+<!-- 내부 CSS 적용 -->
+<!-- 이후 취합할 때 CSS파일을 별도로 분리할 예정 -->
+<style type="text/css">
+.menuContainer{
+	display: flex;
+	justify-content: center;
+}
+.menuContents{
+	width: 450px;
+	margin-top: 10px;
+}
+.imgPreview{
+	margin-top: 54px;
+	padding: 10px;
+	width: 420px;
+	height: 320px;
+	border: 1px solid lightgray;
+	text-align: center;
+}
+.menuName,.menuCategory,.menuPrice{
+	border-radius: 5px;
+}
+
+</style>
+</head>
+<body>
+
+<!-- 이미지 미리보기 로직 -->
+<script type="text/javascript">
+// 이미지 미리보기
+function preview(input) {
+     if (input.files && input.files[0]) {
+       var reader = new FileReader();
+       reader.onload = function(e) {
+         document.getElementById('preview').src = e.target.result;
+       };
+       reader.readAsDataURL(input.files[0]);
+     } else {
+       document.getElementById('preview').src = "";
+     }
+   }
+
+</script>
+
+	<!--[if lte IE 9]>
+            <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
+        <![endif]-->
+
+	<!-- header-start -->
+	<header>
+		<!-- 네비게이션 -->
+		<jsp:include page="common/nav.jsp" />
+	</header>
+	<!-- header-end -->
+
+	<!-- breadcam_area_start -->
+	<!-- header -->
+	<jsp:include page="common/header.jsp" />
+	<!-- breadcam_area_end -->
+
+
+   <!-- 메뉴등록 start -->
+   <div class="menuContainer">
+   		<div class="menuContents">
+   		<!-- 입력한 내용은 menuAdd액션으로 전달 -->
+   		<!-- <form action="menuAdd.do" method="post" enctype="multipart/form-data"> -->
+   		<!-- 임시로 업로드체크 페이지로 이동, 컨트롤러 적용시 제거 예정 -->
+   		<form action="uploadCheck.jsp" method="post" enctype="multipart/form-data">
+	   		<h3>메뉴 등록</h3>
+	   		<hr>
+	   		
+	   		<div class="mName">
+	   		<span>메뉴 이름</span><br>
+	   		<input name="menuName" class="menuName" type="text" placeholder="메뉴 이름 입력" required>
+	   		</div><br>
+   		
+	   		<div class="mCategory">
+	   		<span>메뉴 종류</span><br>
+	   		<input name="menuCategory" class="menuCategory" type="text" placeholder="메뉴 종류 입력" required>
+	   		</div><br>
+	   		
+	   		<div class="mPrice">
+	   		<span>메뉴 가격</span><br>
+	   		<input name="menuPrice" class="menuPrice" type="text" placeholder="메뉴 가격 입력" oninput="this.value = this.value.replaceAll(/\D/g, '')" required>원
+	   		</div><br>
+	   		
+	   		<div class="mPic">
+	   		<span>메뉴 사진</span><br>
+	   		<input type="file" name="uploadfile" onchange="preview(this);" accept="image/*" >
+			</div>
+	   		
+	   		<br>
+	   		<input type="submit" value="메뉴 등록" style="float: right;">
+   		</form>
+	   	
+			
+	   		<br>
+	   		<hr>
+			
+   		<br><br>
+   		</div>
+   		<!-- 이미지 미리보기 영역 -->
+   		<!-- 우측에 별도로 표시하기 위해 DIV를 분할 -->
+   		<div class="imgPreview">
+   			<img id="preview" width="400px" height="300px"/>
+   			이미지 미리보기
+   		</div>
+   </div>
+   
+   <!-- 메뉴등록 end -->
+
+
+
+	<!-- footer-start -->
+   <jsp:include page="common/footer.jsp" />
+   <!-- footer-end -->
+
+
+   <!-- JS here -->
+   <script src="js/vendor/modernizr-3.5.0.min.js"></script>
+   <script src="js/vendor/jquery-1.12.4.min.js"></script>
+   <script src="js/popper.min.js"></script>
+   <script src="js/bootstrap.min.js"></script>
+   <script src="js/owl.carousel.min.js"></script>
+   <script src="js/isotope.pkgd.min.js"></script>
+   <script src="js/ajax-form.js"></script>
+   <script src="js/waypoints.min.js"></script>
+   <script src="js/jquery.counterup.min.js"></script>
+   <script src="js/imagesloaded.pkgd.min.js"></script>
+   <script src="js/scrollIt.js"></script>
+   <script src="js/jquery.scrollUp.min.js"></script>
+   <script src="js/wow.min.js"></script>
+   <script src="js/nice-select.min.js"></script>
+   <script src="js/jquery.slicknav.min.js"></script>
+   <script src="js/jquery.magnific-popup.min.js"></script>
+   <script src="js/plugins.js"></script>
+
+   <!--contact js-->
+   <script src="js/contact.js"></script>
+   <script src="js/jquery.ajaxchimp.min.js"></script>
+   <script src="js/jquery.form.js"></script>
+   <script src="js/jquery.validate.min.js"></script>
+   <script src="js/mail-script.js"></script>
+
+   <script src="js/main.js"></script>
+
+</body>
+</html>

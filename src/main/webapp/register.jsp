@@ -80,6 +80,11 @@ select {
 	background: #f9f9ff;
 	border: 1px solid transparent;
 }
+
+#sms, #sms2{
+	align-self: flex-end;
+	width: 20%;
+}
 </style>
 </head>
 
@@ -115,48 +120,50 @@ select {
 						<form action="#" name="join">
 							<div class="mt-10">
 								<span class="box int_id"><input type="text" name="memid"
-									placeholder="아이디" onfocus="this.placeholder = ''"
-									onblur="this.placeholder = 'ID'"
-									class="single-input-primary check"></span>
+									placeholder="아이디" class="single-input-primary check"></span>
 								<div id="idError" class="error_next_box"></div>
 							</div>
 							<div class="mt-10">
 								<input type="password" name="memPw" placeholder="패스워드"
-									onfocus="this.placeholder = ''"
-									onblur="this.placeholder = 'Password'"
 									class="single-input-primary check">
 								<div id="pw1Error" class="error_next_box"></div>
 							</div>
 							<div class="mt-10">
 								<input type="password" name="memPw2" placeholder="패스워드 확인"
-									onfocus="this.placeholder = ''"
-									onblur="this.placeholder = 'Password'"
 									class="single-input-primary check">
 								<div id="pw2Error" class="error_next_box"></div>
 							</div>
 							<div class="mt-10">
 								<input type="text" name="memName" placeholder="이름"
-									onfocus="this.placeholder = ''"
-									onblur="this.placeholder = '이름'"
 									class="single-input-primary check">
 								<div id="nameError" class="error_next_box"></div>
 							</div>
 							<div class="mt-10 input-group-icon">
 								<input type="email" name="memEmail" placeholder="이메일"
-									onfocus="this.placeholder = ''"
-									onblur="this.placeholder = '이메일'"
 									class="single-input-primary check">
 								<div id="emailError" class="error_next_box"></div>
 							</div>
 
 							<div class="mt-10">
-								<input type="text" name="memPhone" placeholder="핸드폰번호"
-									onfocus="this.placeholder = ''"
-									onblur="this.placeholder = '핸드폰번호'"
-									class="single-input-primary check">
+								<div style="display: flex">
+									<input type="text" name="memPhone" placeholder="핸드폰번호"
+										class="single-input-primary check" style="width: 80%"><a
+										href="#" class="genric-btn success radius" id="sms"
+										style="height: 70%">문자전송</a>
+								</div>
 								<div id="phoneNumError" class="error_next_box"></div>
+								<div style="display: flex">
+								<input type="text" name="phoneCheck"
+									placeholder="인증번호를 입력하세요"
+									class="single-input-primary check" disabled style="width: 80%">
+								<a href="#" class="genric-btn success radius" id="sms2"
+									style="height: 70%">문자인증</a>
+								</div>
+								<div id="phonCheckError" class="error_next_box"></div>
+								<input type="hidden" id="phoneDoubleChk"/>
+
 							</div>
-							
+
 							<div class="input-group-icon mt-10">
 								<div class="form-select" id="default-select"">
 									<select>
@@ -176,10 +183,9 @@ select {
 										<tr>
 											<td>우편번호</td>
 											<td><input type="hidden" id="confmKey" name="confmKey"
-												value="" > <input type="text" id="zipNo"
-												name="zipNo" class="check" readonly style="width: 100px"
-												> <input type="button" value="주소검색"
-												onclick="goPopup();"></td>
+												value=""> <input type="text" id="zipNo" name="zipNo"
+												class="check" readonly style="width: 100px"> <input
+												type="button" value="주소검색" onclick="goPopup();"></td>
 										</tr>
 										<tr>
 											<td>도로명주소</td>
@@ -230,10 +236,6 @@ select {
 
 
 
-
-							</script>
-
-
 						</form>
 					</div>
 
@@ -250,6 +252,7 @@ select {
 
 	<!-- JS here -->
 	<script src="js/register.js"></script>
+	<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>  -->
 	<script src="js/vendor/modernizr-3.5.0.min.js"></script>
 	<script src="js/vendor/jquery-1.12.4.min.js"></script>
 	<script src="js/popper.min.js"></script>
@@ -276,5 +279,63 @@ select {
 	<script src="js/mail-script.js"></script>
 
 	<script src="js/main.js"></script>
+
+
+	<script type="text/javascript">
+		var code = "";
+		$(function() {
+			$("#sms").on("click", function() {
+				var phone = $('input[name=memPhone]').val();
+				/*  var form ={
+						"hphone" : phone
+				};  */
+				console.log('phone:' + phone);
+				//console.log(form);
+				//console.log(JSON.stringify(form));
+
+				$.ajax({
+					type : 'get',
+					//왜 get???
+					url : 'ajax.do',
+					dataType : 'json',
+					//data: JSON.stringify(form),
+					data : {
+						"phone" : phone
+					},
+					contentType : 'application/json; charset=UTF-8',
+					success : function(result) {
+						//성공시 인증번호 콘솔창으로 띄움
+						//실제 서비스 할때는 지워야함
+						console.log(result.randomNum);
+						$("#phonCheckError").text("인증번호를 입력한 뒤 본인인증을 눌러주십시요");
+						$("input[name=phoneCheck]").attr("disabled",false);
+
+						code = result.randomNum;
+
+					},
+					errer : function() {
+						alert('errer');
+					}
+				})
+			})
+		})
+		
+		$(function() {
+			$("#sms2").on("click", function() {
+				console.log("코드값:"+ code);
+				console.log("입력값:"+ $("input[name=phoneCheck]").val());
+				if($("input[name=phoneCheck]").val() == code){
+					$("#phonCheckError").text("인증번호가 일치합니다");
+					$("#phoneDoubleChk").val("true");
+
+				}else{
+					$("#phonCheckError").text("인증번호가 불일치합니다");
+					$("#phoneDoubleChk").val("false");
+
+				}
+				})
+			})
+	</script>
+
 
 </body>

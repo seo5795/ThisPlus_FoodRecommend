@@ -56,7 +56,7 @@
                             <div class="blog_item_img">
                                 <img class="card-img rounded-0" src="img/blog/single_blog_1.png" alt="">
                                 <a href="#" class="blog_item_date">
-                                    <h3>1aasss5</h3>
+                                    <h3>15</h3>
                                     <p>Jan</p>
                                 </a>
                             </div>
