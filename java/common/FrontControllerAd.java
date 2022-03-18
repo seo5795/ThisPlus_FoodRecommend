@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import controller.main.MainAction;
+import controller.admin.AdminNoticeMainAction;
 
 /**
  * Servlet implementation class FrontControllerAd
@@ -46,16 +46,19 @@ public class FrontControllerAd extends HttpServlet {
 		String uri=request.getRequestURI();
 		String cp=request.getContextPath();
 		String command=uri.substring(cp.length());
-
+		
+		System.out.println(command);
+		
 		ActionForward forward=null;
 
 		if(command.equals("/main.did")) {
 			forward = new ActionForward();
 			forward.setPath("admin/AdminMain.jsp");
 			forward.setRedirect(true);
-		}
-		
-		else {
+		}else if(command.equals("/admin/adminNotMain.did")) {
+			System.out.println("FC:공지사항보기");
+			forward=new AdminNoticeMainAction().execute(request,response);
+		}	else {
 			throw new ServletException("command 요청에러!");
 		}
 

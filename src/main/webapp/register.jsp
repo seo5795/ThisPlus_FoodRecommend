@@ -289,14 +289,14 @@ select {
 				/*  var form ={
 						"hphone" : phone
 				};  */
-				console.log('phone:' + phone);
+				console.log('phone1:' + phone);
 				//console.log(form);
 				//console.log(JSON.stringify(form));
 
 				$.ajax({
 					type : 'get',
 					//왜 get???
-					url : 'ajax.do',
+					url : 'ajax.a',
 					dataType : 'json',
 					//data: JSON.stringify(form),
 					data : {
@@ -306,6 +306,7 @@ select {
 					success : function(result) {
 						//성공시 인증번호 콘솔창으로 띄움
 						//실제 서비스 할때는 지워야함
+						console.log("데이터 도착");
 						console.log(result.randomNum);
 						$("#phonCheckError").text("인증번호를 입력한 뒤 본인인증을 눌러주십시요");
 						$("input[name=phoneCheck]").attr("disabled",false);

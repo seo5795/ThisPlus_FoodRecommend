@@ -69,28 +69,6 @@ public class FrontController extends HttpServlet {
 		}
 		else if(command.equals("/signup.do")) {
 			forward=new SignupAction().execute(request,response);
-		}else if(command.equals("/ajax.do")) {
-			System.out.println("안녕");
-			String phone = request.getParameter("phone");
-			System.out.println("phone: "+phone);
-
-			//5자리 난수 생성(10000~99999)
-			int randomNum = (int)(Math.random() * (99999 - 10000 + 1)) + 10000;
-			//random()은 타입이 double인 값을 반환하므로 int타입으로 형변환
-			System.out.println(randomNum);
-			
-			PrintWriter out = response.getWriter();
-			JSONObject jobj = new JSONObject();
-			// 문자열 전송
-			//	jobj.put("str", str);
-			jobj.put("randomNum", randomNum);
-			out.print(jobj.toString());
-			out.flush();
-			
-			//문자보내는 메서드
-			//SmsApi msg = new SmsApi();
-			//msg.sms(randomNum, phone);
-			
 		}
 		else {
 			throw new ServletException("command 요청에러!");
@@ -106,9 +84,11 @@ public class FrontController extends HttpServlet {
 				dispatcher.forward(request, response);
 			}
 		}
-		
-		
+
+
 		PrintWriter out=response.getWriter();
+
 		out.println("<script>alert('command 요청처리실패!');history.go(-1);</script>");
+		System.out.println("3");
 	}
 }
