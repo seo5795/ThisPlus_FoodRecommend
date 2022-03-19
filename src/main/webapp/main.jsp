@@ -44,7 +44,7 @@
 .col-md-6 {
 	-webkit-box-flex: 0;
 	-ms-flex: 0 0 50%;
-	flex: 0 0 20%;
+	flex: 0 0 33%;
 	max-width: 50%;
 }
 </style>
@@ -94,7 +94,7 @@
 
 
 
-	<!-- 인기 맛집 Best10 start -->
+	<!-- 평점 순위 top6 start -->
 	<div class="service_area">
 		<div class="container">
 			<div class="row">
@@ -103,12 +103,8 @@
 
 						<!-- 리스트 타이틀 -->
 
-						<h3>이번주 인기 맛집 Best10</h3>
-						<p>
-							inappropriate behavior is often laughed off as âboys will be
-							boys,â women face higher conduct standards <br> especially
-							in the workplace. Thatâs why itâs crucial that, as women.
-						</p>
+						<h3>평점 top6</h3>
+						<p>고객님들이 직접 뽑은 전국 최고의 맛집!</p>
 					</div>
 				</div>
 			</div>
@@ -117,141 +113,26 @@
 			<!-- 리스트 내용 -->
 
 			<div class="row">
-
-
-				<!-- 첫번째 식당 -->
+				<c:forEach var="ad" items="${avgDatas}">
 				<div class="col-xl-4 col-md-6">
 					<div class="single_service">
 						<div class="service_icon">
-							<i class="flaticon-gift"></i>
+							<a href="#"> <img alt="" src="${ad.resPic}"  style="width:100%" ></a>
 						</div>
-						<h4>Birthday Catering</h4>
-						<a href="#" class="Choose_restaurant"><p>Lorem ipsum dolor
-								sit amet, consectetur adipisicing elit, sed do eiusmod tempor
-								incididunt ut labore et dolore magna aliqua.</p></a>
+						<h4> ${ad.resName} </h4>
+						<h5> 평점: ${ad.resAvg}점 </h5>
+  						<br>
+						<a href="#" class="Choose_restaurant">
+						<span>위치:${ad.resAdd}</span>
+						</a>
 					</div>
 				</div>
-
-				<!-- 두번째 식당 -->
-				<div class="col-xl-4 col-md-6">
-					<div class="single_service">
-						<div class="service_icon">
-							<i class="flaticon-gift"></i>
-						</div>
-						<h4>Birthday Catering</h4>
-						<a href="#" class="Choose_restaurant"><p>Lorem ipsum dolor
-								sit amet, consectetur adipisicing elit, sed do eiusmod tempor
-								incididunt ut labore et dolore magna aliqua.</p></a>
-					</div>
-				</div>
-
-				<!-- 세번째 식당 -->
-				<div class="col-xl-4 col-md-6">
-					<div class="single_service">
-						<div class="service_icon">
-							<i class="flaticon-gift"></i>
-						</div>
-						<h4>Birthday Catering</h4>
-						<a href="#" class="Choose_restaurant"><p>Lorem ipsum dolor
-								sit amet, consectetur adipisicing elit, sed do eiusmod tempor
-								incididunt ut labore et dolore magna aliqua.</p></a>
-					</div>
-				</div>
-
-				<!-- 네번째 식당 -->
-				<div class="col-xl-4 col-md-6">
-					<div class="single_service">
-						<div class="service_icon">
-							<i class="flaticon-gift"></i>
-						</div>
-						<h4>Birthday Catering</h4>
-						<a href="#" class="Choose_restaurant"><p>Lorem ipsum dolor
-								sit amet, consectetur adipisicing elit, sed do eiusmod tempor
-								incididunt ut labore et dolore magna aliqua.</p></a>
-					</div>
-				</div>
-
-				<!-- 다섯번째 식당 -->
-				<div class="col-xl-4 col-md-6">
-					<div class="single_service">
-						<div class="service_icon">
-							<i class="flaticon-gift"></i>
-						</div>
-						<h4>Birthday Catering</h4>
-						<a href="#" class="Choose_restaurant"><p>Lorem ipsum dolor
-								sit amet, consectetur adipisicing elit, sed do eiusmod tempor
-								incididunt ut labore et dolore magna aliqua.</p></a>
-					</div>
-				</div>
-
-				<!-- 여섯번째 식당 -->
-				<div class="col-xl-4 col-md-6">
-					<div class="single_service">
-						<div class="service_icon">
-							<i class="flaticon-gift"></i>
-						</div>
-						<h4>Birthday Catering</h4>
-						<a href="#" class="Choose_restaurant"><p>Lorem ipsum dolor
-								sit amet, consectetur adipisicing elit, sed do eiusmod tempor
-								incididunt ut labore et dolore magna aliqua.</p></a>
-					</div>
-				</div>
-
-				<!-- 일곱번째 식당 -->
-				<div class="col-xl-4 col-md-6">
-					<div class="single_service">
-						<div class="service_icon">
-							<i class="flaticon-gift"></i>
-						</div>
-						<h4>Birthday Catering</h4>
-						<a href="#" class="Choose_restaurant"><p>Lorem ipsum dolor
-								sit amet, consectetur adipisicing elit, sed do eiusmod tempor
-								incididunt ut labore et dolore magna aliqua.</p></a>
-					</div>
-				</div>
-
-				<!-- 여덟번째 식당 -->
-				<div class="col-xl-4 col-md-6">
-					<div class="single_service">
-						<div class="service_icon">
-							<i class="flaticon-gift"></i>
-						</div>
-						<h4>Birthday Catering</h4>
-						<a href="#" class="Choose_restaurant"><p>Lorem ipsum dolor
-								sit amet, consectetur adipisicing elit, sed do eiusmod tempor
-								incididunt ut labore et dolore magna aliqua.</p></a>
-					</div>
-				</div>
-
-				<!-- 아홉번째 식당 -->
-				<div class="col-xl-4 col-md-6">
-					<div class="single_service">
-						<div class="service_icon">
-							<i class="flaticon-gift"></i>
-						</div>
-						<h4>Birthday Catering</h4>
-						<a href="#" class="Choose_restaurant"><p>Lorem ipsum dolor
-								sit amet, consectetur adipisicing elit, sed do eiusmod tempor
-								incididunt ut labore et dolore magna aliqua.</p></a>
-					</div>
-				</div>
-
-				<!-- 열번째 식당 -->
-				<div class="col-xl-4 col-md-6">
-					<div class="single_service">
-						<div class="service_icon">
-							<i class="flaticon-gift"></i>
-						</div>
-						<h4>Birthday Catering</h4>
-						<a href="#" class="Choose_restaurant"><p>Lorem ipsum dolor
-								sit amet, consectetur adipisicing elit, sed do eiusmod tempor
-								incididunt ut labore et dolore magna aliqua.</p></a>
-					</div>
-				</div>
+					
+				</c:forEach>
 			</div>
 		</div>
 	</div>
-	<!-- 이번주 인기 맛집 Best10 end -->
+	<!-- 평점 순위 top6 end -->
 
 
 
@@ -286,121 +167,36 @@
 
 
 	<!-- 맛집 Best5 start -->
-	<div class="order_area">
+	<div class="service_area">
 		<div class="container">
 			<div class="row">
 				<div class="col-xl-12">
 					<div class="section_title mb-70">
-						<h3>마라탕 맛집 Best5</h3>
+						<h3>양식 맛집 Best6</h3>
 						<p>
-							inappropriate behavior is often laughed off as âboys will be
-							boys,â women face higher conduct standards <br> especially
-							in the workplace. Thatâs why itâs crucial that, as women.
+							오맛이가 추천하는 양식 맛집 Best6
 						</p>
 					</div>
 				</div>
 			</div>
 			<div class="row">
+			<c:forEach var="md" items="${menuDatas}">
 				<div class="col-xl-4 col-md-6">
-					<div class="single_order">
-						<div class="order_thumb">
-							<img src="img/order/order-1.png" alt="">
-							<div class="order_prise">
-								<span>10.00</span>
-							</div>
+					<div class="single_service">
+						<div class="service_icon">
+							<a href="#"> <img alt="" src="${md.resPic}"  style="width:100%" ></a>
 						</div>
-						<div class="order_info">
-							<h3>
-								<a href="#">Weastern Set Meal 01</a>
-							</h3>
-							<p>
-								Chicken Fried Rice | Crispy Chicken fry <br> Weastern
-								Pickle | Mixed Vegetable <br> Soft Drinks
-							</p>
-							<a href="#" class="boxed_btn">Order Now!</a>
-						</div>
+						<h4> ${md.resName} </h4>
+						<h5> 평점: ${md.resAvg}점 </h5>
+  						<br>
+						<a href="#" class="Choose_restaurant">
+						<span>위치:${md.resAdd}</span>
+						</a>
 					</div>
 				</div>
-				<div class="col-xl-4 col-md-6">
-					<div class="single_order">
-						<div class="order_thumb">
-							<img src="img/order/order-2.png" alt="">
-							<div class="order_prise">
-								<span>10.00</span>
-							</div>
-						</div>
-						<div class="order_info">
-							<h3>
-								<a href="#">Weastern Set Meal 02</a>
-							</h3>
-							<p>
-								Chicken Fried Rice | Crispy Chicken fry <br> Weastern
-								Pickle | Mixed Vegetable <br> Soft Drinks
-							</p>
-							<a href="#" class="boxed_btn">Order Now!</a>
-						</div>
-					</div>
-				</div>
-				<div class="col-xl-4 col-md-6">
-					<div class="single_order">
-						<div class="order_thumb">
-							<img src="img/order/order-3.png" alt="">
-							<div class="order_prise">
-								<span>10.00</span>
-							</div>
-						</div>
-						<div class="order_info">
-							<h3>
-								<a href="#">Weastern Set Meal 03</a>
-							</h3>
-							<p>
-								Chicken Fried Rice | Crispy Chicken fry <br> Weastern
-								Pickle | Mixed Vegetable <br> Soft Drinks
-							</p>
-							<a href="#" class="boxed_btn">Order Now!</a>
-						</div>
-					</div>
-				</div>
-				<div class="col-xl-4 col-md-6">
-					<div class="single_order">
-						<div class="order_thumb">
-							<img src="img/order/order-4.png" alt="">
-							<div class="order_prise">
-								<span>10.00</span>
-							</div>
-						</div>
-						<div class="order_info">
-							<h3>
-								<a href="#">Weastern Set Meal 01</a>
-							</h3>
-							<p>
-								Chicken Fried Rice | Crispy Chicken fry <br> Weastern
-								Pickle | Mixed Vegetable <br> Soft Drinks
-							</p>
-							<a href="#" class="boxed_btn">Order Now!</a>
-						</div>
-					</div>
-				</div>
-				<div class="col-xl-4 col-md-6">
-					<div class="single_order">
-						<div class="order_thumb">
-							<img src="img/order/order-5.png" alt="">
-							<div class="order_prise">
-								<span>10.00</span>
-							</div>
-						</div>
-						<div class="order_info">
-							<h3>
-								<a href="#">Weastern Set Meal 02</a>
-							</h3>
-							<p>
-								Chicken Fried Rice | Crispy Chicken fry <br> Weastern
-								Pickle | Mixed Vegetable <br> Soft Drinks
-							</p>
-							<a href="#" class="boxed_btn">Order Now!</a>
-						</div>
-					</div>
-				</div>
+					
+				</c:forEach>
+
 
 			</div>
 		</div>
@@ -411,7 +207,7 @@
 
 
 
-	<!-- 인기 맛집 Best10 start -->
+	<!-- 지역별 Best6 start -->
 	<div class="service_area">
 		<div class="container">
 			<div class="row">
@@ -420,11 +216,9 @@
 
 						<!-- 리스트 타이틀 -->
 
-						<h3>이번주 인기 맛집 Best10</h3>
+						<h3>서울 인기맛집 Best6</h3>
 						<p>
-							inappropriate behavior is often laughed off as âboys will be
-							boys,â women face higher conduct standards <br> especially
-							in the workplace. Thatâs why itâs crucial that, as women.
+							한국의 중심! 서울의 인기맛집 Best6
 						</p>
 					</div>
 				</div>
@@ -435,140 +229,30 @@
 
 			<div class="row">
 
-
-				<!-- 첫번째 식당 -->
+				<c:forEach var="ld" items="${locationDatas}">
 				<div class="col-xl-4 col-md-6">
 					<div class="single_service">
 						<div class="service_icon">
-							<i class="flaticon-gift"></i>
+							<a href="#"> <img alt="" src="${ld.resPic}"  style="width:100%" ></a>
 						</div>
-						<h4>Birthday Catering</h4>
-						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-							sed do eiusmod tempor incididunt ut labore et dolore magna
-							aliqua.</p>
+						<h4> ${ld.resName} </h4>
+						<h5> 평점: ${ld.resAvg}점 </h5>
+  						<br>
+						<a href="#" class="Choose_restaurant">
+						<span>위치:${ld.resAdd}</span>
+						</a>
 					</div>
 				</div>
+					
+				</c:forEach>
 
-				<!-- 두번째 식당 -->
-				<div class="col-xl-4 col-md-6">
-					<div class="single_service">
-						<div class="service_icon">
-							<i class="flaticon-cake"></i>
-						</div>
-						<h4>Wedding Service</h4>
-						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-							sed do eiusmod tempor incididunt ut labore et dolore magna
-							aliqua.</p>
-					</div>
-				</div>
 
-				<!-- 세번째 식당 -->
-				<div class="col-xl-4 col-md-6">
-					<div class="single_service">
-						<div class="service_icon">
-							<i class="flaticon-gift"></i>
-						</div>
-						<h4>Birthday Catering</h4>
-						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-							sed do eiusmod tempor incididunt ut labore et dolore magna
-							aliqua.</p>
-					</div>
-				</div>
-
-				<!-- 네번째 식당 -->
-				<div class="col-xl-4 col-md-6">
-					<div class="single_service">
-						<div class="service_icon">
-							<i class="flaticon-gift"></i>
-						</div>
-						<h4>Birthday Catering</h4>
-						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-							sed do eiusmod tempor incididunt ut labore et dolore magna
-							aliqua.</p>
-					</div>
-				</div>
-
-				<!-- 다섯번째 식당 -->
-				<div class="col-xl-4 col-md-6">
-					<div class="single_service">
-						<div class="service_icon">
-							<i class="flaticon-dance"></i>
-						</div>
-						<h4>Party Catering</h4>
-						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-							sed do eiusmod tempor incididunt ut labore et dolore magna
-							aliqua.</p>
-					</div>
-				</div>
-
-				<!-- 여섯번째 식당 -->
-				<div class="col-xl-4 col-md-6">
-					<div class="single_service">
-						<div class="service_icon">
-							<i class="flaticon-calendar"></i>
-						</div>
-						<h4>Event Catering</h4>
-						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-							sed do eiusmod tempor incididunt ut labore et dolore magna
-							aliqua.</p>
-					</div>
-				</div>
-
-				<!-- 일곱번째 식당 -->
-				<div class="col-xl-4 col-md-6">
-					<div class="single_service">
-						<div class="service_icon">
-							<i class="flaticon-businessman"></i>
-						</div>
-						<h4>Corporate Service</h4>
-						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-							sed do eiusmod tempor incididunt ut labore et dolore magna
-							aliqua.</p>
-					</div>
-				</div>
-
-				<!-- 여덟번째 식당 -->
-				<div class="col-xl-4 col-md-6">
-					<div class="single_service">
-						<div class="service_icon">
-							<i class="flaticon-running-man"></i>
-						</div>
-						<h4>Catering On Demand</h4>
-						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-							sed do eiusmod tempor incididunt ut labore et dolore magna
-							aliqua.</p>
-					</div>
-				</div>
-
-				<!-- 아홉번째 식당 -->
-				<div class="col-xl-4 col-md-6">
-					<div class="single_service">
-						<div class="service_icon">
-							<i class="flaticon-gift"></i>
-						</div>
-						<h4>Birthday Catering</h4>
-						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-							sed do eiusmod tempor incididunt ut labore et dolore magna
-							aliqua.</p>
-					</div>
-				</div>
-
-				<!-- 열번째 식당 -->
-				<div class="col-xl-4 col-md-6">
-					<div class="single_service">
-						<div class="service_icon">
-							<i class="flaticon-gift"></i>
-						</div>
-						<h4>Birthday Catering</h4>
-						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-							sed do eiusmod tempor incididunt ut labore et dolore magna
-							aliqua.</p>
-					</div>
-				</div>
+			</div>
+				
 			</div>
 		</div>
 	</div>
-	<!-- 이번주 인기 맛집 Best10 end -->
+	<!-- 지역별 Best6 end -->
 
 
 

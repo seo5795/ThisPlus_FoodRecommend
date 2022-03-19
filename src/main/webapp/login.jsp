@@ -53,28 +53,23 @@
 			<div class="name">
 				<h1>ThisPlus_Login</h1>
 			</div>
-
 <br>
 			<div class="social-icons">
-		 <form method="post" name="loginForm" action="login.do">
-					
+		 <form method="post" name="loginForm" action="snslogin.do">			
+					<input type="hidden" name="memRank" id="memRank" value="2"/>
 					<input type="hidden" name="memId" id="memId" />
 					<input type="hidden" name="memEmail" id="memEmail" />
 					<input type="hidden" name="memName" id="memName" />
 					<input type="hidden" name="memPic" id="memPic" />
 					<input type="hidden" name="memPhone" id="memPhone"/> 
 				<a href="javascript:void(0)" onclick="fnFbCustomLogin();">
-					<button class='btn-social-login' style='background: #4267B2'>
-						<i class="xi-2x xi-facebook"></i>
-					</button>
-				</a> <a id="naverIdLogin_loginButton" href="javascript:void(0)">
-					<button class='btn-social-login' style='background: #1FC700'>
-						<i class="xi-2x xi-naver"></i>
-					</button>
-				</a> <a href="javascript:void(0)" onclick="kakaoLogin();">
-					<button class='btn-social-login' style='background: #FFEB00'>
-						<i class="xi-2x xi-kakaotalk text-dark"></i>
-					</button>
+						<i class="xi-2x xi-facebook btn-social-login" style='background: #4267B2'></i>
+				</a> 
+				<a id="naverIdLogin_loginButton" href="javascript:void(0)">
+						<i class="xi-2x xi-naver  btn-social-login" style='background: #1FC700'></i>
+				</a> 
+				<a href="javascript:void(0)" onclick="kakaoLogin();">		
+						<i class="xi-2x xi-kakaotalk text-dark btn-social-login" style='background: #FFEB00'></i>			
 				</a>
 			</form> 
 			</div>
@@ -133,7 +128,7 @@
 
 								
 								//db에 넣을 값 세팅
-								 $('#memId').val(id);
+								$('#memId').val(id);
 								$('#memEmail').val(email);
 								$('#memName').val(name);
 								$('#memPic').val(profile); 
@@ -180,8 +175,8 @@
 			naverLogin.init();
 
 			var login = document.querySelector("#naverIdLogin_loginButton");
-			//login.addEventListener('click', function() {
-			window.addEventListener('load', function() {
+			login.addEventListener('click', function() {
+			//window.addEventListener('load', function() {
 				naverLogin.getLoginStatus(function(status) {
 					if (status) {
 						console.log('로그인성공');
@@ -205,7 +200,6 @@
 						$('#memId').val(id);
 						$('#memEmail').val(email);
 						$('#memName').val(name);
-						$('#memPic').val(profile);
 						$('#memPic').val(profile);
 						$('#memPhone').val(phone);
 						document.loginForm.submit(); 

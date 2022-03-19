@@ -21,6 +21,8 @@ public class MemDAO {
 			+" (memId,memPw,memName,memEmail,memAddress,memPic) values (?,?,?,?,?,?)";
 	// 회원정보 조회
 	static final String memSelectOne = "select * from member where memName=?";
+	// sns회원정보 조회
+	static final String memSnsSelectOne = "select * from member where memId=?";
 	// 회원리스트 조회
 	static final String memSelectAll = "select * from member where memId=?";
 	// 회원정보 수정
@@ -79,6 +81,82 @@ public class MemDAO {
 		JDBCUtil.disconnect(pstmt, conn);
 		return data;
 	}
+
+	// sns로그인(트랜젝션으로 회원가입처리까지)
+	public MemVO memSnsSelectOne(MemVO vo) {
+		MemVO data = null;
+		conn = JDBCUtil.connect();
+		try {
+			conn.setAutoCommit(false);//트랜젝션
+			System.out.println(vo);
+
+			pstmt = conn.prepareStatement(memSnsSelectOne);
+			pstmt.setString(1, vo.getMemId());
+
+			ResultSet rs = pstmt.executeQuery();
+			
+			if(!rs.next()){	//회원정보가 없을 시
+				System.out.println("신규회원");
+				pstmt = conn.prepareStatement(memInsert);
+				pstmt.setString(1, vo.getMemId());
+				pstmt.setString(2, vo.getMemPw());
+				pstmt.setString(3, vo.getMemName());
+				pstmt.setString(4, vo.getMemEmail());
+				pstmt.setString(5, vo.getMemAddress());
+				pstmt.setString(6, vo.getMemPic());
+				pstmt.executeUpdate();
+				
+				
+				pstmt = conn.prepareStatement(memSnsSelectOne);
+				pstmt.setString(1, vo.getMemId());
+				System.out.println("이름"+vo.getMemName());
+				
+				
+				ResultSet rs2 = pstmt.executeQuery();
+				rs2.next();
+				System.out.println("등록완료1");
+				System.out.println("Id: "+rs2.getString("memId"));
+				
+				data = new MemVO();
+				data.setMemId(rs2.getString("memId"));
+				data.setMemName(rs2.getString("memName"));
+				data.setMemEmail(rs2.getString("memEmail"));	
+				data.setMemAddress(rs2.getString("memAddress"));
+				data.setMemPic(rs2.getString("memPic"));
+				data.setMemRank(rs2.getInt("memRank"));
+				
+				
+			}else {//회원가입 되있을 시
+				System.out.println("등록완료2");
+				data = new MemVO();
+				data.setMemId(rs.getString("memId"));
+				data.setMemName(rs.getString("memName"));
+				data.setMemEmail(rs.getString("memEmail"));	
+				data.setMemAddress(rs.getString("memAddress"));
+				data.setMemPic(rs.getString("memPic"));
+				data.setMemRank(rs.getInt("memRank"));		
+			}
+				
+			
+			
+
+			conn.commit();
+			conn.setAutoCommit(true);//트랜젝션 끝
+		} catch (SQLException e) {
+			try {
+				conn.rollback();
+			} catch (SQLException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+			e.printStackTrace();
+
+		}
+		JDBCUtil.disconnect(pstmt, conn);
+		System.out.println("dao마지막점검:"+data);
+		return data;
+	}
+
 
 	// 회원 리스트 조회
 	public ArrayList<MemVO> memSelectAll(MemVO vo) {
