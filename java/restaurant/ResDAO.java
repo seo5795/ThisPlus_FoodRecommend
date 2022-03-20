@@ -84,11 +84,25 @@ public class ResDAO {
 	}
 
 	// 식당 리스트 조회
-	public ArrayList<ResVO> resSelectAll(ResVO vo) {
+	public ArrayList<ResVO> resSelectAll(ResVO vo, int num) {
 		ArrayList<ResVO> datas=new ArrayList<ResVO>();
 		conn=JDBCUtil.connect();
 		try {
-			pstmt=conn.prepareStatement(resSelectAll);
+			if(vo.getResName()!=null) {//이름검색
+				String resSelectAllName = "select * from (select * from restaurant where resName like '%'||?||'%' order by resAvg DESC) where rownum<=?";
+				pstmt=conn.prepareStatement(resSelectAllName);
+				pstmt.setString(1,vo.getResName());
+				pstmt.setInt(2, num);
+			}
+			else if(vo.getResCategory()!=null) {//카테고리 검색
+				pstmt=conn.prepareStatement(resSelectAllCategory);
+				pstmt.setString(1,vo.getResCategory());
+				pstmt.setInt(2, num);
+			}
+			else {//전체검색
+				pstmt=conn.prepareStatement(resSelectAll);
+			}
+			
 			ResultSet rs=pstmt.executeQuery();
 			while(rs.next()) {
 				ResVO data=new ResVO(); 
@@ -110,7 +124,9 @@ public class ResDAO {
 		JDBCUtil.disconnect(pstmt, conn);
 		return datas;
 	}
-
+	
+	
+	
 	//메인에서 보여줄 식당 리스트 조회
 	public ArrayList<ResVO> resSelectAllMain(ResVO vo,int num, String category) {
 		ArrayList<ResVO> datas=new ArrayList<ResVO>();

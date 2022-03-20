@@ -23,6 +23,7 @@ import controller.main.MenuupdateAction;
 import controller.main.ResdeleteAction;
 import controller.main.ResdetailAction;
 import controller.main.ResinsertAction;
+import controller.main.ReslistAction;
 import controller.main.ResupdateAction;
 import controller.main.RevdeleteAction;
 import controller.main.RevdetailAction;
@@ -67,7 +68,9 @@ public class FrontController extends HttpServlet {
 		String uri=request.getRequestURI();
 		String cp=request.getContextPath();
 		String command=uri.substring(cp.length());
-
+		System.out.println(command);
+		
+		
 		ActionForward forward=null;
 
 		if(command.equals("/main.do")) {
@@ -108,6 +111,9 @@ public class FrontController extends HttpServlet {
 		}
 		else if(command.equals("/resinsert.do")) {
 			forward=new ResinsertAction().execute(request, response);
+		}
+		else if(command.equals("/reslist.do")) {
+			forward=new ReslistAction().execute(request, response);
 		}
 		//리뷰
 		else if(command.equals("/revdetail.do")) {
@@ -150,7 +156,6 @@ public class FrontController extends HttpServlet {
 			throw new ServletException("command 요청에러!");
 		}
 
-
 		if(forward!=null) {
 			if(forward.isRedirect()) {
 				response.sendRedirect(forward.getPath());
@@ -165,6 +170,5 @@ public class FrontController extends HttpServlet {
 		PrintWriter out=response.getWriter();
 
 		out.println("<script>alert('command 요청처리실패!');history.go(-1);</script>");
-		System.out.println("3");
 	}
 }

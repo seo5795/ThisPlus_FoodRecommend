@@ -60,12 +60,12 @@ media (min-width: 992px)
 									<!-- 음식 카테고리 -->
 									<li><a href="#">category <i class="ti-angle-down"></i></a>
 										<ul class="submenu">
-											<li><a href="blog.jsp">한식</a></li>
-											<li><a href="blog.jsp">양식</a></li>
-											<li><a href="blog.jsp">중식</a></li>
-											<li><a href="blog.jsp">일식</a></li>
-											<li><a href="blog.jsp">분식</a></li>
-											<li><a href="blog.jsp">카페</a></li>
+											<li><a href="reslist.do?scategory=menuCategory&search=한식">한식</a></li>
+											<li><a href="reslist.do?scategory=menuCategory&search=양식">양식</a></li>
+											<li><a href="reslist.do?scategory=menuCategory&search=중식">중식</a></li>
+											<li><a href="reslist.do?scategory=menuCategory&search=일식">일식</a></li>
+											<li><a href="reslist.do?scategory=menuCategory&search=분식">분식</a></li>
+											<li><a href="reslist.do?scategory=menuCategory&search=카페">카페</a></li>
 										</ul></li>
 
 
