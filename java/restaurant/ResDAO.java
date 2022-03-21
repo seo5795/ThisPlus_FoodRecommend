@@ -20,7 +20,7 @@ public class ResDAO {
 	// 식당 내용 조회
 	static final String resSelectOne = "select * from restaurant where resId=?";
 	// 식당 리스트 조회
-	static final String resSelectAll = "select * from restaurant where resId=?";
+	static final String resSelectAll = "select * from restaurant";
 	// 식당 리스트 조회(평점기준)
 	static final String resSelectAllAvg = "select * from (select * from restaurant order by resAvg DESC) where rownum<=?";
 	// 식당 리스트 조회(위치기준)

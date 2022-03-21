@@ -47,6 +47,10 @@
 	flex: 0 0 33%;
 	max-width: 50%;
 }
+
+.searchList {
+	padding: 10px;
+}
 </style>
 </head>
 
@@ -69,21 +73,28 @@
 				<div class="single_slider-iner">
 					<div class="slider_contant text-center">
 						<h3>What's today's menu?</h3>
-						<form action="#">
+						<form action="reslist.do?scategory=name" method="post">
 							<div class="form-group"
 								style="width: 738px; height: 27px; margin: 0 auto;">
 								<!-- margin: 0 auto로 가운데 배치 -->
 								<div class="input-group mb-3">
 									<input type="text" class="form-control"
-										placeholder='지역, 식당 또는 음식'>
+										placeholder='지역, 식당 또는 음식' name="search">
 									<div class="input-group-append">
-										<button class="btn" type="button">
+										<button class="btn" type="submit">
 											<i class="ti-search"></i>
 										</button>
 									</div>
 								</div>
 							</div>
 						</form>
+						<c:forEach var="sl" items="${searchList}">
+   						 <c:out value="${sl}" escapeXml="false"><font color="red">phone정보없음</font>
+								
+							</c:out>
+							<br>
+						</c:forEach>
+						
 					</div>
 				</div>
 			</div>
@@ -114,20 +125,28 @@
 
 			<div class="row">
 				<c:forEach var="ad" items="${avgDatas}">
-				<div class="col-xl-4 col-md-6">
-					<div class="single_service">
-						<div class="service_icon">
-							<a href="#"> <img alt="" src="${ad.resPic}"  style="width:100%" ></a>
+					<div class="col-xl-4 col-md-6">
+						<div class="single_service">
+							<div class="service_icon">
+								<a href="#"> <c:choose>
+										<c:when test="${ empty resDatas }">
+											<!-- 이미지 존재하지 않을 때 -->
+											<img alt="" src="img/redayPhoto.png" style="width: 100%">
+										</c:when>
+										<c:otherwise>
+											<!-- 이미지 존재하지 할 때 -->
+											<img alt="" src="${ad.resPic}" style="width: 100%">
+										</c:otherwise>
+									</c:choose>
+								</a>
+							</div>
+							<h4>${ad.resName}</h4>
+							<h5>평점: ${ad.resAvg}점</h5>
+							<br> <a href="#" class="Choose_restaurant"> <span>위치:${ad.resAdd}</span>
+							</a>
 						</div>
-						<h4> ${ad.resName} </h4>
-						<h5> 평점: ${ad.resAvg}점 </h5>
-  						<br>
-						<a href="#" class="Choose_restaurant">
-						<span>위치:${ad.resAdd}</span>
-						</a>
 					</div>
-				</div>
-					
+
 				</c:forEach>
 			</div>
 		</div>
@@ -173,28 +192,25 @@
 				<div class="col-xl-12">
 					<div class="section_title mb-70">
 						<h3>양식 맛집 Best6</h3>
-						<p>
-							오맛이가 추천하는 양식 맛집 Best6
-						</p>
+						<p>오맛이가 추천하는 양식 맛집 Best6</p>
 					</div>
 				</div>
 			</div>
 			<div class="row">
-			<c:forEach var="md" items="${menuDatas}">
-				<div class="col-xl-4 col-md-6">
-					<div class="single_service">
-						<div class="service_icon">
-							<a href="#"> <img alt="" src="${md.resPic}"  style="width:100%" ></a>
+				<c:forEach var="md" items="${menuDatas}">
+					<div class="col-xl-4 col-md-6">
+						<div class="single_service">
+							<div class="service_icon">
+								<a href="#"> <img alt="" src="${md.resPic}"
+									style="width: 100%"></a>
+							</div>
+							<h4>${md.resName}</h4>
+							<h5>평점: ${md.resAvg}점</h5>
+							<br> <a href="#" class="Choose_restaurant"> <span>위치:${md.resAdd}</span>
+							</a>
 						</div>
-						<h4> ${md.resName} </h4>
-						<h5> 평점: ${md.resAvg}점 </h5>
-  						<br>
-						<a href="#" class="Choose_restaurant">
-						<span>위치:${md.resAdd}</span>
-						</a>
 					</div>
-				</div>
-					
+
 				</c:forEach>
 
 
@@ -217,9 +233,7 @@
 						<!-- 리스트 타이틀 -->
 
 						<h3>서울 인기맛집 Best6</h3>
-						<p>
-							한국의 중심! 서울의 인기맛집 Best6
-						</p>
+						<p>한국의 중심! 서울의 인기맛집 Best6</p>
 					</div>
 				</div>
 			</div>
@@ -230,27 +244,26 @@
 			<div class="row">
 
 				<c:forEach var="ld" items="${locationDatas}">
-				<div class="col-xl-4 col-md-6">
-					<div class="single_service">
-						<div class="service_icon">
-							<a href="#"> <img alt="" src="${ld.resPic}"  style="width:100%" ></a>
+					<div class="col-xl-4 col-md-6">
+						<div class="single_service">
+							<div class="service_icon">
+								<a href="#"> <img alt="" src="${ld.resPic}"
+									style="width: 100%"></a>
+							</div>
+							<h4>${ld.resName}</h4>
+							<h5>평점: ${ld.resAvg}점</h5>
+							<br> <a href="#" class="Choose_restaurant"> <span>위치:${ld.resAdd}</span>
+							</a>
 						</div>
-						<h4> ${ld.resName} </h4>
-						<h5> 평점: ${ld.resAvg}점 </h5>
-  						<br>
-						<a href="#" class="Choose_restaurant">
-						<span>위치:${ld.resAdd}</span>
-						</a>
 					</div>
-				</div>
-					
+
 				</c:forEach>
 
 
 			</div>
-				
-			</div>
+
 		</div>
+	</div>
 	</div>
 	<!-- 지역별 Best6 end -->
 

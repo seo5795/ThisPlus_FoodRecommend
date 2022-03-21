@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -78,8 +78,8 @@
 						placeholder="Search">
 				</form>
 				<div class="navbar-nav align-items-center ms-auto">
-				
-					
+
+
 					<div class="nav-item dropdown">
 						<a href="#" class="nav-link dropdown-toggle"
 							data-bs-toggle="dropdown"> <i class="fa fa-bell me-lg-2"></i>
@@ -106,7 +106,7 @@
 								notifications</a>
 						</div>
 					</div>
-					
+
 				</div>
 			</nav>
 			<!-- Navbar End -->
@@ -123,44 +123,46 @@
 							<div
 								class="d-flex align-items-center justify-content-between mb-2">
 								<h6 class="mb-0">회원정보</h6>
-								<a href="AdminMemberMain.jsp">Show All</a>
+								<a href="adminmember.did">Show All</a>
 							</div>
-							<div class="d-flex align-items-center border-bottom py-3">
-								<img class="rounded-circle flex-shrink-0" src="img/user.jpg"
-									alt="" style="width: 40px; height: 40px;">
-								<div class="w-100 ms-3">
-									<div class="d-flex w-100 justify-content-between">
-										<h6 class="mb-0">노준</h6> <small>일반회원</small>
+
+							<!--  회원정보 출력 -->
+							<c:forEach var="mem" items="${memdatas}" begin="0" end="5"
+								varStatus="st">
+								<div class="d-flex align-items-center border-bottom py-3">
+									<img class="rounded-circle flex-shrink-0" src="../${mem.memPic}"
+										alt="" style="width: 40px; height: 40px;">
+									<div class="w-100 ms-3">
+										<div class="d-flex w-100 justify-content-between">
+											<h6 class="mb-0">${mem.memName}</h6>
+											<c:choose>
+												<c:when test="${mem.memRank == 0}">
+													
+														<small>일반회원</small>
+													
+
+												</c:when>
+												<c:when test="${mem.memRank == 1}">
+												
+														<small>식당점주</small>
+													
+												</c:when>
+
+												<c:otherwise>
+												
+														<small>관리자</small>
+													
+												</c:otherwise>
+											</c:choose>
+
+											
+
+
+										</div>
 									</div>
 								</div>
-							</div>
-							<div class="d-flex align-items-center border-bottom py-3">
-								<img class="rounded-circle flex-shrink-0" src="img/user.jpg"
-									alt="" style="width: 40px; height: 40px;">
-								<div class="w-100 ms-3">
-									<div class="d-flex w-100 justify-content-between">
-										<h6 class="mb-0">샘플 아이디</h6> <small>식당점주</small>
-									</div>
-								</div>
-							</div>
-							<div class="d-flex align-items-center border-bottom py-3">
-								<img class="rounded-circle flex-shrink-0" src="img/user.jpg"
-									alt="" style="width: 40px; height: 40px;">
-								<div class="w-100 ms-3">
-									<div class="d-flex w-100 justify-content-between">
-										<h6 class="mb-0">${mem.memName}</h6> <small>${mem.memRank}</small>
-									</div>
-								</div>
-							</div>
-							<div class="d-flex align-items-center pt-3">
-								<img class="rounded-circle flex-shrink-0" src="img/user.jpg"
-									alt="" style="width: 40px; height: 40px;">
-								<div class="w-100 ms-3">
-									<div class="d-flex w-100 justify-content-between">
-										<h6 class="mb-0">Jhon Doe</h6> <small>회원등급</small>
-									</div>
-								</div>
-							</div>
+							</c:forEach>
+
 						</div>
 					</div>
 					<div class="col-sm-12 col-md-6 col-xl-4">
@@ -168,48 +170,21 @@
 							<div
 								class="d-flex align-items-center justify-content-between mb-4">
 								<h6 class="mb-0">식당정보</h6>
-								<a href="AdminRestaurantMain.jsp">Show All</a>
+								<a href="adminrestaurant.did">Show All</a>
 							</div>
-							<div class="d-flex align-items-center border-bottom py-2">
-								<div class="w-100 ms-3">
-									<div
-										class="d-flex w-100 align-items-center justify-content-between">
-										<span>식당명</span><small>간단한정보</small>
+
+							<!--  식당정보 출력 -->
+							<c:forEach var="res" items="${resdatas}" begin="0" end="5"
+								varStatus="st">
+								<div class="d-flex align-items-center border-bottom py-2">
+									<div class="w-100 ms-3">
+										<div
+											class="d-flex w-100 align-items-center justify-content-between">
+											<span>${res.resName}</span><small>${res.resCategory}</small>
+										</div>
 									</div>
 								</div>
-							</div>
-							<div class="d-flex align-items-center border-bottom py-2">
-								<div class="w-100 ms-3">
-									<div
-										class="d-flex w-100 align-items-center justify-content-between">
-										<span>식당명</span><small>간단한정보</small>
-									</div>
-								</div>
-							</div>
-							<div class="d-flex align-items-center border-bottom py-2">
-								<div class="w-100 ms-3">
-									<div
-										class="d-flex w-100 align-items-center justify-content-between">
-										<span>식당명</span><small>간단한정보</small>
-									</div>
-								</div>
-							</div>
-							<div class="d-flex align-items-center border-bottom py-2">
-								<div class="w-100 ms-3">
-									<div
-										class="d-flex w-100 align-items-center justify-content-between">
-										<span>식당명</span><small>간단한정보</small>
-									</div>
-								</div>
-							</div>
-							<div class="d-flex align-items-center border-bottom py-2">
-								<div class="w-100 ms-3">
-									<div
-										class="d-flex w-100 align-items-center justify-content-between">
-										<span>식당명</span><small>간단한정보</small>
-									</div>
-								</div>
-							</div>
+							</c:forEach>
 						</div>
 					</div>
 
@@ -218,7 +193,7 @@
 							<div
 								class="d-flex align-items-center justify-content-between mb-4">
 								<h6 class="mb-0">공지사항</h6>
-								<a href="AdminNoticeMain.jsp">Show All</a>
+								<a href="adminnotice.did" target="_blank">Show All</a>
 							</div>
 							<div class="d-flex align-items-center border-bottom py-2">
 								<div class="w-100 ms-3">
@@ -228,42 +203,22 @@
 									</div>
 								</div>
 							</div>
-							<div class="d-flex align-items-center border-bottom py-2">
-								<div class="w-100 ms-3">
-									<div
-										class="d-flex w-100 align-items-center justify-content-between">
-										<span> 공지사항 제목</span><small>등록날짜</small>
+							<c:forEach var="no" items="${notdatas}" begin="0" end="5"
+								varStatus="st">
+								<div class="d-flex align-items-center border-bottom py-2">
+									<div class="w-100 ms-3">
+										<div
+											class="d-flex w-100 align-items-center justify-content-between">
+											<span>${no.notTitle}</span><small>${no.notRegDate}</small>
+										</div>
 									</div>
 								</div>
-							</div>
-							<div class="d-flex align-items-center border-bottom py-2">
-								<div class="w-100 ms-3">
-									<div
-										class="d-flex w-100 align-items-center justify-content-between">
-										<span> 공지사항제목</span><small>등록날짜</small>
-									</div>
-								</div>
-							</div>
-							<div class="d-flex align-items-center border-bottom py-2">
-								<div class="w-100 ms-3">
-									<div
-										class="d-flex w-100 align-items-center justify-content-between">
-										<span> 공지사항제목</span><small>등록날짜</small>
-									</div>
-								</div>
-							</div>
-							<div class="d-flex align-items-center pt-2">
-								<div class="w-100 ms-3">
-									<div
-										class="d-flex w-100 align-items-center justify-content-between">
-										<span> 공지사항제목</span><small>등록날짜</small>
-									</div>
-								</div>
-							</div>
+							</c:forEach>
 						</div>
 					</div>
 				</div>
 			</div>
+
 			<!-- Widgets End -->
 
 

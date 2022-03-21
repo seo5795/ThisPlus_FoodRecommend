@@ -20,7 +20,7 @@ public class MenuDAO {
 	// 메뉴 내용 조회
 	static final String menuSelectOne = "select * from menu where menuId=?";
 	// 메뉴 리스트 조회(유저용:식당ID 기준으로 소팅)
-	static final String menuSelectAll = "select * from menu where resId=?";
+	static final String menuSelectAll = "select * from menu";
 	// 메뉴 리스트 조회(관리자용:메뉴ID 기준으로 소팅)
 	static final String menuSelectAllAdmin = "select * from menu where menuId=?";
 	// 메뉴 수정

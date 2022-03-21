@@ -24,10 +24,10 @@ public class MenuinsertAction implements Action{
 		mevo.setResId(Integer.parseInt(req.getParameter("resId")));
 		mevo.setMenuPrice(Integer.getInteger(req.getParameter("menuPrice")));
 		mevo.setMenuCategory(req.getParameter("menuCategory"));
-		mevo.setMenuPic(req.getParameter("MenuPic"));
+		mevo.setMenuPic(req.getParameter("uploadfile"));
 		
 		if(menuDAO.menuInsert(mevo)) {
-			forward.setPath("main.do");//식당등록이 성공하면 메인페이지로 이동
+			forward.setPath("resdetail.do");//식당등록이 성공하면 메인페이지로 이동
 			forward.setRedirect(true);
 		}
 		return forward;

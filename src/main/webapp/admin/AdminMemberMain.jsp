@@ -81,7 +81,7 @@
 					<div class="nav-item dropdown">
 						<a href="#" class="nav-link dropdown-toggle"
 							data-bs-toggle="dropdown"> <i class="fa fa-bell me-lg-2"></i>
-							<span class="d-none d-lg-inline-flex">Notification</span>
+							<span class="d-none d-lg-inline-flex">Notifications</span>
 						</a>
 						<div
 							class="dropdown-menu dropdown-menu-end bg-light border-0 rounded-0 rounded-bottom m-0">
@@ -104,15 +104,7 @@
 								notifications</a>
 						</div>
 					</div>
-					<div class="nav-item dropdown">
-						<a href="#" class="nav-link dropdown-toggle"
-							data-bs-toggle="dropdown"> <img
-							class="rounded-circle me-lg-2" src="img/user.jpg" alt=""
-							style="width: 40px; height: 40px;"> <span
-							class="d-none d-lg-inline-flex">관리자</span>
-						</a>
 
-					</div>
 				</div>
 			</nav>
 			<!-- Navbar End -->
@@ -122,9 +114,9 @@
 			<div class="container-fluid pt-4 px-4">
 				<div class="bg-light text-center rounded p-4">
 					<div class="d-flex align-items-center justify-content-between mb-4">
-						<h6 class="mb-0">회원 목록</h6>
-						
-						<a href="">Show All</a>
+						<div class="d-flex align-items-center justify-content-between mb-4">
+						<h3 class="text-primary">회원 리스트</h3>
+					</div>
 					</div>
 					<div class="table-responsive">
 						<table
@@ -139,31 +131,46 @@
 								</tr>
 							</thead>
 							<tbody>
-								<tr>
-									<td>1</td>
-									<td>노준</td>
-									<td>asdff@gmail.com</td>
-									<td>일반회원</td>
-									<td><a class="btn btn-sm btn-primary"
-										href="AdminMemberDetail.jsp">상세정보</a></td>
-								</tr>
+								
 
 								<c:forEach var="mem" items="${memdatas}" varStatus="status">
 
 									<tr>
-										<td><a href="adminMember.do?memId=${mem.memId}"><c:out
+										<td><c:out
 													value="${status.count}" /></a></td>
 
 										<td><c:out value="${mem.memName}" escapeXml="false">
 												<font color="red">회원이름(샘플) </font>
+												
 											</c:out></td>
 										<td><c:out value="${mem.memEmail}" escapeXml="false">
 												<font color="red">회원이메일(샘플)</font>
 											</c:out></td>
-										<td><c:out value="${mem.memRank}" escapeXml="false">
+										<td>
+										<c:choose>
+										<c:when test="${mem.memRank == 0}">
+											<c:out value="일반회원" escapeXml="false">
 												<font color="red">회원등급(샘플)</font>
-											</c:out></td>
-										<td><a class="btn btn-sm btn-primary" href="adminMember.do?memId=${memdatas.memId}">상세정보</a></td>
+											</c:out>
+											
+										</c:when>
+										<c:when test="${mem.memRank == 1}">
+											<c:out value="식당점주" escapeXml="false">
+												<font color="red">회원등급(샘플)</font>
+											</c:out>
+										</c:when>
+
+										<c:otherwise>
+											<c:out value="관리자" escapeXml="false">
+												<font color="red">회원등급(샘플)</font>
+											</c:out>
+										</c:otherwise>
+									</c:choose>
+										
+											
+											</td>
+										<td><a class="btn btn-sm btn-primary"
+											href="adminmemberdetail.did?memId=${mem.memId}">상세정보</a></td>
 									</tr>
 
 								</c:forEach>

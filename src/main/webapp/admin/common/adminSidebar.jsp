@@ -11,7 +11,7 @@
 
  <div class="sidebar pe-4 pb-3">
             <nav class="navbar bg-light navbar-light">
-                <a href="AdminMain.jsp" class="navbar-brand mx-4 mb-3">
+                <a href="main.did" class="navbar-brand mx-4 mb-3">
                     <h3 class="text-primary"><i class="fa fa-hashtag me-2"></i>오늘의메뉴</h3>
                 </a>
                 <div class="d-flex align-items-center ms-4 mb-4">
@@ -26,16 +26,16 @@
                 </div>
                 <div class="navbar-nav w-100">
                     
-                    <a href="AdminRestaurantMain.jsp" class="nav-item nav-link"><i class="fa fa-th me-2"></i>식당페이지</a>
+                    <a href="adminrestaurant.did" class="nav-item nav-link" ><i class="fa fa-th me-2"></i>식당페이지</a>
                     <div class="nav-item dropdown">
-                        <a href="AdminNoticeMain.jsp" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="far fa-file-alt me-2"></i>공지사항</a>
+                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="far fa-file-alt me-2"></i>공지사항</a>
                         <div class="dropdown-menu bg-transparent border-0">
-                        <a href="AdminNoticeMain.jsp" class="dropdown-item">공지사항 전체</a>
+                        <a href="adminnotice.did" class="dropdown-item" target="_blank">공지사항 전체</a>
                             <a href="AdminNoticeInsert.jsp" class="dropdown-item">공지사항 등록</a>
 
                         </div>
                     </div>
-                    <a href="AdminMemberMain.jsp" class="nav-item nav-link"><i class="fa fa-table me-2"></i>회원페이지</a>
+                    <a href="adminmember.did" class="nav-item nav-link"><i class="fa fa-table me-2"></i>회원페이지</a>
                    
                 </div>
             </nav>

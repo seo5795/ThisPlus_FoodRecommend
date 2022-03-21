@@ -106,20 +106,7 @@
 								notifications</a>
 						</div>
 					</div>
-					<div class="nav-item dropdown">
-						<a href="#" class="nav-link dropdown-toggle"
-							data-bs-toggle="dropdown"> <img
-							class="rounded-circle me-lg-2" src="img/user.jpg" alt=""
-							style="width: 40px; height: 40px;"> <span
-							class="d-none d-lg-inline-flex">John Doe</span>
-						</a>
-						<div
-							class="dropdown-menu dropdown-menu-end bg-light border-0 rounded-0 rounded-bottom m-0">
-							<a href="#" class="dropdown-item">My Profile</a> <a href="#"
-								class="dropdown-item">Settings</a> <a href="#"
-								class="dropdown-item">Log Out</a>
-						</div>
-					</div>
+					
 				</div>
 			</nav>
 			<!-- Navbar End -->
@@ -129,8 +116,7 @@
 			<div class="container-fluid pt-4 px-4">
 				<div class="bg-light text-center rounded p-4">
 					<div class="d-flex align-items-center justify-content-between mb-4">
-						<h6 class="mb-0">식당 목록</h6>
-						<a href="">Show All</a>
+						<h3 class="text-primary">식당 리스트</h3>
 					</div>
 					<div class="table-responsive">
 						<table
@@ -149,8 +135,8 @@
 									<!-- varStatus=상태용 변수 -->
 
 									<tr>
-										<td><a href="res.do?resId=${res.resId}"><c:out
-													value="${status.count}" /></a></td>
+										<td><c:out
+													value="${status.count}" /></td>
 
 										<td><c:out value="${res.resName}" escapeXml="false">
 												<font color="red">두찜 </font>
@@ -164,7 +150,7 @@
 										<td><c:out value="${res.resPhone}" escapeXml="false">
 												<font color="red">번호정보 없음</font>
 											</c:out></td>
-										<td><a class="btn btn-sm btn-primary" href="RestaurantDetail.jsp">Detail</a></td>
+										<td><a class="btn btn-sm btn-primary" href="adminrestaurantdetail.did?resId=${res.resId}">상세정보</a></td>
 									</tr>
 
 								</c:forEach>

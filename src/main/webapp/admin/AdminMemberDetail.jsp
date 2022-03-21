@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8" import="model.member.*,java.util.*"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <jsp:useBean id="mdao" class="model.member.MemDAO" scope="application" />
 <jsp:useBean id="mvo" class="model.member.MemVO" />
 <!DOCTYPE html>
@@ -78,7 +79,7 @@
 						placeholder="Search">
 				</form>
 				<div class="navbar-nav align-items-center ms-auto">
-					
+
 					<div class="nav-item dropdown">
 						<a href="#" class="nav-link dropdown-toggle"
 							data-bs-toggle="dropdown"> <i class="fa fa-bell me-lg-2"></i>
@@ -105,114 +106,130 @@
 								notifications</a>
 						</div>
 					</div>
-					<div class="nav-item dropdown">
-						<a href="#" class="nav-link dropdown-toggle"
-							data-bs-toggle="dropdown"> <img
-							class="rounded-circle me-lg-2" src="img/user.jpg" alt=""
-							style="width: 40px; height: 40px;"> <span
-							class="d-none d-lg-inline-flex">John Doe</span>
-						</a>
-						<div
-							class="dropdown-menu dropdown-menu-end bg-light border-0 rounded-0 rounded-bottom m-0">
-							<a href="#" class="dropdown-item">My Profile</a> <a href="#"
-								class="dropdown-item">Settings</a> <a href="#"
-								class="dropdown-item">Log Out</a>
-						</div>
-					</div>
+
 				</div>
 			</nav>
 			<!-- Navbar End -->
 
 
 			<!-- Table Start -->
-			<div class="container-fluid pt-4 px-4">
-				<div class="row g-4" width="100%">
-					<div class="col-sm-15 col-xl-6">
-                        <div class="bg-light rounded h-100 p-4">
-                            <h6 class="mb-4">님의 상세정보</h6>
-                            <div class="form-floating mb-3" width="50%">
-                                <input type="text" class="form-control" id="floatingInput"
-                                    placeholder="">
-                                <label for="floatingInput">회원아이디</label>
-                                
-                            </div>
-                            <div class="form-floating mb-3">
-                                <input type="password" class="form-control" id="floatingPassword"
-                                    placeholder="">
-                                <label for="floatingPassword">비밀번호</label>
-                            </div>
-                            <div class="form-floating mb-3">
-                                <input type="text" class="form-control" id="floatingInput"
-                                    placeholder="">
-                                <label for="floatingInput">회원이름</label>
-                            </div><div class="form-floating mb-3">
-                                <input type="text" class="form-control" id="floatingInput"
-                                    placeholder="">
-                                <label for="floatingInput">회원등급</label>
-                            </div><div class="form-floating mb-3">
-                                <input type="text" class="form-control" id="floatingInput"
-                                    placeholder="">
-                                <label for="floatingInput">회원포인트<label>
-                            </div>
-                        </div>
-                    </div>
+			<form method="post"
+				action="adminmemberupdate.did?memId=${memdata.memId}">
+
+				<div class="container-fluid pt-4 px-4" style="display: inline">
+					<div class="row g-4">
+						<div class="col-sm-8 col-xl-10">
+							<div class="bg-light rounded h-100 p-4">
+								<h3 class="mb-4">${memdata.memName}님의상세정보</h3>
+								<br>
+								<img class="rounded-circle flex-shrink-0" src="../${memdata.memPic }"
+									alt="" style="width: 100px; height: 100px;">
+								<div class="form-floating mb-3 col-xl-10">
+									<input type="text" class="form-control" id="floatingInput"
+										placeholder="${memdata.memId}" value="${memdata.memId}" name="memId">
+									<label for="floatingInput">회원아이디</label>
+								</div>
+								<div class="form-floating mb-3 col-xl-10">
+									<input type="password" class="form-control"
+										id="floatingPassword" placeholder="${memdata.memPw}"
+										value="${memdata.memPw}"  name="memPw"> <label
+										for="floatingPassword">회원비밀번호 </label>
+								</div>
+								<div class="form-floating mb-3 col-xl-10">
+									<input type="text" class="form-control" id="floatingInput"
+										placeholder="${memdata.memName}" value="${memdata.memName}"  name="memName">
+									<label for="floatingInput">회원이름</label>
+								</div>
+								<div class="form-floating mb-3 col-xl-10">
+									<input type="text" class="form-control" id="floatingInput"
+										placeholder="${memdata.memEmail}" value="${memdata.memEmail}"  name="memEmail">
+									<label for="floatingInput">회원이메일</label>
+								</div>
+								<div class="form-floating mb-3 col-xl-10">
+
+									<c:choose>
+										<c:when test="${memdata.memRank == 0}">
+											<input type="text" class="form-control" id="floatingInput"
+												placeholder="일반등급" value="0"  name="memRank" disabled>
+											<label for="floatingInput">회원등급</label>
+
+										</c:when>
+										<c:when test="${memdata.memRank == 1}">
+											<input type="text" class="form-control" id="floatingInput"
+												placeholder="식당점주" value="1" name="memRank" disabled>
+											<label for="floatingInput">회원등급</label>
+										</c:when>
+
+										<c:otherwise>
+											<input type="text" class="form-control" id="floatingInput"
+												placeholder="관리자" value="2" name="memRank" disabled>
+											<label for="floatingInput">회원등급</label>
+										</c:otherwise>
+									</c:choose>
+
+
+
+
+
+								</div>
+								<div class="form-floating mb-3 col-xl-10">
+									<input type="text" class="form-control" id="floatingInput"
+										placeholder="${memdata.memPhone}" value="${memdata.memPhone}" name="memPhone">
+									<label for="floatingInput">회원전화번호</label>
+								</div>
+
+								<div class="form-floating mb-3 col-xl-10">
+									<input type="text" class="form-control" id="floatingInput"
+										placeholder="${memdata.memAddress}"
+										value="${memdata.memAddress}" name="memAddress"> <label
+										for="floatingInput">회원주소</label>
+								</div>
+								<div class="form-floating mb-3 col-xl-10">
+									<input type="text" class="form-control" id="floatingInput"
+										placeholder="${memdata.memPoint}" value="${memdata.memPoint}" name="memPoint">
+									<label for="floatingInput">회원포인트</label>
+								</div>
+								<input type="submit" class="btn btn-outline-primary m-2"
+									value="수정"> <a
+									href="adminmemberdelete.did?memId=${memdata.memId }"
+									class="btn btn-outline-danger m-2">회원삭제</a>
+
+							</div>
+
+						</div>
 					</div>
-	<!-- 
-	private String memId;		// 회원 아이디(고유값)
-	private String memPw;		// 회원 비밀번호
-	private String memName;		// 회원 이름
-	private String memEmail;	// 회원 이메일
-	private int memRank;		// 회원 등급
-	private int memPoint;		// 보유 포인트
-	private String memPhone;	// 회원 전화번호
-	private String memAddress;	// 회원 집주소
-	private String memPic;		// 회원 사진(저장경로) 
-	-->
-	<!--  <%
-
-   //ArrayList<MemVO> datas=new ArrayList<MemVO>();
-  // mvo.setMemId("asdf");
-  // mvo.setMemName("노준");
-   //mvo.setMemEmail("이메일");
-   //mvo.setMemEmail("");
-   //mvo.setMemEmail("이메일");
-   
-   //datas.add(mvo);
- //  datas.add(mvo);
-   
-   //request.setAttribute("mem", datas);
-  // pageContext.forward("MemberMain.jsp");
-   
-//%>-->
-					<!-- Table End -->
-
-
-					<!-- Footer Start -->
-					<jsp:include page="common/adminFooter.jsp" />
-					<!-- Footer End -->
 				</div>
-				<!-- Content End -->
+			</form>
+
+			<!-- Table End -->
 
 
-				<!-- Back to Top -->
-				<a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i
-					class="bi bi-arrow-up"></i></a>
-			</div>
+			<!-- Footer Start -->
+			<jsp:include page="common/adminFooter.jsp" />
+			<!-- Footer End -->
+		</div>
+		<!-- Content End -->
 
-			<!-- JavaScript Libraries -->
-			<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-			<script
-				src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
-			<script src="lib/chart/chart.min.js"></script>
-			<script src="lib/easing/easing.min.js"></script>
-			<script src="lib/waypoints/waypoints.min.js"></script>
-			<script src="lib/owlcarousel/owl.carousel.min.js"></script>
-			<script src="lib/tempusdominus/js/moment.min.js"></script>
-			<script src="lib/tempusdominus/js/moment-timezone.min.js"></script>
-			<script src="lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
 
-			<!-- Template Javascript -->
-			<script src="js/main.js"></script>
+		<!-- Back to Top -->
+		<a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i
+			class="bi bi-arrow-up"></i></a>
+	</div>
+
+	<!-- JavaScript Libraries -->
+	<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+	<script
+		src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+	<script src="lib/chart/chart.min.js"></script>
+	<script src="lib/easing/easing.min.js"></script>
+	<script src="lib/waypoints/waypoints.min.js"></script>
+	<script src="lib/owlcarousel/owl.carousel.min.js"></script>
+	<script src="lib/tempusdominus/js/moment.min.js"></script>
+	<script src="lib/tempusdominus/js/moment-timezone.min.js"></script>
+	<script src="lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
+
+	<!-- Template Javascript -->
+	<script src="js/main.js"></script>
 </body>
 
 </html>

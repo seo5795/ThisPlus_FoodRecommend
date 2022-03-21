@@ -97,7 +97,7 @@
                             <a href="#" class="dropdown-item">My Profile</a>
                             <a href="#" class="dropdown-item">Settings</a>
                             <a href="#" class="dropdown-item">Log Out</a>
-                        </div>
+                        </div>w
                     </div>
                 </div>
             </nav>
@@ -111,22 +111,22 @@
                     <div class="col-sm-12 col-xl-6">
                         <div class="bg-light rounded h-100 p-4">
                             <h2 class="mb-4">공지사항 작성</h2>
-                            <form action="insert.do" method="post">
+                            <form action="adminnoticeinsert.did" method="post">
                             <!-- 임시로 insert.do라고 명명하였음 변경요망 -->
                                 <div class="mb-3">
                                     <label for="exampleInputText1" class="form-label">제목</label>
-                                    <input type="text" class="form-control" id="exampleInputText1" placeholder="제목을 작성하세요" required
+                                    <input type="text" class="form-control" name="notTitle" placeholder="제목을 작성하세요" required
                                         aria-describedby="emailHelp">
                                 </div>
                                 <div class="mb-3">
                                     <label for="exampleInputText2" class="form-label">내용</label>
-                                    <input type="text" class="form-control" id="exampleInputText2" placeholder="내용을 작성하세요" required style="height:200px;">
+                                    <input type="text" class="form-control" name="notContent" placeholder="내용을 작성하세요" required style="height:200px;">
                                 </div>
                                 <div class="mb-3 form-check">
                                     <input type="checkbox" class="form-check-input" id="exampleCheck1">
                                     <label class="form-check-label" for="exampleCheck1">내용을 다시 한번 검수하고 체크해주세요</label>
                                 </div>
-                                <button type="submit" class="btn btn-primary">제출</button> <!-- 제출을 누르면 공지사항 DB에 데이터가 저장되게 연결 -->
+                                <button type="submit" class="btn btn-primary">등록</button> <!-- 제출을 누르면 공지사항 DB에 데이터가 저장되게 연결 -->
                             </form>
                         </div>
                     </div>

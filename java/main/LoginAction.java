@@ -25,7 +25,7 @@ public class LoginAction implements Action {
       MemVO mvo=new MemVO();
       System.out.println("LoginActino 들어옴");
       System.out.println("1:"+mvo);
-      mvo.setMemName(request.getParameter("memName"));
+      mvo.setMemId(request.getParameter("memId"));
       mvo.setMemPw(request.getParameter("memPw"));
       mvo=memDAO.memSelectOne(mvo);
       System.out.println("LoginActino dao완료");
@@ -33,11 +33,12 @@ public class LoginAction implements Action {
       if(mvo!=null){
          HttpSession session=request.getSession();
          session.setAttribute("member", mvo.getMemName());
+         session.setAttribute("memberid", mvo.getMemId());
          forward=new ActionForward();
          System.out.println(mvo.getMemRank());
          if(mvo.getMemRank()==2) {
             //관리자모드
-            forward.setPath("main.did");
+            forward.setPath("admin/main.did");
             
          }else {
             forward.setPath("main.do");

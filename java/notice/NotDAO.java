@@ -17,7 +17,7 @@ public class NotDAO {
    // 공지사항 sql 쿼리
 
    // 공지사항 등록
-   static final String notInsert = "insert into notice values((select nvl(max(notId),3000)+1 from notice),?,?,?,?,?)";
+   static final String notInsert = "insert into notice (notId,notTitle,notContent) values ((select nvl(max(notId),3000)+1 from notice),?,?)";
    // 공지사항 조회
    static final String notSelectOne = "select * from notice where notId=?";
    // 공지사항 모두 조회
@@ -27,16 +27,15 @@ public class NotDAO {
    // 공지사항 삭제
    static final String notDelete = "delete from notice where notId=?";
 
+
    // 공지사항 등록
    public boolean notInsert(NotVO vo) {
       conn = JDBCUtil.connect();
       try {
+    	  System.out.println("로그 notDAO insert"+vo);
          pstmt = conn.prepareStatement(notInsert);
-         pstmt.setInt(1, vo.getNotId());
-         pstmt.setString(2, vo.getNotTitle());
-         pstmt.setString(3, vo.getNotContent());
-         pstmt.setDate(4, (Date) vo.getNotDate()); // 데이터형에서 스트링으로 형번환
-         pstmt.setInt(5, vo.getNotShow());
+         pstmt.setString(1, vo.getNotTitle());
+         pstmt.setString(2, vo.getNotContent());
          pstmt.executeUpdate();
       } catch (SQLException e) {
          // TODO Auto-generated catch block
@@ -112,23 +111,23 @@ public class NotDAO {
    }
 
    // 공지사항 수정 -- 공지사항 제목, 내용, 노출여부 추가함 (추후 업데이트예정)
-   public boolean update(NotVO vo) {
-      conn = JDBCUtil.connect();
-      try {
-         pstmt = conn.prepareStatement(notUpdate);
-         pstmt.setString(1, vo.getNotTitle());
-         pstmt.setString(2, vo.getNotContent());
-         pstmt.setInt(3, vo.getNotShow());
-         pstmt.setInt(4, vo.getNotId());
-         pstmt.executeUpdate();
-      } catch (SQLException e) {
-         // TODO Auto-generated catch block
-         e.printStackTrace();
-         return false;
-      }
-      JDBCUtil.disconnect(pstmt, conn);
-      return true;
-   }
+//   public boolean update(NotVO vo) {
+//      conn = JDBCUtil.connect();
+//      try {
+//         pstmt = conn.prepareStatement(notUpdate);
+//         pstmt.setString(1, vo.getNotTitle());
+//         pstmt.setString(2, vo.getNotContent());
+//         pstmt.setInt(3, vo.getNotShow());
+//         pstmt.setInt(4, vo.getNotId());
+//         pstmt.executeUpdate();
+//      } catch (SQLException e) {
+//         // TODO Auto-generated catch block
+//         e.printStackTrace();
+//         return false;
+//      }
+//      JDBCUtil.disconnect(pstmt, conn);
+//      return true;
+//   }
 
    // 공지사항 삭제
    public boolean delete(NotVO vo) {

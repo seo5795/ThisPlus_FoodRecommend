@@ -13,8 +13,11 @@ public class MemmypageAction implements Action{
 
 	@Override
 	public ActionForward execute(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		return null;
+		ActionForward forward = new ActionForward();
+		
+		
+		
+		return forward;
 	}
 	
 }

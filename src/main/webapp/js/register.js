@@ -87,6 +87,7 @@
 			var error=document.querySelectorAll('.error_next_box');
 			var checkbox = document.querySelector('#primary-checkbox');
 			var phoneCheck = document.querySelector('#phoneDoubleChk');
+			var idCheck = document.querySelector('#idcheckval');
 		
 			console.log(input);
          for (var i = 0; i < input.length-1; i++) { // -1 == submit제외 
@@ -155,15 +156,30 @@
 				return false;
 			}
 			
-			if(!phoneCheck.value == false){
+			if(idCheck.value == false){
+				console.log(typeof idCheck.value);
+				console.log(phoneCheck.value);
+				alert("중복id입니다!");
+				
+				return false;
+				
+			}else{
+				console.log(typeof idCheck.value)
+				console.log(phoneCheck.value)
+			}
+			
+			if(phoneCheck.value == false){
 				alert("인증번호가 일치하지 않습니다!");
 				return false;
 			}else{
 				console.log(typeof phoneCheck.value)
 				console.log(phoneCheck.value)
 			}
+			
+			
+			
          
-				 alert("회원가입이 완료되었습니다. this+조의 멤버가 되신 것을 환영합니다!! :D");
+				alert("회원가입이 완료되었습니다. this+조의 멤버가 되신 것을 환영합니다!! :D");
 			}
 		}
 		

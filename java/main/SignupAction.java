@@ -13,26 +13,34 @@ import model.member.MemVO;
 
 
 public class SignupAction implements Action {
+	// 회원 가입
+	  // static final String memInsert = "insert into member"
+	      //   +" (memId,memPw,memName,memEmail,memAddress,memPic) values (?,?,?,?,?,?)";
+   @Override
+   public ActionForward execute(HttpServletRequest request, HttpServletResponse response)
+         throws ServletException, IOException {
+	   
+	  //로그인 액션
+      ActionForward forward=null;
+      MemDAO memDAO=new MemDAO();
+      MemVO mvo=new MemVO();
+      System.out.println("로그 : SignupAction");
+      
+      mvo.setMemId(request.getParameter("memid")); // 회원 아이디
+      mvo.setMemPw(request.getParameter("memPw")); // 회원 비밀번호
+      mvo.setMemName(request.getParameter("memName")); // 회원 이름
+      mvo.setMemEmail(request.getParameter("memEmail")); // 회원 이메일
+      mvo.setMemAddress(request.getParameter("memAdd")); // 회원 주소
+      mvo.setMemPic(request.getParameter("memPic")); // 회원 사진
+      mvo.setMemPhone(request.getParameter("memPhone")); // 회원 전화번호
+   
+      if(memDAO.memInsert(mvo)) {
+    	  System.out.println("회원가입 성공");
+         forward=new ActionForward();
+         forward.setPath("login.jsp");
+         forward.setRedirect(true);
+      }
 
-	@Override
-	public ActionForward execute(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		ActionForward forward=null;
-		MemDAO memDAO=new MemDAO();
-		MemVO mvo=new MemVO();
-		mvo.setMemId(request.getParameter("memid")); // 회원 아이디
-		mvo.setMemName(request.getParameter("memname")); // 회원 이름
-		mvo.setMemPw(request.getParameter("mempw")); // 회원 비밀번호
-		mvo.setMemEmail(request.getParameter("mememail")); // 회원 이메일
-		mvo.setMemPhone(request.getParameter("memphone")); // 회원 전화번호
-		mvo.setMemAddress(request.getParameter("memaddress")); // 회원 주소
-		
-		if(memDAO.memInsert(mvo)) {
-			forward=new ActionForward();
-			forward.setPath("/main.do");
-			forward.setRedirect(true);
-		}
-
-		return forward;
-	}
+      return forward;
+   }
 }

@@ -23,9 +23,9 @@ public class RevDAO {
 	// 리뷰 내용 조회
 	static final String revSelectOne = "select * from review where revId=?";
 	// 리뷰 리스트 조회(유저용:식당ID 기준으로 소팅)
-	static final String revSelectAll = "select * from reviwe where resId=?";
+	static final String revSelectAll = "select * from review";
 	// 리뷰 리스트 조회(관리자용:리뷰ID 기준으로 소팅)
-	static final String revSelectAllAdmin = "select * from reviwe where revId=?";
+	static final String revSelectAllAdmin = "select * from review where revId=?";
 	// 리뷰 수정
 	static final String revUpdate = "update review set revTitle=?,revCont=?,revScore=?,revPic=? where revId=?";
 	// 리뷰 삭제

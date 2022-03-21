@@ -3,6 +3,7 @@ package controller.main;
 import java.io.IOException;
 import java.util.ArrayList;
 
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -20,7 +21,7 @@ public class MainAction implements Action {
 		
 		int num=6; //메인페이지에서 출력할 식당의 갯수
 		String category="양식";//특정카테고리가 포함된 식당 출력
-		
+			
 		ResDAO resDAO = new ResDAO();
 		ResVO rvo = new ResVO();
 		
@@ -32,7 +33,7 @@ public class MainAction implements Action {
 		request.setAttribute("locationDatas", locationDatas);
 		request.setAttribute("menuDatas", menuDatas);
 		
-		System.out.println(avgDatas.get(3));
+		//System.out.println(avgDatas.get(3));
 		
 		ActionForward forward=new ActionForward();
 

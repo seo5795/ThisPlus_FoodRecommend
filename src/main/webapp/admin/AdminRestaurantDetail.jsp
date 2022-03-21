@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
    pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="ko">
 
@@ -42,6 +43,20 @@
 </head>
 
 <body>
+<script type="text/javascript">
+   // 삭제의사 재확인
+   function resDelete(){
+      ans=confirm("정말 삭제하시겠습니까? 삭제된 데이터는 복구되지 않습니다.");
+      if(ans==true){
+         document.checkForm.action.value="/admin/resDelete.did?resId=${res.resId}";
+         document.checkForm.submit();
+      }
+      else{
+         return;
+      }
+   }
+</script>
+
    <div class="container-xxl position-relative bg-white d-flex p-0">
       <!-- Spinner Start -->
       <div id="spinner"
@@ -103,20 +118,6 @@
                         notifications</a>
                   </div>
                </div>
-               <div class="nav-item dropdown">
-                  <a href="#" class="nav-link dropdown-toggle"
-                     data-bs-toggle="dropdown"> <img
-                     class="rounded-circle me-lg-2" src="img/user.jpg" alt=""
-                     style="width: 40px; height: 40px;"> <span
-                     class="d-none d-lg-inline-flex">John Doe</span>
-                  </a>
-                  <div
-                     class="dropdown-menu dropdown-menu-end bg-light border-0 rounded-0 rounded-bottom m-0">
-                     <a href="#" class="dropdown-item">My Profile</a> <a href="#"
-                        class="dropdown-item">Settings</a> <a href="#"
-                        class="dropdown-item">Log Out</a>
-                  </div>
-               </div>
             </div>
          </nav>
          <!-- Navbar End -->
@@ -127,53 +128,46 @@
             <div class="row g-4">
             <div class="col-sm-12 col-xl-6"  style="min-width: 100%">
                   <div class="bg-light rounded h-100 p-4">
-                     <h5 class="mb-4">식당명</h5>
+                     <h5 class="text-primary">식당명 : ${res.resName}</h5>
                      
                                  
-                     <div
-                        class="d-flex align-items-center justify-content-between mb-2">
-                        <h6 class="mb-0">${res.resNAme}</h6>
-                     </div>
-                     <div class="d-flex align-items-center border-bottom py-3">
-                        <img class="rounded-circle flex-shrink-0" src="img/user.jpg"
-                           alt="" style="width: 40px; height: 40px;">
-                        <div class="w-100 ms-3">
-                           <div class="d-flex w-100 justify-content-between">
-                              <h6 class="mb-0">평점</h6>
-                              
-                           </div>
-                           <span>4.5 ${res.resAvg}</span>
-                        </div>
-                     </div>
                      
+                                          
                      <br>
                      
-                     <form>
+                     <form name="resForm" action="adminrestaurantupdate.did?resID=${res.resId}" method="post">
                         <div class="row mb-3">
                            <label for="inputPhone3" class="col-sm-2 col-form-label">식당명</label>
                            <div class="col-sm-10">
-                              <input type="text" class="form-control" id="inputName3" value="${res.resName}">
+                              <input type="text" class="form-control" id="resName" name="resName" value="${res.resName}">
                            </div>
                         </div>
                         
                         <div class="row mb-3">
                            <label for="inputEmail3" class="col-sm-2 col-form-label">전화번호</label>
                            <div class="col-sm-10">
-                              <input type="text" class="form-control" id="inputEmail3" value="${res.resPhone}">
+                              <input type="text" class="form-control" id="resPhone" name="resPhone" value="${res.resPhone}">
                            </div>
                         </div>
                         <div class="row mb-3">
                            <label for="inputCategory3" class="col-sm-2 col-form-label">카테고리</label>
                            <div class="col-sm-10">
                               <input type="text" class="form-control"
-                                 id="inputCategory3" value="${res.resCategory}">
+                                 id="resCategory" name="resCategory" value="${res.resCategory}">
+                           </div>
+                        </div>
+                        <div class="row mb-3">
+                           <label for="inputCategory3" class="col-sm-2 col-form-label">평점</label>
+                           <div class="col-sm-10">
+                              <input type="text" class="form-control"
+                                 id="resRate" name="resRate" value="${res.resAvg}">
                            </div>
                         </div>
                         <div class="row mb-3">
                            <label for="inputAddress3" class="col-sm-2 col-form-label">주소</label>
                            <div class="col-sm-10">
                               <input type="text" class="form-control"
-                                 id="inputAddress3" value="${res.resAdd}">
+                                 id="resAdd" name="resAdd" value="${res.resAdd}">
                            </div>
                         </div>
                         <fieldset class="row mb-3">
@@ -181,21 +175,22 @@
                            <div class="col-sm-10">
                               <div class="form-check">
                                  <input class="form-check-input" type="radio"
-                                    name="gridRadios" id="gridRadios1" value="option1" checked>
+                                    name="resPark" id="gridRadios1" value="option1" checked>
                                  <label class="form-check-label" for="gridRadios1">
                                     주차가능 </label>
                               </div>
                               <div class="form-check">
                                  <input class="form-check-input" type="radio"
-                                    name="gridRadios" id="gridRadios2" value="option2">
+                                    name="resPark" id="gridRadios2" value="option2">
                                  <label class="form-check-label" for="gridRadios2">
                                     주차불가능 </label>
                               </div>
                            </div>
                         </fieldset>
                         
-                        <button type="submit" class="btn btn-outline-primary m-2">식당 정보 변경</button>
-                        <button type="submit" class="btn btn-outline-danger m-2">식당 삭제</button>
+                        <!-- <input type="submit" class="btn btn-outline-primary m-2" value="식당 정보 변경"> -->
+                        <input type="button" class="btn btn-outline-danger m-2" value="식당 삭제" onClick="resDelete()">
+                        <input type="button" class="btn btn-outline-danger m-2" value="걍 삭제" onClick="location.href='resDelete.did?resId=${res.resId}';">
                      </form>
                   </div>
                </div>

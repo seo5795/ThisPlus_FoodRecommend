@@ -18,16 +18,16 @@ public class MemDAO {
 	// 회원정보 sql 쿼리
 	// 회원 가입
 	static final String memInsert = "insert into member"
-			+" (memId,memPw,memName,memEmail,memAddress,memPic) values (?,?,?,?,?,?)";
+			+" (memId,memPw,memName,memEmail,memAddress,memPic,memPhone, memRank) values (?,?,?,?,?,?,?,?)";
 	// 회원정보 조회
-	static final String memSelectOne = "select * from member where memName=?";
+	static final String memSelectOne = "select * from member where memId=?";
 	// sns회원정보 조회
 	static final String memSnsSelectOne = "select * from member where memId=?";
 	// 회원리스트 조회
-	static final String memSelectAll = "select * from member where memId=?";
+	static final String memSelectAll = "select * from member";
 	// 회원정보 수정
 	static final String memUpdate = "update member set"
-			+" memPw=?,memEmail=?,memPhone=?,memAddress=?,memPic=? where memId=?";
+			+" memPw=?,memEmail=?,memPhone=?,memAddress=?, memName=?,memPoint=? where memId=?";
 	// 회원 탈퇴
 	static final String memDelete = "delete from member where memId=?";
 
@@ -42,6 +42,8 @@ public class MemDAO {
 			pstmt.setString(4, vo.getMemEmail());
 			pstmt.setString(5, vo.getMemAddress());
 			pstmt.setString(6, vo.getMemPic());
+			pstmt.setString(7, vo.getMemPhone());
+			pstmt.setInt(8, vo.getMemRank());
 			pstmt.executeUpdate();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -53,34 +55,57 @@ public class MemDAO {
 	}
 
 	// 회원 정보 조회
-	public MemVO memSelectOne(MemVO vo) {
-		MemVO data = null;
-		conn = JDBCUtil.connect();
-		try {
-			System.out.println(vo);
-			pstmt = conn.prepareStatement(memSelectOne);
-			pstmt.setString(1, vo.getMemName());
-			ResultSet rs = pstmt.executeQuery();
-			System.out.println(vo);
-			if (rs.next()) {
-				if (rs.getString("memPw").equals(vo.getMemPw())) {
-					data = new MemVO();
-					data.setMemId(rs.getString("memId"));
-					data.setMemPw(rs.getString("memPw")); // 보안용 *처리, 정보수정용
-					data.setMemName(rs.getString("memName"));
-					data.setMemEmail(rs.getString("memEmail"));	
-					data.setMemAddress(rs.getString("memAddress"));
-					data.setMemPic(rs.getString("memPic"));
-					data.setMemRank(rs.getInt("memRank"));
+		public MemVO memSelectOne(MemVO vo) {
+			MemVO data = null;
+			conn = JDBCUtil.connect();
+			try {
+				if (vo.getMemPw() != null) {
+					pstmt = conn.prepareStatement(memSelectOne);
+					pstmt.setString(1, vo.getMemId());
+					ResultSet rs = pstmt.executeQuery();
+
+					if (rs.next()) {
+						if (rs.getString("memPw").equals(vo.getMemPw())) {
+							data = new MemVO();
+							data.setMemId(rs.getString("memId"));
+							data.setMemPw(rs.getString("memPw")); // 보안용 *처리, 정보수정용
+							data.setMemName(rs.getString("memName"));
+							data.setMemEmail(rs.getString("memEmail"));
+							data.setMemAddress(rs.getString("memAddress"));
+							data.setMemPic(rs.getString("memPic"));
+							data.setMemRank(rs.getInt("memRank"));
+						}
+					}
+				} else {
+					pstmt = conn.prepareStatement(memSelectOne);
+					pstmt.setString(1, vo.getMemId());
+					ResultSet rs1 = pstmt.executeQuery();
+
+					if (rs1.next()) {
+
+						data = new MemVO();
+						data.setMemId(rs1.getString("memId"));
+						data.setMemPw(rs1.getString("memPw")); // 보안용 *처리, 정보수정용
+						data.setMemName(rs1.getString("memName"));
+						data.setMemEmail(rs1.getString("memEmail"));
+						data.setMemAddress(rs1.getString("memAddress"));
+						data.setMemPoint(rs1.getInt("memPoint"));
+						data.setMemPhone(rs1.getString("memPhone"));
+						data.setMemPic(rs1.getString("memPic"));
+						data.setMemRank(rs1.getInt("memRank"));
+
+					}
 				}
+
+			} catch (
+
+			SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
 			}
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			JDBCUtil.disconnect(pstmt, conn);
+			return data;
 		}
-		JDBCUtil.disconnect(pstmt, conn);
-		return data;
-	}
 
 	// sns로그인(트랜젝션으로 회원가입처리까지)
 	public MemVO memSnsSelectOne(MemVO vo) {
@@ -104,6 +129,8 @@ public class MemDAO {
 				pstmt.setString(4, vo.getMemEmail());
 				pstmt.setString(5, vo.getMemAddress());
 				pstmt.setString(6, vo.getMemPic());
+				pstmt.setString(7, vo.getMemPhone());
+				pstmt.setInt(8, vo.getMemRank());
 				pstmt.executeUpdate();
 				
 				
@@ -194,8 +221,10 @@ public class MemDAO {
 			pstmt.setString(2, vo.getMemEmail());
 			pstmt.setString(3, vo.getMemPhone());
 			pstmt.setString(4, vo.getMemAddress());
-			pstmt.setString(5, vo.getMemPic());
-			pstmt.setString(6, vo.getMemId());
+			
+			pstmt.setString(5, vo.getMemName());
+			pstmt.setInt(6, vo.getMemPoint());
+			pstmt.setString(7, vo.getMemId());
 			pstmt.executeUpdate();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block

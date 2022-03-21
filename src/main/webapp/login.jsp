@@ -75,8 +75,8 @@
 			</div>
 		<br><br>
 			<form id="login" action="login.do" class="input-group">
-				<input type="text" class="input-field" name="memName"
-					placeholder="User name" required> <input
+				<input type="text" class="input-field" name="memId"
+					placeholder="User Id" required> <input
 					type="password" class="input-field" name="memPw" placeholder="Enter Password"
 					required>
 				<!-- <div>
