@@ -178,9 +178,9 @@ select {
 
 							<div class="input-group-icon mt-10">
 								<div class="form-select" id="default-select"">
-									<select>
-										<option value="1">고객님</option>
-										<option value="2">사장님</option>
+									<select name="memRank">
+										<option value="0">고객님</option>
+										<option value="1">사장님</option>
 									</select>
 								</div>
 							</div>

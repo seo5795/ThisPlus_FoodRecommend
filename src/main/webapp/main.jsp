@@ -49,8 +49,16 @@
 }
 
 .searchList {
-	padding: 10px;
+	padding: 5px;
+	display: none;
 }
+
+#recent{
+	font-weight: bold;
+	font-size: 30px;
+}
+
+
 </style>
 </head>
 
@@ -78,8 +86,8 @@
 								style="width: 738px; height: 27px; margin: 0 auto;">
 								<!-- margin: 0 auto로 가운데 배치 -->
 								<div class="input-group mb-3">
-									<input type="text" class="form-control"
-										placeholder='지역, 식당 또는 음식' name="search">
+									<input type="text" class="form-control" id="search"
+										placeholder='식당 이름 검색' name="search" autocomplete=off>
 									<div class="input-group-append">
 										<button class="btn" type="submit">
 											<i class="ti-search"></i>
@@ -88,13 +96,18 @@
 								</div>
 							</div>
 						</form>
-						<c:forEach var="sl" items="${searchList}">
-   						 <c:out value="${sl}" escapeXml="false"><font color="red">phone정보없음</font>
+						<div>
+						<br>
+							<h5 class="searchList" id="recent">최근 검색 리스트</h5>
+							
+							<ul>
+								<c:forEach var="sl" items="${rsearchList}" begin="0" end="4"><!-- 최근검색 5개까지 출력 -->
+									<a href="reslist.do?scategory=name&search=${sl}"><li class="searchList">${sl}</li></a>
+									<hr class="searchList">
+								</c:forEach>
 								
-							</c:out>
-							<br>
-						</c:forEach>
-						
+							</ul>
+						</div>
 					</div>
 				</div>
 			</div>
@@ -125,20 +138,24 @@
 
 			<div class="row">
 				<c:forEach var="ad" items="${avgDatas}">
-				<div class="col-xl-4 col-md-6">
-					<div class="single_service">
-						<div class="service_icon">
-							<a href="restaurantDetails.jsp"> <img alt="" src="${ad.resPic}"  style="width:100%; height:auto;" ></a>
+					<div class="col-xl-4 col-md-6">
+						<div class="single_service">
+							<div class="service_icon">
+								<a href="restaurantDetails.jsp"> <img alt=""
+									src="${ad.resPic}" style="width: 100%; height: auto;"></a>
+							</div>
+							<h4>
+								<strong>${ad.resName}</strong>
+							</h4>
+							<h5>
+								<strong>평점: </strong> ${ad.resAvg}점
+							</h5>
+							<br> <a href="#" class="Choose_restaurant"> <span><strong>위치:
+								</strong>${ad.resAdd}</span>
+							</a>
 						</div>
-						<h4> <strong>${ad.resName}</strong></h4>
-						<h5> <strong>평점: </strong> ${ad.resAvg}점 </h5>
-  						<br>
-						<a href="#" class="Choose_restaurant">
-						<span><strong>위치: </strong>${ad.resAdd}</span>
-						</a>
 					</div>
-				</div>
-					
+
 				</c:forEach>
 			</div>
 		</div>
@@ -300,6 +317,22 @@
 	<script src="js/mail-script.js"></script>
 
 	<script src="js/main.js"></script>
+	
+	<script type="text/javascript">
+		var searchList = document.querySelector(".searchList");
+		var search = document.querySelector("#search");
+		
+		search.onfocus =function(){//검색창 클릭시 검색리스트 출력			
+			$('.searchList').show();
+		};
+		
+		search.onblur=function(){//검색창에서 나올시 검색리스트 숨기기
+			setTimeout(function() {//함수 실행속도를 늦춰 a태그 실행가능하게 설정
+				$('.searchList').hide();
+				}, 500);	
+		};
+	
+	</script>
 
 </body>
 

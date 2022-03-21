@@ -27,9 +27,9 @@ public class MemDAO {
 	static final String memSelectAll = "select * from member";
 	// 회원정보 수정
 	static final String memUpdate = "update member set"
-			+" memPw=?,memEmail=?,memPhone=?,memAddress=?, memName=?,memPoint=? where memId=?";
+			+" memPw=?,memEmail=?,memPhone=?,memAddress=?, memName=?,memPic=? where memId=?";
 	// 회원 탈퇴
-	static final String memDelete = "delete from member where memId=?";
+	static final String memDelete = "delete from member where memId=? and memPw=?";
 
 	// 회원 가입
 	public boolean memInsert(MemVO vo) {
@@ -64,7 +64,7 @@ public class MemDAO {
 					pstmt.setString(1, vo.getMemId());
 					ResultSet rs = pstmt.executeQuery();
 
-					if (rs.next()) {
+					if (rs.next()) {//로그인
 						if (rs.getString("memPw").equals(vo.getMemPw())) {
 							data = new MemVO();
 							data.setMemId(rs.getString("memId"));
@@ -76,7 +76,7 @@ public class MemDAO {
 							data.setMemRank(rs.getInt("memRank"));
 						}
 					}
-				} else {
+				} else {//회원상세보기
 					pstmt = conn.prepareStatement(memSelectOne);
 					pstmt.setString(1, vo.getMemId());
 					ResultSet rs1 = pstmt.executeQuery();
@@ -214,16 +214,17 @@ public class MemDAO {
 
 	// 회원 정보 갱신
 	public boolean memUpdate(MemVO vo) {
+		//memPw=?,memEmail=?,memPhone=?,memAddress=?, memName=?,memPic=? where memId=?
 		conn = JDBCUtil.connect();
 		try {
+			System.out.println(vo);
 			pstmt = conn.prepareStatement(memUpdate);
 			pstmt.setString(1, vo.getMemPw());
 			pstmt.setString(2, vo.getMemEmail());
 			pstmt.setString(3, vo.getMemPhone());
-			pstmt.setString(4, vo.getMemAddress());
-			
+			pstmt.setString(4, vo.getMemAddress());			
 			pstmt.setString(5, vo.getMemName());
-			pstmt.setInt(6, vo.getMemPoint());
+			pstmt.setString(6, vo.getMemPic());
 			pstmt.setString(7, vo.getMemId());
 			pstmt.executeUpdate();
 		} catch (SQLException e) {
@@ -239,8 +240,10 @@ public class MemDAO {
 	public boolean memDelete(MemVO vo) {
 		conn = JDBCUtil.connect();
 		try {
+			System.out.println("deletedao"+vo);
 			pstmt = conn.prepareStatement(memDelete);
 			pstmt.setString(1, vo.getMemId());
+			pstmt.setString(2, vo.getMemPw());
 			pstmt.executeUpdate();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block

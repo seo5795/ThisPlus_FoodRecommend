@@ -26,7 +26,7 @@ public class MemdeleteAction implements Action {
       
       mvo.setMemPw(request.getParameter("password"));
       HttpSession session=request.getSession();
-      mvo.setMemId((String)session.getAttribute("memId")); // sql문을 실행시키기 위해서 memId가 필요함
+      mvo.setMemId((String)session.getAttribute("memberid")); // sql문을 실행시키기 위해서 memId가 필요함
       
       
       if(memDAO.memDelete(mvo)) {

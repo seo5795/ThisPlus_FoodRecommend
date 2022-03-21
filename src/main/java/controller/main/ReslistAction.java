@@ -25,15 +25,21 @@ public class ReslistAction implements Action{
 			num=Integer.parseInt(req.getParameter("num"));
 		}
 		
-		/*
-		 * ServletContext application = req.getServletContext(); ArrayList<String>
-		 * searchList=(ArrayList<String>) application.getAttribute("searchList");
-		 */
-	
-		/*
-		 * if(searchList!=null) {//검색리스트가 null이 아니라면 application에 저장 ArrayList<>
-		 * application.setAttribute("searchList", searchList); }
-		 */
+		
+		 ServletContext application = req.getServletContext(); 
+		 //검색리스트 불러오기
+		 ArrayList<String> searchList=(ArrayList<String>) application.getAttribute("searchList");
+		 
+		
+		 if(searchList == null) {//검색리스트가 없다면 arrayList생성
+			 searchList=new ArrayList<String>();
+		 }
+		
+		 searchList.add(search);
+		 
+		 //application에 검색리스트 저장
+		 application.setAttribute("searchList", searchList); 
+		
 		
 		System.out.println("배열");
 		ResDAO resDAO = new ResDAO();

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!--컨트롤러 연결 후 import="mypage.*" 추가-->
 
 <!Doctype html>
@@ -10,12 +11,15 @@
 <meta http-equiv="x-ua-compatible" content="ie=edge">
 <title>내정보 | 오늘의메뉴</title>
 
-<link rel="shortcut icon" type="image/x-icon" href="img/favicon-customer.ico">
+<link rel="shortcut icon" type="image/x-icon"
+	href="img/favicon-customer.ico">
 
 <!-- Google Web Fonts by JHS -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Gothic+A1:wght@600&display=swap" rel="stylesheet">
+<link
+	href="https://fonts.googleapis.com/css2?family=Gothic+A1:wght@600&display=swap"
+	rel="stylesheet">
 
 <!-- CSS here -->
 <link rel="stylesheet" href="css/bootstrap.min.css">
@@ -29,48 +33,51 @@
 <link rel="stylesheet" href="css/slicknav.css">
 <link rel="stylesheet" href="css/style.css">
 <!-- <link rel="stylesheet" href="css/responsive.css"> -->
-       
+
 <!-- 내부 스타일시트 by 현 -->
 <style type="text/css">
-*{
+* {
 	font-family: 'Gothic A1', sans-serif;
 }
 /*내정보전체박스*/
-.row{
-	
+.row {
 	
 }
-.file{
+
+.file {
 	padding-top: 8px;
 	padding-bottom: 7px;
 	padding-left: 3px;
 }
+
 .contact-section {
-    padding: 100px 0 100px;
+	padding: 100px 0 100px;
 }
-input{
+
+input {
 	border: 1px solid #ced4da;
 }
-.form-contact .form-control{
+
+.form-contact .form-control {
 	border: 1px solid #ced4da;
-	font-size:16px;
+	font-size: 16px;
 	color: black;
 }
 
 .contact-title {
-    font-size: 27px;
-    font-weight: 600;
-    margin-bottom: 50px;
+	font-size: 27px;
+	font-weight: 600;
+	margin-bottom: 50px;
 }
 
-.address-position{
+.address-position {
 	margin-left: 15px;
 }
 
 /*확인,취소 버튼*/
 .buttons {
 	display: flex;
-	margin-top:30px;
+	margin-top: 30px;
 	margin-left: 15px;
 }
 
@@ -81,7 +88,7 @@ input{
 
 /*하나의 타이틀과 input태그 감싸는 div태그*/
 .form-contact .form-group {
-    margin-bottom: 20px;
+	margin-bottom: 20px;
 }
 
 /*정보 수정(작성) 시 입력값 에러 문구 */
@@ -94,12 +101,12 @@ input{
 
 /* */
 .small-title {
-      padding-left: 0.75rem;
-   }
-   
+	padding-left: 0.75rem;
+}
+
 .switch-wrap {
-    padding-left: 15px;
-}   
+	padding-left: 15px;
+}
 </style>
 
 <meta name="description" content="">
@@ -108,31 +115,31 @@ input{
 <!-- <link rel="manifest" href="site.webmanifest"> -->
 
 <script type="text/javascript">
-   //주소검색시 사용되는 script
-   // opener관련 오류가 발생하는 경우 아래 주석을 해지하고, 사용자의 도메인정보를 입력합니다. ("팝업API 호출 소스"도 동일하게 적용시켜야 합니다.)
-   //document.domain = "http://localhost:8010/register/regitser.jsp";
+	//주소검색시 사용되는 script
+	// opener관련 오류가 발생하는 경우 아래 주석을 해지하고, 사용자의 도메인정보를 입력합니다. ("팝업API 호출 소스"도 동일하게 적용시켜야 합니다.)
+	//document.domain = "http://localhost:8010/register/regitser.jsp";
 
-   function goPopup() {
-      // 호출된 페이지(jusoPopup.jsp)에서 실제 주소검색URL(https://www.juso.go.kr/addrlink/addrLinkUrl.do)를 호출하게 됩니다.
-      var pop = window.open("jusoPopup.jsp", "pop",
-            "width=570,height=420, scrollbars=yes, resizable=yes");
+	function goPopup() {
+		// 호출된 페이지(jusoPopup.jsp)에서 실제 주소검색URL(https://www.juso.go.kr/addrlink/addrLinkUrl.do)를 호출하게 됩니다.
+		var pop = window.open("jusoPopup.jsp", "pop",
+				"width=570,height=420, scrollbars=yes, resizable=yes");
 
-      // 모바일 웹인 경우, 호출된 페이지(jusoPopup.jsp)에서 실제 주소검색URL(https://www.juso.go.kr/addrlink/addrMobileLinkUrl.do)를 호출하게 됩니다.
-      //var pop = window.open("/popup/jusoPopup.jsp","pop","scrollbars=yes, resizable=yes"); 
-   }
-   /** API 서비스 제공항목 확대 (2017.02) **/
-   function jusoCallBack(roadFullAddr, roadAddrPart1, addrDetail,
-         roadAddrPart2, engAddr, jibunAddr, zipNo, admCd, rnMgtSn, bdMgtSn,
-         detBdNmList, bdNm, bdKdcd, siNm, sggNm, emdNm, liNm, rn, udrtYn,
-         buldMnnm, buldSlno, mtYn, lnbrMnnm, lnbrSlno, emdNo) {
-      // 팝업페이지에서 주소입력한 정보를 받아서, 현 페이지에 정보를 등록합니다.
-      document.join.roadAddrPart1.value = roadAddrPart1;
-      document.join.roadAddrPart2.value = roadAddrPart2;
-      document.join.addrDetail.value = addrDetail;
-      document.join.zipNo.value = zipNo;
-   }
+		// 모바일 웹인 경우, 호출된 페이지(jusoPopup.jsp)에서 실제 주소검색URL(https://www.juso.go.kr/addrlink/addrMobileLinkUrl.do)를 호출하게 됩니다.
+		//var pop = window.open("/popup/jusoPopup.jsp","pop","scrollbars=yes, resizable=yes"); 
+	}
+	/** API 서비스 제공항목 확대 (2017.02) **/
+	function jusoCallBack(roadFullAddr, roadAddrPart1, addrDetail,
+			roadAddrPart2, engAddr, jibunAddr, zipNo, admCd, rnMgtSn, bdMgtSn,
+			detBdNmList, bdNm, bdKdcd, siNm, sggNm, emdNm, liNm, rn, udrtYn,
+			buldMnnm, buldSlno, mtYn, lnbrMnnm, lnbrSlno, emdNo) {
+		// 팝업페이지에서 주소입력한 정보를 받아서, 현 페이지에 정보를 등록합니다.
+		document.join.roadAddrPart1.value = roadAddrPart1;
+		document.join.roadAddrPart2.value = roadAddrPart2;
+		document.join.addrDetail.value = addrDetail;
+		document.join.zipNo.value = zipNo;
+	}
 </script>
-   
+
 </head>
 
 <body>
@@ -165,23 +172,23 @@ input{
 
 			<div class="row">
 				<div class="col-12">
-					<h2 class="contact-title" style="margin-left:15px;">내 정보</h2>
+					<h2 class="contact-title" style="margin-left: 15px;">내 정보</h2>
 				</div>
 				<!-- 내 정보  -->
 				<div class="col-lg-8">
-					<form class="form-contact contact_form" action="" method="post"
+					<form class="form-contact contact_form" action="memmypageupdate.do" method="post"
 						id="contactForm" name="join">
 						<div class="row" style="margin-left: 0px;">
-						
+
 							<!-- password, name, email, memPhone, memAdress, memPic 이하 6개만 업데이트 가능
 							     나머지 id, rank, Point -->
-							
+
 							<!-- 아이디 start -->
 							<div class="col-12">
 								<div class="form-group">
 									<h4 class="small-title">아이디</h4>
-									<input class="form-control check" type="text" name="id"
-										id="id" value="${vo.memId}" disabled>
+									<input class="form-control check" type="text" name="memId" id="id"
+										value="${data.memId}" placeholder="${data.memId}" disabled>
 								</div>
 								<div id="idError" class="error_next_box"></div>
 							</div>
@@ -191,8 +198,9 @@ input{
 							<div class="col-12">
 								<div class="form-group">
 									<h4 class="small-title">비밀번호</h4>
-									<input class="form-control check" name="password" id="password"
-										type="password" value="${vo.memPw}" placeholder="Ex) qwe3987524@">
+									<input class="form-control check" name="memPw" id="password"
+										type="password" value="${data.memPw}"
+										placeholder="${data.memPw}">
 								</div>
 								<div id="pw1Error" class="error_next_box"></div>
 							</div>
@@ -202,8 +210,9 @@ input{
 							<div class="col-12">
 								<div class="form-group">
 									<h4 class="small-title">비밀번호 확인</h4>
-									<input class="form-control check" name="password" id="password"
-										type="password" value="${vo.memPw}" placeholder="비밀번호를 한 번 더 입력하세요.">
+									<input class="form-control check" name="passCheck" id="password"
+										type="password" value="${data.memPw}"
+										placeholder="${data.memPw}">
 								</div>
 								<div id="pw2Error" class="error_next_box"></div>
 							</div>
@@ -213,19 +222,21 @@ input{
 							<div class="col-sm-12">
 								<div class="form-group">
 									<h4 class="small-title">이름</h4>
-									<input class="form-control check" type="text" name="name"
-										id="name" value="${vo.memName}" placeholder="Ex) 홍길동">
+									<input class="form-control check" type="text" name="memName"
+										id="name" value="${data.memName}"
+										placeholder="${data.memName}">
 								</div>
 								<div id="nameError" class="error_next_box"></div>
 							</div>
 							<!-- 사용자이름 end -->
-							
+
 							<!-- 이메일 start -->
 							<div class="col-sm-12">
 								<div class="form-group">
 									<h4 class="small-title">이메일</h4>
-									<input class="form-control check" name="email" id="id"
-										type="email" value="${vo.memEmail}" placeholder="Ex) gildong@naver.com">
+									<input class="form-control check" name="memEmail" id="id"
+										type="email" value="${data.memEmail}"
+										placeholder="${data.memEmail}">
 								</div>
 								<div id="emailError" class="error_next_box"></div>
 							</div>
@@ -235,62 +246,62 @@ input{
 							<div class="col-sm-12">
 								<div class="form-group">
 									<h4 class="small-title">전화번호</h4>
-									<input class="form-control check" name="phoneNumer"
-										id="phoneNumer" type="text" value="${vo.memPhone}" placeholder="Ex) 01012345678">
+									<input class="form-control check" name="memPhone"
+										id="phoneNumer" type="text" value="${data.memPhone}"
+										placeholder="${data.memPhone}">
 								</div>
 								<div id="phoneNumError" class="error_next_box"></div>
 							</div>
 							<!-- 핸드폰 번호 end -->
 
 							<!-- 주소 start -->
-						<!-- <div class="col-sm-12">
+							<!-- <div class="col-sm-12">
 								<div class="form-group">
 									<h4 class="small-title">주소</h4>
 									<input class="form-control" name="adress" id="adress"
 										type="text" value="${vo.memAddress}" placeholder="주소">
 								</div>
 							</div> -->
-							 <div class="form-group">
-							 <h4 class="small-title address-position">주소</h4>
-							 <div class="switch-wrap d-flex justify-content-between">
-                        <table>
-                           <colgroup>
-                              <col style="width: 20%">
-                              <col>
-                           </colgroup>
-                           <tbody>
-                              <tr>
-                                 <td>&nbsp;&nbsp;&nbsp;우편번호</td>
-                                 <td><input type="hidden" id="confmKey" name="confmKey"
-                                    value="" > 
-                                    <input type="text" id="zipNo" name="zipNo" class="check" readonly style="width: 100px"> 
-                                    <input type="button" value="주소검색"
-                                    onclick="goPopup();"></td>
-                              </tr>
-                              <tr>
-                                 <td>&nbsp;&nbsp;&nbsp;도로명주소</td>
-                                 <td><input type="text" id="roadAddrPart1"
-                                    style="width: 85%" class="add" readonly></td>
-                              </tr>
-                              <tr>
-                                 <td>&nbsp;&nbsp;&nbsp;상세주소</td>
-                                 <td><input type="text" id="addrDetail"
-                                    style="width: 40%" class="add" value=""> <input
-                                    type="text" id="roadAddrPart2" style="width: 40%"
-                                    class="add" value="" readonly></td>
-                              </tr>
-                           </tbody>
-                        </table>
-                     </div>
-                     </div>
+							<div class="form-group">
+								<h4 class="small-title address-position">주소</h4>
+								<div class="switch-wrap d-flex justify-content-between">
+									<table>
+										<colgroup>
+											<col style="width: 20%">
+											<col>
+										</colgroup>
+										<tbody>
+											<tr>
+												<td>&nbsp;&nbsp;&nbsp;우편번호</td>
+												<td><input type="hidden" id="confmKey" name="confmKey"
+													value=""> <input type="text" id="zipNo"
+													name="zipNo" class="check" readonly style="width: 100px">
+													<input type="button" value="주소검색" onclick="goPopup();"></td>
+											</tr>
+											<tr>
+												<td>&nbsp;&nbsp;&nbsp;도로명주소</td>
+												<td><input type="text" id="roadAddrPart1" name="memAddress"
+													style="width: 85%" class="add" value="${data.memAddress}" readonly></td>
+											</tr>
+											<tr>
+												<td>&nbsp;&nbsp;&nbsp;상세주소</td>
+												<td><input type="text" id="addrDetail"
+													style="width: 40%" class="add" value=""> <input
+													type="text" id="roadAddrPart2" style="width: 40%"
+													class="add" value="" readonly></td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+							</div>
 							<!-- 주소 end -->
 
 							<!-- 프로필 start -->
 							<div class="col-sm-12">
 								<div class="form-group">
 									<h4 class="small-title">프로필</h4>
-									<input class="form-control file" name="pic" id="pic"
-										type="file" value="${vo.memPic}">
+									<input class="form-control file" name="memPic" id="pic"
+										type="file" value="${data.memPic}">
 								</div>
 							</div>
 							<!-- 프로필 end -->
@@ -301,8 +312,23 @@ input{
 							<div class="col-sm-12">
 								<div class="form-group">
 									<h4 class="small-title">등급</h4>
-									<input class="form-control valid" name="rank" id="rank"
-										type="text" value="${vo.memRank}" disabled>
+									<c:choose>
+										<c:when test="${ data.memRank == 0 }">
+											<c:set var="rank" value="고객님" />
+										</c:when>
+										<c:when test="${ data.memRank == 1 }">
+											<c:set var="rank" value="사장님" />
+										</c:when>
+										<c:when test="${data.memRank == 2 }">
+											<c:set var="rank" value="최고관리자" />
+										</c:when>
+										<c:otherwise>
+
+										</c:otherwise>
+									</c:choose>
+
+									<input class="form-control valid" name="memRank" id="rank"
+										type="text" value="${rank}" placeholder="${rank}" disabled>
 								</div>
 							</div>
 							<!-- 등급 end -->
@@ -311,8 +337,9 @@ input{
 							<div class="col-sm-12">
 								<div class="form-group">
 									<h4 class="small-title">포인트</h4>
-									<input class="form-control valid" name="point" id="point"
-										type="text" value="${vo.memPoint}" disabled>
+									<input class="form-control valid" name="memPoint" id="point"
+										type="text" value="${data.memPoint}"
+										placeholder="${data.memPoint}" disabled>
 								</div>
 							</div>
 							<!-- 포인트 end -->
@@ -345,7 +372,7 @@ input{
 
 				</div>
 				<!-- 정보수정 end -->
-				
+
 				<!-- 기업 정보 start -->
 				<!--   <div class="col-lg-3 offset-lg-1">
 					<div class="media contact-info">
@@ -370,7 +397,7 @@ input{
 						</div>
 					</div>
 				</div> 
-				<!-- 기업 정보 end -->  
+				<!-- 기업 정보 end -->
 			</div>
 		</div>
 	</section>

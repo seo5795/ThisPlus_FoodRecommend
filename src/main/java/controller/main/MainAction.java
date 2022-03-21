@@ -2,6 +2,7 @@ package controller.main;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collections;
 
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
@@ -33,8 +34,17 @@ public class MainAction implements Action {
 		request.setAttribute("locationDatas", locationDatas);
 		request.setAttribute("menuDatas", menuDatas);
 		
-		//System.out.println(avgDatas.get(3));
+		 ServletContext application = request.getServletContext(); 
+		 ArrayList<String> searchList=(ArrayList<String>) application.getAttribute("searchList");
 		
+		 if(searchList != null) {
+			 //검색리스트 역순 출력
+			 Collections.reverse(searchList);
+		 }else {
+			 searchList=new ArrayList<String>();
+		 }
+		
+		request.setAttribute("rsearchList", searchList);
 		ActionForward forward=new ActionForward();
 
 		forward.setPath("main.jsp");

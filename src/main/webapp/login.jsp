@@ -92,7 +92,7 @@
 <br>
 			<div class="social-icons">
 		 <form method="post" name="loginForm" action="snslogin.do">			
-					<input type="hidden" name="memRank" id="memRank" value="2"/>
+					<input type="hidden" name="memRank" id="memRank" value="0"/>
 					<input type="hidden" name="memId" id="memId" />
 					<input type="hidden" name="memEmail" id="memEmail" />
 					<input type="hidden" name="memName" id="memName" />

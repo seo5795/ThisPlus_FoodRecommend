@@ -32,7 +32,7 @@ public class MemmypageAction implements Action {
          request.setAttribute("data", mvo);
          forward=new ActionForward();
          forward.setPath("mypage.jsp");   // 수정을 완료했으면 메인으로 이동해도 됨
-         System.out.println("로그 : 회원 수정 액션 완료");
+         System.out.println("로그 : 회원 상세보기 액션 완료");
          forward.setRedirect(false);
 
 
