@@ -17,7 +17,7 @@ import model.restaurant.ResVO;
 public class AdminMainAction implements Action {
 
 	@Override
-	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
+	public ActionForward execute(HttpServletRequest req, HttpServletResponse res) throws Exception {
 
 		ActionForward forward = new ActionForward();
 		
@@ -30,13 +30,14 @@ public class AdminMainAction implements Action {
 		
 		//회원
 		ArrayList<MemVO> memdatas = memDAO.memSelectAll(memVO);
-		request.setAttribute("memdatas",memdatas);
+		req.setAttribute("memdatas",memdatas);
+		System.out.println(memdatas.get(0));
 		//식당
-		ArrayList<ResVO> resdatas = resDAO.resSelectAll(resVO);
-		request.setAttribute("resdatas",resdatas);
+		ArrayList<ResVO> resdatas = resDAO.resSelectAll(resVO, 6);
+		req.setAttribute("resdatas",resdatas);
 		//공지
 		ArrayList<NotVO> notdatas = notDAO.notSelectAll(notVO);
-		request.setAttribute("notdatas",notdatas);
+		req.setAttribute("notdatas",notdatas);
 		
 		
 		forward.setPath("AdminMain.jsp");

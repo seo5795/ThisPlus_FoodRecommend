@@ -14,17 +14,20 @@ import model.notice.NotVO;
 public class AdminNoticeInsertAction implements Action {
 
 	@Override
-	public ActionForward execute(HttpServletRequest request, HttpServletResponse response)
+	public ActionForward execute(HttpServletRequest req, HttpServletResponse res)
 			throws ServletException, IOException, Exception {
 
-		ActionForward forward = null;
+		ActionForward forward=new ActionForward();
 
 		NotDAO noticeDAO = new NotDAO();
 		NotVO noticeVO = new NotVO();
 
+		noticeVO.setNotTitle(req.getParameter("notTitle"));
+		noticeVO.setNotContent(req.getParameter("notContent"));
+		System.out.println(noticeVO.getNotTitle());
 		if (noticeDAO.notInsert(noticeVO)) {
 			forward = new ActionForward();
-			forward.setPath("adminMain.do");
+			forward.setPath("adminnotice.did");
 			forward.setRedirect(true);
 		}
 		return forward;

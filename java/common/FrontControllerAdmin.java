@@ -18,6 +18,7 @@ import controller.admin.AdminMemberUpdateAction;
 import controller.admin.AdminNoticeAction;
 import controller.admin.AdminNoticeInsertAction;
 import controller.admin.AdminRestaurantAction;
+import controller.admin.AdminRestaurantDeleteAction;
 import controller.admin.AdminRestaurantDetailAction;
 import controller.admin.AdminRestaurantUpdateAction;
 
@@ -108,7 +109,10 @@ public class FrontControllerAdmin extends HttpServlet {
     	  System.out.println("로그 FCAdmin 식당수정요청");
     	  forward=new AdminRestaurantUpdateAction().execute(request,response);
       }
-      
+      else if(command.equals("/admin/adminrestaurantdelete.did")) {
+    	  System.out.println("로그 FCAdmin 식당수정요청");
+    	  forward=new AdminRestaurantDeleteAction().execute(request,response);
+      }
       
       else {
          throw new ServletException("command 요청에러!");

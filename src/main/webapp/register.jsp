@@ -1,13 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+   pageEncoding="UTF-8"%>
 
 <!doctype html>
-<html class="no-js" lang="zxx">
+<html class="no-js" lang="ko">
 
 <head>
 <meta charset="utf-8">
 <meta http-equiv="x-ua-compatible" content="ie=edge">
-<title>회원가입</title>
+<title>회원가입 | 오늘의메뉴</title>
 <meta name="description" content="">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script type="text/javascript">
@@ -36,8 +36,13 @@
    }
 </script>
 <!-- <link rel="manifest" href="site.webmanifest"> -->
-<link rel="shortcut icon" type="image/x-icon" href="img/favicon.png">
+<link rel="shortcut icon" type="image/x-icon" href="img/favicon-customer.ico">
 <!-- Place favicon.ico in the root directory -->
+
+<!-- Google Web Fonts by JHS -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Gothic+A1:wght@600&display=swap" rel="stylesheet">
 
 <!-- CSS here -->
 <link rel="stylesheet" href="css/bootstrap.min.css">
@@ -53,37 +58,40 @@
 <!-- <link rel="stylesheet" href="css/responsive.css"> -->
 
 <style type="text/css">
+*{
+	font-family: 'Gothic A1', sans-serif;
+}
 .single-input-primary {
-	margin: 15px 0 0 0;
+   margin: 15px 0 0 0;
 }
 
 .form-select {
-	margin: 15px 0 15px 0;
+   margin: 15px 0 15px 0;
 }
 
 .error_next_box {
-	margin: 0 0 -5px;
-	font-size: 12px;
-	padding: 0 20px;
-	color: red;
+   margin: 0 0 -5px;
+   font-size: 12px;
+   padding: 0 20px;
+   color: red;
 }
 
 select {
-	display: block;
-	width: 100%;
-	line-height: 40px;
-	border: 1px solid transparent;
-	outline: none;
+   display: block;
+   width: 100%;
+   line-height: 40px;
+   border: 1px solid transparent;
+   outline: none;
 }
 
 .add {
-	background: #f9f9ff;
-	border: 1px solid transparent;
+   background: #f9f9ff;
+   border: 1px solid transparent;
 }
 
-#sms, #sms2, #idcheck {
-	align-self: flex-end;
-	width: 20%;
+#sms, #sms2{
+   align-self: flex-end;
+   width: 20%;
 }
 </style>
 </head>

@@ -15,18 +15,19 @@ import model.member.MemVO;
 public class AdminMemberAction implements Action {
 
 	@Override
-	public ActionForward execute(HttpServletRequest request, HttpServletResponse response)
+	public ActionForward execute(HttpServletRequest req, HttpServletResponse res)
 			throws ServletException, IOException, Exception {
-		ActionForward forward = null;
+		
+		ActionForward forward=new ActionForward();
 
 		MemDAO memDAO = new MemDAO();
 		MemVO memVO = new MemVO();
 
 		// 회원
 		ArrayList<MemVO> memdatas = memDAO.memSelectAll(memVO);
-		request.setAttribute("memdatas", memdatas);
+		req.setAttribute("memdatas", memdatas);
 
-		forward.setPath("MemberMain.jsp");
+		forward.setPath("AdminMemberMain.jsp");
 		forward.setRedirect(false);
 
 		return forward;

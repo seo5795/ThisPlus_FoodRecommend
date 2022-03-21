@@ -26,7 +26,7 @@ create table member(
 insert into member (memId,memPw,memName,memEmail,memAddress,memPic)
  values ('muscleboy1234','1111','김꺽정','muscle@naver.com','서울시 관악구','/admin/img/testimonial-1.jpa');
  insert into member (memId,memPw,memName,memEmail,memAddress,memPic,memRank)
- values ('1234','1234','admin','muscle@naver.com','서울시 관악구','/images/member/ksj.jpeg',2);
+ values ('admin','1234','admin','muscle@naver.com','서울시 관악구','/images/member/ksj.jpeg',2);
 -- 회원 데이터 수정(회원권한)
 update member set memPw='1234',memEmail='muscle@gmail.com',memPhone='010-1111-2222',memAddress='경기도 안산시 상록구',memPic='' where memId='muscleboy';
 -- 회원 데이터 수정(관리자권한)

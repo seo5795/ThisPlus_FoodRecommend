@@ -2,18 +2,23 @@
 	pageEncoding="UTF-8"%>
 
 <!doctype html>
-<html class="no-js" lang="zxx">
+<html class="no-js" lang="ko">
 
 <head>
 <meta charset="utf-8">
 <meta http-equiv="x-ua-compatible" content="ie=edge">
-<title>flatter</title>
+<title>메뉴등록 | 오늘의메뉴</title>
 <meta name="description" content="">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <!-- <link rel="manifest" href="site.webmanifest"> -->
-<link rel="shortcut icon" type="image/x-icon" href="img/favicon.ico">
+	<link rel="shortcut icon" type="image/x-icon" href="img/favicon-customer.ico">
 <!-- Place favicon.ico in the root directory -->
+
+<!-- Google Web Fonts by JHS -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Gothic+A1:wght@600&display=swap" rel="stylesheet">
 
 <!-- CSS here -->
 <link rel="stylesheet" href="css/bootstrap.min.css">
@@ -31,9 +36,14 @@
 <!-- 내부 CSS 적용 -->
 <!-- 이후 취합할 때 CSS파일을 별도로 분리할 예정 -->
 <style type="text/css">
+*{
+	font-family: 'Gothic A1', sans-serif;
+}
 .menuContainer{
 	display: flex;
 	justify-content: center;
+	padding-top: 100px; 
+	padding-bottom: 100px;
 }
 .menuContents{
 	width: 450px;
@@ -84,10 +94,15 @@ function preview(input) {
 	<!-- header-end -->
 
 	<!-- breadcam_area_start -->
-	<!-- header -->
-	<jsp:include page="common/header.jsp" />
+	<div class="breadcam_area breadcam_bg_1 zigzag_bg_2">
+		<div class="breadcam_inner">
+			<div class="breadcam_text">
+				<h3>메뉴등록</h3>
+				<p>아래 절차에 따라 메뉴를 등록할 수 있습니다.</p>
+			</div>
+		</div>
+	</div>
 	<!-- breadcam_area_end -->
-
 
    <!-- 메뉴등록 start -->
    <div class="menuContainer">
@@ -96,7 +111,7 @@ function preview(input) {
    		<!-- <form action="menuAdd.do" method="post" enctype="multipart/form-data"> -->
    		<!-- 임시로 업로드체크 페이지로 이동, 컨트롤러 적용시 제거 예정 -->
    		<form action="menuinsert.do" method="post" enctype="multipart/form-data">
-   		<input type="hidden" name="resId" value="${rdata.resId}">
+			<input type="hidden" name="resId" value="${rdata.resId}">
 	   		<h3>메뉴 등록</h3>
 	   		<hr>
 	   		

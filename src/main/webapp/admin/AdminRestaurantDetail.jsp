@@ -6,13 +6,19 @@
 
 <head>
 <meta charset="utf-8">
-<title>DASHMIN - Bootstrap Admin Template</title>
+<title>관리자: 식당관리</title>
 <meta content="width=device-width, initial-scale=1.0" name="viewport">
 <meta content="" name="keywords">
 <meta content="" name="description">
 
 <!-- Favicon -->
-<link href="img/favicon.ico" rel="icon">
+<link rel="shortcut icon" type="image/x-icon" href="img/favicon-admin.ico">
+
+<!-- Google Web Fonts by JHS -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Gothic+A1:wght@600&display=swap" rel="stylesheet">
+
 
 <!-- Google Web Fonts -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -40,6 +46,11 @@
 
 <!-- Template Stylesheet -->
 <link href="css/style.css" rel="stylesheet">
+<style type="text/css">
+	*{
+		font-family: 'Gothic A1', sans-serif;
+	}
+</style>
 </head>
 
 <body>
@@ -48,8 +59,8 @@
    function resDelete(){
       ans=confirm("정말 삭제하시겠습니까? 삭제된 데이터는 복구되지 않습니다.");
       if(ans==true){
-         document.checkForm.action.value="/admin/resDelete.did?resId=${res.resId}";
-         document.checkForm.submit();
+         document.resForm.action.value="adminrestaurantdelete.did?resId=${res.resId}";
+         document.resForm.submit();
       }
       else{
          return;
@@ -189,8 +200,8 @@
                         </fieldset>
                         
                         <!-- <input type="submit" class="btn btn-outline-primary m-2" value="식당 정보 변경"> -->
-                        <input type="button" class="btn btn-outline-danger m-2" value="식당 삭제" onClick="resDelete()">
-                        <input type="button" class="btn btn-outline-danger m-2" value="걍 삭제" onClick="location.href='resDelete.did?resId=${res.resId}';">
+                      <!--  <input type="button" class="btn btn-outline-danger m-2" value="식당 삭제" onClick="resDelete()"> -->
+                        <input type="button" class="btn btn-outline-danger m-2" value="식당 삭제" onClick="location.href='adminrestaurantdelete.did?resId=${res.resId}';">
                      </form>
                   </div>
                </div>

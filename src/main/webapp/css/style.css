@@ -1,5 +1,3 @@
-@import url("https://fonts.googleapis.com/css?family=Josefin+Sans:300,300i,400,400i,600,600i,700&display=swap");
-@import url("https://fonts.googleapis.com/css?family=Josefin+Sans:300,300i,400,400i,600,600i,700&display=swap");
 /* line 1, ../../Arafath/CL/CL August/199 Flatter Catering/199 Flatter Catering-HTML/scss/_extend.scss */
 .flex-center-start {
   display: -webkit-box;
@@ -358,15 +356,16 @@ h3 {
   font-size: 15px;
   font-weight: 600;
   display: inline-block;
-  padding: 16px 29px;
+  padding: 9px 9px;	/*padding: 16px 29px;*/
   border: 2px solid #fff;
   text-transform: capitalize;
 }
 
+/*기존 13px 13px; 에서 변경*/
 @media (min-width: 992px) and (max-width: 1200px) {
   /* line 32, ../../Arafath/CL/CL August/199 Flatter Catering/199 Flatter Catering-HTML/scss/_btn.scss */
   .boxed_btn_white {
-    padding: 13px 13px;
+    padding: 9px 9px; /*기존 13px 13px; 에서 변경*/
   }
 }
 
@@ -441,8 +440,8 @@ h3 {
 
 /* line 34, ../../Arafath/CL/CL August/199 Flatter Catering/199 Flatter Catering-HTML/scss/_section_title.scss */
 .section-padding {
-  padding-top: 150px;
-  padding-bottom: 150px;
+  padding-top: 130px;
+  padding-bottom: 130px;
 }
 
 @media (max-width: 767px) {
@@ -837,7 +836,7 @@ h3 {
   font-size: 15px;
   font-weight: 600;
   display: inline-block;
-  padding: 16px 29px;
+  padding: 9px 9px;	/*padding: 16px 29px;*/
   border: 2px solid #000;
   text-transform: capitalize;
 }
@@ -1436,7 +1435,7 @@ h3 {
 
 /* line 61, ../../Arafath/CL/CL August/199 Flatter Catering/199 Flatter Catering-HTML/scss/_contact.scss */
 .form-contact .form-control {
-  border: 1px solid #e5e6e9;
+  border: 1px solid gray;
   border-radius: 0px;
   height: 48px;
   padding-left: 18px;

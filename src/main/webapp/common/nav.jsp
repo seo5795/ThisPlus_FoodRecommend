@@ -17,6 +17,7 @@ media (min-width: 992px)
 .row {
 	margin-left: 90px;
 }
+
 </style>
 </head>
 <body>
@@ -40,15 +41,15 @@ media (min-width: 992px)
 
 
 									<!-- 팀 소개 -->
-									<li><a href="about.jsp">AboutUs</a></li>
+									<li><a href="about.jsp">this+</a></li>
 
 
 
-									<!-- 더보기 -->
+									<!-- 더 보기 -->
 
-									<li><a href="#">more<i class="ti-angle-down"></i></a>
+									<li><a href="Notice.jsp">더보기<i class="ti-angle-down"></i></a>
 										<ul class="submenu">
-											<li><a href="Notice.jsp#company">회사 소개</a></li>
+											<li><a href="Notice.jsp#company">회사소개</a></li>
 											<li><a href="Notice.jsp#notice">공지사항</a></li>
 											<li><a href="Notice.jsp#faq">FAQ</a></li>
 											<li><a href="Notice.jsp#ask">고객센터</a></li>
@@ -58,7 +59,7 @@ media (min-width: 992px)
 
 
 									<!-- 음식 카테고리 -->
-									<li><a href="#">category <i class="ti-angle-down"></i></a>
+									<li><a href="#">카테고리<i class="ti-angle-down"></i></a>
 										<ul class="submenu">
 											<li><a href="reslist.do?scategory=menuCategory&search=한식">한식</a></li>
 											<li><a href="reslist.do?scategory=menuCategory&search=양식">양식</a></li>

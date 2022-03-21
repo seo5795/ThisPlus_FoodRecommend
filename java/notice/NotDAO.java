@@ -20,7 +20,7 @@ public class NotDAO {
    static final String notInsert = "insert into notice (notId,notTitle,notContent) values ((select nvl(max(notId),3000)+1 from notice),?,?)";
    // 공지사항 조회
    static final String notSelectOne = "select * from notice where notId=?";
-   // 공지사항 모두 조회
+// 공지사항 모두 조회
    static final String notSelectAll = "select * from notice";
    // 공지사항 수정
    static final String notUpdate = "update notice set notTitle=?, notContent=?, notShow=? where notId=?";
@@ -81,11 +81,12 @@ public class NotDAO {
       return data;
    }
 
-   // 공지사항 전체 조회
+// 공지사항 전체 조회
    public ArrayList<NotVO> notSelectAll(NotVO vo) {
       ArrayList<NotVO> datas = new ArrayList<NotVO>();
       conn = JDBCUtil.connect();
       try {
+         System.out.println("로그 notDAO select All 실행");
          pstmt = conn.prepareStatement(notSelectAll);
          ResultSet rs = pstmt.executeQuery();
          while (rs.next()) {
@@ -95,7 +96,7 @@ public class NotDAO {
             sdf.format(rs.getDate("notDate"));
             
             NotVO data = new NotVO();
-            data.setNotId(rs.getInt("bid"));
+            data.setNotId(rs.getInt("notId"));
             data.setNotTitle(rs.getString("notTitle"));
             data.setNotContent(rs.getString("notContent"));
             data.setNotRegDate(sdf.format(rs.getDate("notDate"))); // 데이터형변환
@@ -109,7 +110,6 @@ public class NotDAO {
       JDBCUtil.disconnect(pstmt, conn);
       return datas;
    }
-
    // 공지사항 수정 -- 공지사항 제목, 내용, 노출여부 추가함 (추후 업데이트예정)
 //   public boolean update(NotVO vo) {
 //      conn = JDBCUtil.connect();

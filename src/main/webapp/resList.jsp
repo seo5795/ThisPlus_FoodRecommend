@@ -2,18 +2,23 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!doctype html>
-<html class="no-js" lang="zxx">
+<html class="no-js" lang="ko">
 
 <head>
 <meta charset="utf-8">
 <meta http-equiv="x-ua-compatible" content="ie=edge">
-<title>DURG</title>
+<title>식당리스트 | 오늘의메뉴</title>
 <meta name="description" content="">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <!-- <link rel="manifest" href="site.webmanifest"> -->
-<link rel="shortcut icon" type="image/x-icon" href="img/favicon.png">
+<link rel="shortcut icon" type="image/x-icon" href="img/favicon-customer.ico">
 <!-- Place favicon.ico in the root directory -->
+
+<!-- Google Web Fonts by JHS -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Gothic+A1:wght@600&display=swap" rel="stylesheet">
 
 <!-- CSS here -->
 <link rel="stylesheet" href="css/bootstrap.min.css">
@@ -27,6 +32,24 @@
 <link rel="stylesheet" href="css/slicknav.css">
 <link rel="stylesheet" href="css/style.css">
 <!-- <link rel="stylesheet" href="css/responsive.css"> -->
+
+<style type="text/css">
+*{
+	font-family: 'Gothic A1', sans-serif;
+}
+	.section-padding {
+    padding-top: 100px;
+    padding-bottom: 100px;
+}
+	.col-lg-4 {
+		padding-left: 80px;
+	}
+	
+	.blog_right_sidebar .widget_title {
+    font-size: 20px;
+    margin-bottom: 24px;
+}
+</style>
 </head>
 
 <body>
@@ -42,8 +65,14 @@
 	<!-- header-end -->
 
 	<!-- breadcam_area_start -->
-	<!-- header -->
-	<jsp:include page="common/header.jsp" />
+	<div class="breadcam_area breadcam_bg_1 zigzag_bg_2">
+		<div class="breadcam_inner">
+			<div class="breadcam_text">
+				<h3>식당 리스트</h3>
+				<p></p>
+			</div>
+		</div>
+	</div>
 	<!-- breadcam_area_end -->
 
 
@@ -61,7 +90,7 @@
 									<h1>빠른 시일 내에 준비하겠습니다😊😊😊</h1>
 								</c:when>
 								<c:otherwise>
-								<!-- 식당리스트가 존재할 때 -->
+								<!-- 식당리스트가 존재할 때 start -->
 									<c:forEach var="rd" items="${resDatas}">
 										<div class="blog_item_img">
 											<img class="card-img rounded-0" src="${rd.resPic}"
@@ -73,7 +102,7 @@
 										</div>
 
 										<div class="blog_details">
-											<a class="d-inline-block" href="single-blog.html">
+											<a class="d-inline-block" href="restaurantDetails.jsp">
 												<h2>${rd.resName}</h2>
 											</a>
 											<p>${rd.resAdd}</p>
@@ -84,7 +113,9 @@
 											Comments</a></li> -->
 											</ul>
 										</div>
+										<br><br><br><br>
 									</c:forEach>
+								<!-- 식당리스트가 존재할 때 end -->	
 								</c:otherwise>
 								</c:choose>
 						</article>
@@ -100,8 +131,8 @@
 								<div class="form-group">
 									<div class="input-group mb-3">
 										<input type="text" class="form-control" name="search"
-											placeholder='Search Keyword' onfocus="this.placeholder = ''"
-											onblur="this.placeholder = 'Search Keyword'">
+											placeholder='식당 이름' onfocus="this.placeholder = ''"
+											onblur="this.placeholder = '식당 이름'">
 										<div class="input-group-append">
 											<button class="btn" type="submit">
 												<i class="ti-search"></i>
@@ -111,12 +142,12 @@
 								</div>
 								<button
 									class="button rounded-0 primary-bg text-white w-100 btn_1 boxed-btn"
-									type="submit">Search</button>
+									type="submit">검색</button>
 							</form>
 						</aside>
 
 						<aside class="single_sidebar_widget post_category_widget">
-							<h4 class="widget_title">Category</h4>
+							<h4 class="widget_title">카테고리</h4>
 							<ul class="list cat-list">
 								<li><a href="reslist.do?scategory=menuCategory&search=한식"
 									class="d-flex">
@@ -144,7 +175,7 @@
 								</a></li>
 							</ul>
 						</aside>
-						<!-- 
+						<!--  
 						<aside class="single_sidebar_widget popular_post_widget">
 							<h3 class="widget_title">Recent Post</h3>
 							<div class="media post_item">
@@ -223,7 +254,7 @@
 							</ul>
 						</aside>
 
-
+						<!-- 
 						<aside class="single_sidebar_widget newsletter_widget">
 							<h4 class="widget_title">Newsletter</h4>
 
@@ -240,6 +271,7 @@
 							</form>
 						</aside>
 						 -->
+						 
 					</div>
 				</div>
 			</div>

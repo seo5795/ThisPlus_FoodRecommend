@@ -3,12 +3,19 @@
 <!--컨트롤러 연결 후 import="mypage.*" 추가-->
 
 <!Doctype html>
-<html class="no-js" lang="zxx">
+<html class="no-js" lang="ko">
 
 <head>
 <meta charset="utf-8">
 <meta http-equiv="x-ua-compatible" content="ie=edge">
-<title>오늘의메뉴 내정보</title>
+<title>내정보 | 오늘의메뉴</title>
+
+<link rel="shortcut icon" type="image/x-icon" href="img/favicon-customer.ico">
+
+<!-- Google Web Fonts by JHS -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Gothic+A1:wght@600&display=swap" rel="stylesheet">
 
 <!-- CSS here -->
 <link rel="stylesheet" href="css/bootstrap.min.css">
@@ -25,15 +32,29 @@
        
 <!-- 내부 스타일시트 by 현 -->
 <style type="text/css">
-
+*{
+	font-family: 'Gothic A1', sans-serif;
+}
 /*내정보전체박스*/
 .row{
 	
 	
 }
-
+.file{
+	padding-top: 8px;
+	padding-bottom: 7px;
+	padding-left: 3px;
+}
+.contact-section {
+    padding: 100px 0 100px;
+}
+input{
+	border: 1px solid #ced4da;
+}
 .form-contact .form-control{
-	border: 1px solid gray;
+	border: 1px solid #ced4da;
+	font-size:16px;
+	color: black;
 }
 
 .contact-title {
@@ -49,6 +70,8 @@
 /*확인,취소 버튼*/
 .buttons {
 	display: flex;
+	margin-top:30px;
+	margin-left: 15px;
 }
 
 /*확인버튼*/
@@ -83,8 +106,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <!-- <link rel="manifest" href="site.webmanifest"> -->
-<link rel="shortcut icon" type="image/x-icon" href="img/favicon.png">
-<!-- Place favicon.ico in the root directory -->
 
 <script type="text/javascript">
    //주소검색시 사용되는 script
@@ -144,7 +165,7 @@
 
 			<div class="row">
 				<div class="col-12">
-					<h2 class="contact-title">내 정보</h2>
+					<h2 class="contact-title" style="margin-left:15px;">내 정보</h2>
 				</div>
 				<!-- 내 정보  -->
 				<div class="col-lg-8">
@@ -239,7 +260,7 @@
                            </colgroup>
                            <tbody>
                               <tr>
-                                 <td>우편번호</td>
+                                 <td>&nbsp;&nbsp;&nbsp;우편번호</td>
                                  <td><input type="hidden" id="confmKey" name="confmKey"
                                     value="" > 
                                     <input type="text" id="zipNo" name="zipNo" class="check" readonly style="width: 100px"> 
@@ -247,12 +268,12 @@
                                     onclick="goPopup();"></td>
                               </tr>
                               <tr>
-                                 <td>도로명주소</td>
+                                 <td>&nbsp;&nbsp;&nbsp;도로명주소</td>
                                  <td><input type="text" id="roadAddrPart1"
                                     style="width: 85%" class="add" readonly></td>
                               </tr>
                               <tr>
-                                 <td>상세주소</td>
+                                 <td>&nbsp;&nbsp;&nbsp;상세주소</td>
                                  <td><input type="text" id="addrDetail"
                                     style="width: 40%" class="add" value=""> <input
                                     type="text" id="roadAddrPart2" style="width: 40%"
@@ -268,7 +289,7 @@
 							<div class="col-sm-12">
 								<div class="form-group">
 									<h4 class="small-title">프로필</h4>
-									<input class="form-control" name="pic" id="pic"
+									<input class="form-control file" name="pic" id="pic"
 										type="file" value="${vo.memPic}">
 								</div>
 							</div>

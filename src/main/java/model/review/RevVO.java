@@ -4,6 +4,14 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+/**
+ * @author seo57
+ *
+ */
+/**
+ * @author seo57
+ *
+ */
 public class RevVO {
 	private int revId;			// 리뷰 번호(고유값)
 	private String memId;		// 리뷰 작성자 번호(참조값)
@@ -78,5 +86,13 @@ public class RevVO {
 	}
 	public void setRevRegDate(String revRegDate) {
 		this.revRegDate=revRegDate;
+	}
+	@Override
+	public String toString() {
+		return "RevVO [revId=" + revId + ", memId=" + memId + ", memName=" + memName + ", resId=" + resId
+				+ ", revTitle=" + revTitle + ", revCont=" + revCont + ", revDate=" + revDate + ", revRegDate="
+				+ revRegDate + ", revScore=" + revScore + ", revPic=" + revPic + "]";
 	}	
+	
+	
 }

@@ -3,19 +3,24 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <!doctype html>
-<html class="no-js" lang="zxx">
+<html class="no-js" lang="ko">
 
 <head>
 <meta charset="utf-8">
 <meta http-equiv="x-ua-compatible" content="ie=edge">
-<title>[오늘의 메뉴] more</title>
+<title>더보기 | 오늘의메뉴</title>
 <meta name="description" content="">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <!-- <link rel="manifest" href="site.webmanifest"> -->
-<link rel="shortcut icon" type="image/x-icon" href="img/favicon.ico">
+<link rel="shortcut icon" type="image/x-icon" href="img/favicon-customer.ico">
 <!-- Place favicon.ico in the root directory -->
 
+
+<!-- Google Web Fonts by JHS -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Gothic+A1:wght@600&display=swap" rel="stylesheet">
 
 <!-- 아코디언 플러그인 -->
 <script
@@ -38,11 +43,17 @@
 </head>
 
 <style type="text/css">
+*{
+	font-family: 'Gothic A1', sans-serif;
+}
 * {
 	margin: 0;
 	padding: 0;
 }
-
+.sample-text-area {
+    background: #fff;
+    padding: 100px 0 0 0;
+}
 .tit {
 	padding: 10px;
 	font-weight: bold;
@@ -65,6 +76,13 @@
 	padding: 5px;
 	display: none;
 }
+.question:hover{
+	font-weight: bold;
+}
+.answer{
+	color: #777777;
+}
+
 </style>
 
 
@@ -81,24 +99,24 @@
 	<!-- header-end -->
 
 	<!-- breadcam_area_start -->
-	<!-- header -->
-	<jsp:include page="common/header.jsp" />
+	<div class="breadcam_area breadcam_bg_1 zigzag_bg_2">
+		<div class="breadcam_inner">
+			<div class="breadcam_text">
+				<h3>더보기</h3>
+				<p>회사소개/공지사항/FAQ/빠르게 이용하기를 확인 및 이용가능합니다.</p>
+			</div>
+		</div>
+	</div>
 	<!-- breadcam_area_end -->
 
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
+
 
 	<!-- 회사 소개 시작 -->
-	<a name="company"></a>
+	<a id="company"></a>
 	<section class="sample-text-area">
 
 		<div class="container box_1170">
-			<h2>BETTER LIFE THROUGH GOOD FOOD</h2>
+			<h2>회사소개</h2>
 			<hr>
 			<br> <br> <br>
 			<p class="sample-text">
@@ -117,7 +135,7 @@
 
 
 	<!-- 공지사항 시작 -->
-	<a name="notice"></a>
+	<a id="notice"></a>
 	<div class="whole-wrap">
 		<div class="container box_1170">
 			<div class="section-top-border">
@@ -155,7 +173,7 @@
 
 			<!-- 자주 묻는 질문 시작 -->
 
-			<a name="faq"></a>
+			<a id="faq"></a>
 			<div class="section-top-border">
 				<h2 class="mb-30">FAQ</h2>
 				<hr>
@@ -166,12 +184,12 @@
 						<ul class="accodian">
 							<li class="accodian--box">
 								<!-- 질문 제목 -->
-								<h5>[리뷰] 리뷰 수정 또는 작성 어떻게 하나요?</h5> <!-- 질문 답변 -->
-								<div>
-									안녕하세요. 오늘의 맛집 입니다.<br> <br> 작성하신 리뷰를 수정 혹은 삭제하고 싶으신
+								<h5 class="question">[리뷰] 리뷰 수정 또는 작성 어떻게 하나요?</h5> <!-- 질문 답변 -->
+								<div class="answer">
+									작성하신 리뷰를 수정 혹은 삭제하고 싶으신
 									경우, <br> <br> 내정보 페이지에서 수정/삭제 하실 리뷰를 선택하신 후 우측 하단에 삭제
 									및 수정 아이콘을 누르시면 변경 가능합니다. <br> <br> 앞으로도 지속적인 서비스 이용과
-									관심 부탁드립니다.<br> <br> 감사합니다
+									관심 부탁드립니다.<br> <br> 감사합니다.
 								</div>
 							</li>
 							<br>
@@ -179,9 +197,9 @@
 
 							<li class="accodian--box">
 								<!-- 질문 제목 -->
-								<h5>[탈퇴] 탈퇴는 어떻게 하나요?</h5> <!-- 질문 답변 -->
-								<div>
-									내정보 > 설정 > 회원탈퇴를 통해 오늘의 맛집 회원 탈퇴가 가능합니다.<br> 탈퇴 후에는 계정 복구가
+								<h5 class="question">[탈퇴] 탈퇴는 어떻게 하나요?</h5> <!-- 질문 답변 -->
+								<div class="answer">
+									마이페이지 > 회원탈퇴를 통해 오늘의 맛집 회원 탈퇴가 가능합니다.<br> 탈퇴 후에는 계정 복구가
 									불가능하오니 신중히 선택해주시기 바랍니다.
 								</div>
 							</li>
@@ -190,24 +208,24 @@
 
 							<li class="accodian--box">
 								<!-- 질문 제목 -->
-								<h5>[리뷰] 리뷰 또는 사진 신고가 필요한 경우</h5> <!-- 질문 답변 -->
-								<div>
+								<h5 class="question">[리뷰] 리뷰 또는 사진 신고가 필요한 경우</h5> <!-- 질문 답변 -->
+								<div class="answer">
 									모든 사용자는 오늘의 맛집 커뮤니티 가이드 라인에 위배 되는 리뷰나 사진을 신고할 수 있습니다. <br>
 									이 가이드라인 방침에 따라 다음과 같은 경우 콘텐츠가 삭제될 수 있습니다. <br> <br>
 									1. 리뷰 또는 사진이 다른 레스토랑인 경우 <br> <br> 2. 리뷰 또는 사진이 스팸인
 									경우 <br> <br> 3. 리뷰 또는 사진에 개인정보, 명예훼손 또는 사생활 침해 또는 홍보권
 									침해가 포함되는 경우 <br> <br>4. 리뷰 또는 사진이 실제 식사 경험을 기반으로 하지
 									않았을 경우 <br> <br> 5. 리뷰 또는 사진이 지불댓가로 업로드 된 경우 <br>
-									<br> 오늘의 맛집은 신고 접수가 된 후 내부적으로 신고 대상 리뷰를 검토하고 커뮤니티 가이드라인을
-									준수하지 않은 경우 <br> 신고된 콘텐츠를 제거합니다.
+									<br> 오늘의 메뉴는 신고 접수가 된 후 내부적으로 신고 대상 리뷰를 검토하고 커뮤니티 가이드라인을
+									준수하지 않은 경우 신고된 콘텐츠를 제거합니다.
 								</div>
 							</li>
 							<br>
 
 							<li class="accodian--box">
 								<!-- 질문 제목 -->
-								<h5>[리뷰] 오늘의 맛집 평점 기준은 어떻게 되나요?</h5> <!-- 질문 답변 -->
-								<div>
+								<h5 class="question">[리뷰] 오늘의 맛집 평점 기준은 어떻게 되나요?</h5> <!-- 질문 답변 -->
+								<div class="answer">
 									오늘의 맛집 레스토랑의 평점은 사용자의 리뷰를 기반으로 레스토랑의 품질과 인기를 측정한 통계지수입니다.<br>
 									<br> 이 지수는 기록된 리뷰뿐만 아니라 과거에 리뷰 작성자가 얼마나 활발하게 리뷰를 작성했는지,<br>
 									<br>특정 점수에 편향되어 있는지를 포함한 리뷰 히스토리를 고려합니다 따라서 이 점수는 작성된 리뷰의
@@ -225,7 +243,7 @@
 			<br> <br> <br>
 			<!-- 자주 묻는 질문 끝 -->
 			<div>
-				<a name="ask"><a></a>
+				<a id="ask"></a>
 			</div>
 
 
@@ -238,46 +256,49 @@
 				</div>
 				<div class="col-lg-8">
 					<form class="form-contact contact_form"
-						action="contact_process.php" method="post" id="contactForm"
+						action="SendMail.jsp" method="post" id="contactForm"
 						novalidate="novalidate">
 
 						<div class="row">
 							<!-- 문의 사항 작성 -->
 							<div class="col-12">
 								<div class="form-group">
-									<textarea class="form-control w-100" name="message"
-										id="message" cols="30" rows="9"
+									<textarea class="form-control w-100" name="content"
+										id="content" cols="30" rows="9"
 										onfocus="this.placeholder = ''"
-										onblur="this.placeholder = 'Enter Message'"
-										placeholder=" Please write down your questions "></textarea>
+										onblur="this.placeholder = '내용 작성'"
+										placeholder=" 내용 작성 "></textarea>
 								</div>
 							</div>
 
-							<!-- 이름 작성 -->
+							<!-- 제목 작성 -->
 							<div class="col-sm-6">
 								<div class="form-group">
-									<input class="form-control valid" name="name" id="name"
+									<input class="form-control valid" name="subject" id="subject"
 										type="text" onfocus="this.placeholder = ''"
-										onblur="this.placeholder = 'Enter your name'"
-										placeholder="Enter your name">
+										onblur="this.placeholder = '제목입력'"
+										placeholder="제목입력">
 								</div>
 							</div>
 
-							<!-- 이메일 작성 -->
+							<!-- 발신자 이메일 작성 -->
 							<div class="col-sm-6">
 								<div class="form-group">
 									<input class="form-control valid" name="email" id="email"
 										type="email" onfocus="this.placeholder = ''"
-										onblur="this.placeholder = 'Enter email address'"
-										placeholder="Email">
+										onblur="this.placeholder = '당신의 이메일'"
+										placeholder="당신의 이메일">
 								</div>
 							</div>
+							<!-- 수신자 이메일 -->
+							<input type="hidden" id="to" name="to" value="soo980201@naver.com">
+							
 						</div>
-
+						
 
 						<!-- 문의 사항 전송 -->
 						<div class="form-group mt-3">
-							<button type="submit" class="button button-contactForm boxed-btn">Send</button>
+							<button type="submit" class="button button-contactForm boxed-btn">제출</button>
 						</div>
 
 					</form>

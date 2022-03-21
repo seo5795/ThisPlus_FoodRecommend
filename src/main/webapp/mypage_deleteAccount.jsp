@@ -3,12 +3,19 @@
 <!--컨트롤러 연결 후 import="mypage.*" 추가-->
 
 <!Doctype html>
-<html class="no-js" lang="zxx">
+<html class="no-js" lang="ko">
 
 <head>
 <meta charset="utf-8">
 <meta http-equiv="x-ua-compatible" content="ie=edge">
-<title>오늘의메뉴 회원탈퇴</title>
+<title>회원탈퇴 | 오늘의메뉴</title>
+
+<link rel="shortcut icon" type="image/x-icon" href="img/favicon-customer.ico">
+
+<!-- Google Web Fonts by JHS -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Gothic+A1:wght@600&display=swap" rel="stylesheet">
 
 <!-- CSS here -->
 <link rel="stylesheet" href="css/bootstrap.min.css">
@@ -25,7 +32,9 @@
 
 <!-- 내부 스타일시트 by 현 -->
 <style type="text/css">
-
+*{
+	font-family: 'Gothic A1', sans-serif;
+}
 .form-contact .form-control{
 	border: 1px solid gray;
 }
@@ -78,14 +87,22 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <!-- <link rel="manifest" href="site.webmanifest"> -->
-<link rel="shortcut icon" type="image/x-icon" href="img/favicon.png">
-<!-- Place favicon.ico in the root directory -->
-
-
 
 </head>
 
 <body>
+<script type="text/javascript">
+	function del(){
+		ans=confirm("정말 탈퇴하시겠습니까? 데이터는 복원되지않습니다!");
+		if(ans==true){
+			document.checkForm.action.value="memdelete.do?memId=${data.memId}";
+			document.checkForm.submit();
+		}
+		else{
+			return;
+		}
+	}
+</script>
 	<!--[if lte IE 9]>
             <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
         <![endif]-->
@@ -120,7 +137,7 @@
 
 				<!-- 내 정보  -->
 				<div class="col-lg-8">
-					<form class="form-contact contact_form" action="#" method="post"
+					<form class="form-contact contact_form" action="memdelete.do?memId=${data.memId}" method="post"
 						id="contactForm" name="join">
 						<div class="row" style="margin-left: 0px;">
 
@@ -159,7 +176,7 @@
 							<!-- 확인 버튼 start -->
 							<div class="form-group mt-3 start-button">
 								<button type="submit"
-									class="button button-contactForm boxed-btn">확인</button>
+									class="button button-contactForm boxed-btn" onclick="del();">확인</button>
 							</div>
 							<!-- 확인 버튼 end -->
 

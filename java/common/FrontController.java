@@ -1,14 +1,21 @@
 package controller.common;
 
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Enumeration;
 
 import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import com.oreilly.servlet.MultipartRequest;
+import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
 import controller.main.LoginAction;
 import controller.main.LogoutAction;
@@ -110,8 +117,64 @@ public class FrontController extends HttpServlet {
 			forward=new ResupdateAction().execute(request, response);
 		}
 		else if(command.equals("/resinsert.do")) {
-			forward=new ResinsertAction().execute(request, response);
-		}
+			 // JSP에서 application(내장객체,scope)을 이용하는 코드 -> sc객체
+            ServletContext sc=request.getServletContext();
+
+            // MultipartRequest에는 5가지 인자 필요
+            String path=sc.getRealPath("imgUpload"); // server.core 폴더명
+            int maxSize=1024*1024*200; // 200mb
+            String encType="UTF-8";
+            DefaultFileRenamePolicy originname=new DefaultFileRenamePolicy();
+
+            MultipartRequest mr=new MultipartRequest(request,path,maxSize,encType,originname);
+            
+            // 저장한 파일명 스트링으로 추출
+            Enumeration files = mr.getFileNames();
+            String nameStr = (String)files.nextElement();
+            String saveName = mr.getFilesystemName(nameStr);
+            
+            String filename=mr.getOriginalFileName("imgUpload"); // 원래 이름
+            String realname=mr.getFilesystemName("imgUpload"); // 저장된 이름
+            
+            // 이미지 경로를 변경
+            // movePath에 원하는 경로를 기입
+            String movePath="D:\\Shim\\workspace2\\thisplus\\src\\main\\webapp\\imgUpload\\";
+            try {
+               FileInputStream fis=new FileInputStream(path+"\\"+saveName);
+               FileOutputStream fos=new FileOutputStream(movePath+saveName);
+                      
+               byte[] buff=new byte[3000];
+               int len;
+               while((len=fis.read(buff))!=-1) {
+                  fos.write(buff, 0, len);
+               }
+                      
+               fos.flush();
+               fos.close();
+            }catch (Exception e) {
+               e.printStackTrace();
+            }
+            finally {
+               System.out.println("이미지 복사 완료");
+               System.out.println("최종 저장경로 : "+movePath);
+            }
+            
+            // 멀티리퀘스트의 파라미터를 리퀘스트에 삽입
+            request.setAttribute("resName",mr.getParameter("resName"));
+            request.setAttribute("resCategory",mr.getParameter("resCategory"));
+            request.setAttribute("resAdd",mr.getParameter("resAdd"));
+            request.setAttribute("resPhone",mr.getParameter("resPhone1")+"-"+mr.getParameter("resPhone2")+"-"+mr.getParameter("resPhone3"));
+            request.setAttribute("resPic",movePath+saveName);
+            
+            System.out.println("식당이름 : "+request.getAttribute("resName"));
+            System.out.println("식당분류 : "+request.getAttribute("resCategory"));
+            System.out.println("식당주소 : "+request.getAttribute("resAdd"));
+            System.out.println("식당연락처 : "+request.getAttribute("resPhone"));
+            System.out.println("사진경로 : "+movePath);         
+
+            forward=new ResinsertAction().execute(request, response);
+         }
+
 		else if(command.equals("/reslist.do")) {
 			forward=new ReslistAction().execute(request, response);
 		}

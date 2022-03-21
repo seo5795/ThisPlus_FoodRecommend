@@ -11,7 +11,7 @@
                 <div class="bg-light rounded-top p-4">
                     <div class="row">
                         <div class="col-12 col-sm-6 text-center text-sm-start">
-                            &copy; <a href="#">오늘의 메뉴</a>, All Right Reserved. 
+                            &copy; <a href="../main.do">오늘의메뉴</a>, All Right Reserved. 
                             <p>THIS+</p>
                         </div>
                         <div class="col-12 col-sm-6 text-center text-sm-end">

@@ -2,18 +2,33 @@
 	pageEncoding="UTF-8"%>
 
 <!DOCTYPE html>
-<html>
+<html lang="ko">
 <head>
 <meta charset="UTF-8">
-<title>ThisPlus_Login</title>
+<title>로그인 | 오늘의메뉴</title>
+
+<!-- <link rel="manifest" href="site.webmanifest"> -->
+<link rel="shortcut icon" type="image/x-icon" href="img/favicon-customer.ico">
+<!-- Place favicon.ico in the root directory -->
+
+<!-- Google Web Fonts by JHS -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Gothic+A1:wght@600&display=swap" rel="stylesheet">
+
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
 <link rel="stylesheet" href="css/style1.css">
 <link rel="stylesheet" href="css/style.css">
+
 <!-- 소셜 버튼 -->
 <link rel="stylesheet"
 	href="//cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css">
+	
 <style>
+*{
+	font-family: 'Gothic A1', sans-serif;
+}
 .btn-social-login {
 	transition: all .2s;
 	outline: 0;
@@ -21,6 +36,14 @@
 	padding: .5rem !important;
 	border-radius: 50%;
 	color: #fff;
+}
+
+.input-group {
+    top: 180px;
+    position: absolute;
+    width: 280px;
+    transition: .5s;
+    margin-top: 45px;
 }
 
 .btn-social-login:focus {
@@ -33,6 +56,19 @@
 
 .name {
 	text-align: center;
+}
+.submit{
+	margin-top: 20px;
+	margin-bottom: 20px;
+	background: #78b455;
+	font-size: 16px;
+}
+
+.register{
+	text-decoration: none;
+}
+.register:hover{
+	text-decoration:underline;
 }
 </style>
 </head>
@@ -51,7 +87,7 @@
 
 			<br>
 			<div class="name">
-				<h1>ThisPlus_Login</h1>
+				<h1>오늘의메뉴 로그인</h1>
 			</div>
 <br>
 			<div class="social-icons">
@@ -76,16 +112,16 @@
 		<br><br>
 			<form id="login" action="login.do" class="input-group">
 				<input type="text" class="input-field" name="memId"
-					placeholder="User Id" required> <input
-					type="password" class="input-field" name="memPw" placeholder="Enter Password"
+					placeholder="사용자 ID" required> <input
+					type="password" class="input-field" name="memPw" placeholder="비밀번호"
 					required>
 				<!-- <div>
 					<input type="checkbox" class="checkbox">Remember Password
 				</div> -->
 				<br><br>
 				<div style="text-align: center">
-					<button class="submit">Login</button>
-					<a href="register.jsp">registration</a>
+					<button class="submit">로그인</button>
+					<a href="register.jsp" class="register">회원가입</a>
 				</div>
 			</form>
 		</div>

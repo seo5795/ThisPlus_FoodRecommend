@@ -48,5 +48,11 @@ public class NotVO {
    public void setNotRegDate(String notRegDate) {
       this.notRegDate = notRegDate;
    }
+@Override
+public String toString() {
+	return "NotVO [notId=" + notId + ", notTitle=" + notTitle + ", notContent=" + notContent + ", notDate=" + notDate
+			+ ", notShow=" + notShow + ", notRegDate=" + notRegDate + "]";
+}
+   
    
 }

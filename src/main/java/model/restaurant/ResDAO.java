@@ -20,7 +20,13 @@ public class ResDAO {
 	// 식당 내용 조회
 	static final String resSelectOne = "select * from restaurant where resId=?";
 	// 식당 리스트 조회
-	static final String resSelectAll = "select * from restaurant where resId=?";
+	static final String resSelectAll = "select * from restaurant";
+	// 식당 리스트 조회(평점기준)
+	static final String resSelectAllAvg = "select * from (select * from restaurant order by resAvg DESC) where rownum<=?";
+	// 식당 리스트 조회(위치기준)
+	static final String resSelectAllLocation = "select * from (select * from restaurant where resAdd like '%'||?||'%' order by resAvg DESC) where rownum<=?";
+	// 식당 리스트 조회(카테고리기준)
+	static final String resSelectAllCategory = "select * from (select * from restaurant where resCategory like '%'||?||'%' order by resAvg DESC) where rownum<=?";
 	// 식당 수정
 	static final String resUpdate = "update restaurant set resName=?,resAvg=?,resAdd=?,resPhone=?,resCategory=?,resPic=? where resId=?";
 	// 식당 삭제
@@ -78,11 +84,68 @@ public class ResDAO {
 	}
 
 	// 식당 리스트 조회
-	public ArrayList<ResVO> resSelectAll(ResVO vo) {
+	public ArrayList<ResVO> resSelectAll(ResVO vo, int num) {
 		ArrayList<ResVO> datas=new ArrayList<ResVO>();
 		conn=JDBCUtil.connect();
 		try {
-			pstmt=conn.prepareStatement(resSelectAll);
+			if(vo.getResName()!=null) {//이름검색
+				String resSelectAllName = "select * from (select * from restaurant where resName like '%'||?||'%' order by resAvg DESC) where rownum<=?";
+				pstmt=conn.prepareStatement(resSelectAllName);
+				pstmt.setString(1,vo.getResName());
+				pstmt.setInt(2, num);
+			}
+			else if(vo.getResCategory()!=null) {//카테고리 검색
+				pstmt=conn.prepareStatement(resSelectAllCategory);
+				pstmt.setString(1,vo.getResCategory());
+				pstmt.setInt(2, num);
+			}
+			else {//전체검색
+				pstmt=conn.prepareStatement(resSelectAll);
+			}
+			
+			ResultSet rs=pstmt.executeQuery();
+			while(rs.next()) {
+				ResVO data=new ResVO(); 
+				data = new ResVO();
+				data.setResId(rs.getInt("resId"));
+				data.setResName(rs.getString("resName"));
+				data.setResAvg(rs.getDouble("resAvg"));
+				data.setResAdd(rs.getString("resAdd"));	 // 제외가능
+				data.setResPhone(rs.getString("resPhone"));  // 제외가능
+				data.setResCategory(rs.getString("resCategory"));
+				// data.setResPark(rs.getInt("resPark"));
+				data.setResPic(rs.getString("resPic"));
+				datas.add(data);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		JDBCUtil.disconnect(pstmt, conn);
+		return datas;
+	}
+	
+	
+	
+	//메인에서 보여줄 식당 리스트 조회
+	public ArrayList<ResVO> resSelectAllMain(ResVO vo,int num, String category) {
+		ArrayList<ResVO> datas=new ArrayList<ResVO>();
+		conn=JDBCUtil.connect();
+		try {
+			if(category.equals("avg")) {//평점 6개
+				pstmt=conn.prepareStatement(resSelectAllAvg);
+				pstmt.setInt(1, num);
+			}else if(category.equals("location")) {//위치-> 평점 6개
+				
+				pstmt=conn.prepareStatement(resSelectAllLocation);
+				String location ="강남구"; 
+				pstmt.setString(1, location);
+				pstmt.setInt(2, num);
+			}else {//카테고리-> 평점 6개
+				pstmt=conn.prepareStatement(resSelectAllCategory);
+				pstmt.setString(1, category);
+				pstmt.setInt(2, num);
+			}
 			ResultSet rs=pstmt.executeQuery();
 			while(rs.next()) {
 				ResVO data=new ResVO(); 

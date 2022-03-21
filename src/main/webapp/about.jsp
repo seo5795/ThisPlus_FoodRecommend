@@ -2,18 +2,25 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!doctype html>
-<html class="no-js" lang="zxx">
+
+<html class="no-js" lang="ko">
 
 <head>
 <meta charset="utf-8">
 <meta http-equiv="x-ua-compatible" content="ie=edge">
-<title>flatter</title>
+<title>this+ | 오늘의메뉴</title>
 <meta name="description" content="">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
+
 <!-- <link rel="manifest" href="site.webmanifest"> -->
-<link rel="shortcut icon" type="image/x-icon" href="img/logo.png">
+<link rel="shortcut icon" type="image/x-icon" href="img/favicon-customer.ico">
 <!-- Place favicon.ico in the root directory -->
+
+<!-- Google Web Fonts by JHS -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Gothic+A1:wght@600&display=swap" rel="stylesheet">
 
 <!-- CSS here -->
 <link rel="stylesheet" href="css/bootstrap.min.css">
@@ -27,6 +34,18 @@
 <link rel="stylesheet" href="css/slicknav.css">
 <link rel="stylesheet" href="css/style.css">
 <!-- <link rel="stylesheet" href="css/responsive.css"> -->
+
+<style type="text/css">
+
+.single_about_area {
+    padding-top: 100px;
+    padding-bottom: 100px;
+}
+
+*{
+	font-family: 'Gothic A1', sans-serif;
+}
+</style>
 </head>
 
 <body>
@@ -41,8 +60,14 @@
 	<!-- header-end -->
 
 	<!-- breadcam_area_start -->
-	<!-- header -->
-	<jsp:include page="common/header.jsp" />
+	<div class="breadcam_area breadcam_bg_1 zigzag_bg_2">
+		<div class="breadcam_inner">
+			<div class="breadcam_text">
+				<h3>this+</h3>
+				<p>this+조의 프로젝트에 대해 확인할 수 있습니다.</p>
+			</div>
+		</div>
+	</div>
 	<!-- breadcam_area_end -->
 
 

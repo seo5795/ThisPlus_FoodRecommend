@@ -2,22 +2,24 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 
 <head>
 <meta charset="utf-8">
-<title>DASHMIN - Bootstrap Admin Template</title>
+<title>관리자</title>
 <meta content="width=device-width, initial-scale=1.0" name="viewport">
 <meta content="" name="keywords">
 <meta content="" name="description">
 
 <!-- Favicon -->
-<link href="img/favicon.ico" rel="icon">
+<link rel="shortcut icon" type="image/x-icon" href="img/favicon-admin.ico">
 
-
-<!-- Google Web Fonts -->
+<!-- Google Web Fonts by JHS -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Gothic+A1:wght@600&display=swap" rel="stylesheet">
+
+
 <link
 	href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600;700&display=swap"
 	rel="stylesheet">
@@ -41,6 +43,11 @@
 
 <!-- Template Stylesheet -->
 <link href="css/style.css" rel="stylesheet">
+<style type="text/css">
+	*{
+		font-family: 'Gothic A1', sans-serif;
+	}
+</style>
 </head>
 
 <body>

@@ -2,12 +2,12 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!doctype html>
-<html class="no-js" lang="zxx">
+<html class="no-js" lang="ko">
 
 <head>
 <meta charset="utf-8">
 <meta http-equiv="x-ua-compatible" content="ie=edge">
-<title>flatter</title>
+<title>오늘의메뉴</title>
 <meta name="description" content="">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -72,7 +72,7 @@
 			<div class="single_slider slider_img_1">
 				<div class="single_slider-iner">
 					<div class="slider_contant text-center">
-						<h3>What's today's menu?</h3>
+						<h3>오늘의 메뉴는?</h3>
 						<form action="reslist.do?scategory=name" method="post">
 							<div class="form-group"
 								style="width: 738px; height: 27px; margin: 0 auto;">
@@ -125,34 +125,25 @@
 
 			<div class="row">
 				<c:forEach var="ad" items="${avgDatas}">
-					<div class="col-xl-4 col-md-6">
-						<div class="single_service">
-							<div class="service_icon">
-								<a href="#"> <c:choose>
-										<c:when test="${ empty resDatas }">
-											<!-- 이미지 존재하지 않을 때 -->
-											<img alt="" src="img/redayPhoto.png" style="width: 100%">
-										</c:when>
-										<c:otherwise>
-											<!-- 이미지 존재하지 할 때 -->
-											<img alt="" src="${ad.resPic}" style="width: 100%">
-										</c:otherwise>
-									</c:choose>
-								</a>
-							</div>
-							<h4>${ad.resName}</h4>
-							<h5>평점: ${ad.resAvg}점</h5>
-							<br> <a href="#" class="Choose_restaurant"> <span>위치:${ad.resAdd}</span>
-							</a>
+				<div class="col-xl-4 col-md-6">
+					<div class="single_service">
+						<div class="service_icon">
+							<a href="restaurantDetails.jsp"> <img alt="" src="${ad.resPic}"  style="width:100%; height:auto;" ></a>
 						</div>
+						<h4> <strong>${ad.resName}</strong></h4>
+						<h5> <strong>평점: </strong> ${ad.resAvg}점 </h5>
+  						<br>
+						<a href="#" class="Choose_restaurant">
+						<span><strong>위치: </strong>${ad.resAdd}</span>
+						</a>
 					</div>
-
+				</div>
+					
 				</c:forEach>
 			</div>
 		</div>
 	</div>
 	<!-- 평점 순위 top6 end -->
-
 
 
 
