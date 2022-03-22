@@ -104,8 +104,63 @@ public class FrontController extends HttpServlet {
 			forward=new LogoutAction().execute(request,response);
 		}
 		else if(command.equals("/signup.do")) {
-			forward=new SignupAction().execute(request,response);
-		}
+	         // 이미지 업로드 파트
+	         // JSP에서 application(내장객체,scope)을 이용하는 코드 -> sc객체
+	           ServletContext sc=request.getServletContext();
+
+	           // MultipartRequest에는 5가지 인자 필요
+	           String path=sc.getRealPath("imgUpload"); // server.core 폴더명
+	           int maxSize=1024*1024*200; // 200mb
+	           String encType="UTF-8";
+	           DefaultFileRenamePolicy originname=new DefaultFileRenamePolicy();
+	           
+	           MultipartRequest mr=new MultipartRequest(request,path,maxSize,encType,originname);
+	           System.out.println("해결하자!");
+	           
+	           // 저장한 파일명 스트링으로 추출
+	           Enumeration files = mr.getFileNames();
+	           String nameStr = (String)files.nextElement();
+	           String saveName = mr.getFilesystemName(nameStr);
+	           
+	           String filename=mr.getOriginalFileName("imgUpload"); // 원래 이름
+	           String realname=mr.getFilesystemName("imgUpload"); // 저장된 이름
+	           
+	         // 이미지 경로를 변경
+	            // movePath에 원하는 경로를 기입
+	            String movePath="D:\\2021_ksj\\resource\\thisfood\\src\\main\\webapp\\imgUpload\\memPic\\";
+	            try {
+	               FileInputStream fis=new FileInputStream(path+"\\"+saveName);
+	               FileOutputStream fos=new FileOutputStream(movePath+saveName);
+	                      
+	               byte[] buff=new byte[3000];
+	               int len;
+	               while((len=fis.read(buff))!=-1) {
+	                  fos.write(buff, 0, len);
+	               }
+	                      
+	               fos.flush();
+	               fos.close();
+	            }catch (Exception e) {
+	               e.printStackTrace();
+	            }
+	            finally {
+	               System.out.println("이미지 복사 완료");
+	               System.out.println("최종 저장경로 : "+movePath);
+	            }
+	            
+	            // 멀티리퀘스트의 파라미터를 리퀘스트에 삽입
+	            request.setAttribute("memid",mr.getParameter("memid"));
+	            request.setAttribute("memPw",mr.getParameter("memPw"));
+	            request.setAttribute("memName",mr.getParameter("memName"));
+	            request.setAttribute("memEmail",mr.getParameter("memEmail"));
+	            request.setAttribute("memAdd",mr.getParameter("memAdd"));
+	            request.setAttribute("memPhone",mr.getParameter("memPhone"));
+	            request.setAttribute("memPic",movePath+saveName);
+	            
+	            System.out.println("1회원계정 : "+request.getAttribute("memid"));
+	              
+	            forward=new SignupAction().execute(request, response);
+	      }
 		//식당
 		else if(command.equals("/resdetail.do")) {
 			forward=new ResdetailAction().execute(request, response);
@@ -199,7 +254,12 @@ public class FrontController extends HttpServlet {
 			forward=new MenuupdateAction().execute(request, response);
 		}
 		else if(command.equals("/menuinsert.do")) {
-			forward=new MenuinsertAction().execute(request, response);
+			try {
+				forward=new MenuinsertAction().execute(request, response);
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 		else if(command.equals("/menudelete.do")) {
 			forward=new MenudeleteAction().execute(request, response);
@@ -214,7 +274,10 @@ public class FrontController extends HttpServlet {
 		else if(command.equals("/memdelete.do")) {
 			forward=new MemdeleteAction().execute(request, response);
 		}
-
+		else if(command.equals("/resdetail.do")) {
+			System.out.println("FC: 식당상세페이지");
+			forward = new ResdetailAction().execute(request, response);
+		}
 		else {
 			throw new ServletException("command 요청에러!");
 		}

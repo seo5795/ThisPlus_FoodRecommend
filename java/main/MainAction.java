@@ -37,10 +37,8 @@ public class MainAction implements Action {
 		 ServletContext application = request.getServletContext(); 
 		 ArrayList<String> searchList=(ArrayList<String>) application.getAttribute("searchList");
 		
-		 if(searchList != null) {
-			 //검색리스트 역순 출력
-			 Collections.reverse(searchList);
-		 }else {
+		
+		 if(searchList == null) { 
 			 searchList=new ArrayList<String>();
 		 }
 		

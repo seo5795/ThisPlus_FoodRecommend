@@ -25,9 +25,12 @@ public class MemDAO {
 	static final String memSnsSelectOne = "select * from member where memId=?";
 	// 회원리스트 조회
 	static final String memSelectAll = "select * from member";
+	//회원 리스트 조회(회원명 검색기능)
+	 static final String memSelectAllSearch = "select * from member where memName like '%'||?||'%'";
+
 	// 회원정보 수정
 	static final String memUpdate = "update member set"
-			+" memPw=?,memEmail=?,memPhone=?,memAddress=?, memName=?,memPic=? where memId=?";
+			+" memPw=?,memEmail=?,memPhone=?,memAddress=?, memName=? where memId=?";
 	// 회원 탈퇴
 	static final String memDelete = "delete from member where memId=? and memPw=?";
 
@@ -211,10 +214,39 @@ public class MemDAO {
 		JDBCUtil.disconnect(pstmt, conn);
 		return datas;
 	}
+	
+	   // 회원 리스트 조회 (회원명 검색)
+	   public ArrayList<MemVO> memSelectAllSearch(MemVO vo) {
+	      ArrayList<MemVO> datas=new ArrayList<MemVO>();
+	      conn=JDBCUtil.connect();
+	      try {
+	         pstmt=conn.prepareStatement(memSelectAllSearch);
+	         pstmt.setString(1, vo.getMemName());
+	         ResultSet rs=pstmt.executeQuery();
+	         while(rs.next()) {
+	            MemVO data=new MemVO(); 
+	            data.setMemId(rs.getString("memId"));
+	            data.setMemName(rs.getString("memName"));
+	            data.setMemEmail(rs.getString("memEmail"));
+	            data.setMemRank(rs.getInt("memRank"));   
+	            data.setMemPoint(rs.getInt("memPoint"));
+	            data.setMemPhone(rs.getString("memPhone"));
+	            data.setMemAddress(rs.getString("memAddress"));
+	            data.setMemPic(rs.getString("memPic"));
+	            datas.add(data);
+	         }
+	      } catch (SQLException e) {
+	         // TODO Auto-generated catch block
+	         e.printStackTrace();
+	      }
+	      JDBCUtil.disconnect(pstmt, conn);
+	      return datas;
+	   }
 
+	
 	// 회원 정보 갱신
 	public boolean memUpdate(MemVO vo) {
-		//memPw=?,memEmail=?,memPhone=?,memAddress=?, memName=?,memPic=? where memId=?
+		//memPw=?,memEmail=?,memPhone=?,memAddress=?, memName=? where memId=?
 		conn = JDBCUtil.connect();
 		try {
 			System.out.println(vo);
@@ -224,8 +256,7 @@ public class MemDAO {
 			pstmt.setString(3, vo.getMemPhone());
 			pstmt.setString(4, vo.getMemAddress());			
 			pstmt.setString(5, vo.getMemName());
-			pstmt.setString(6, vo.getMemPic());
-			pstmt.setString(7, vo.getMemId());
+			pstmt.setString(6, vo.getMemId());
 			pstmt.executeUpdate();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block

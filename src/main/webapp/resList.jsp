@@ -93,16 +93,17 @@
 								<!-- 식당리스트가 존재할 때 start -->
 									<c:forEach var="rd" items="${resDatas}">
 										<div class="blog_item_img">
-											<img class="card-img rounded-0" src="${rd.resPic}"
-												alt="${rd.resName}"> <a href="#"
+											<a href="resdetail.do?resId=${rd.resId}"><img class="card-img rounded-0" src="${rd.resPic}"
+												alt="${rd.resName}"></a> <a href="#"
 												class="blog_item_date">
 												<h3>평점</h3>
 												<p>${rd.resAvg}</p>
 											</a>
+											
 										</div>
 
 										<div class="blog_details">
-											<a class="d-inline-block" href="restaurantDetails.jsp">
+											<a class="d-inline-block" href="resdetail.do?resId=${rd.resId}">
 												<h2>${rd.resName}</h2>
 											</a>
 											<p>${rd.resAdd}</p>

@@ -297,13 +297,13 @@ input {
 							<!-- 주소 end -->
 
 							<!-- 프로필 start -->
-							<div class="col-sm-12">
+							<!-- <div class="col-sm-12">
 								<div class="form-group">
 									<h4 class="small-title">프로필</h4>
 									<input class="form-control file" name="memPic" id="pic"
 										type="file" value="${data.memPic}">
 								</div>
-							</div>
+							</div> -->
 							<!-- 프로필 end -->
 
 							<!-- 등급 start -->

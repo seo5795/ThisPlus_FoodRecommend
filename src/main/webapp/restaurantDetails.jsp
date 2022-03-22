@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>    
+	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!doctype html>
 <html class="no-js" lang="ko">
 
@@ -14,13 +14,16 @@
 
 
 <!-- <link rel="manifest" href="site.webmanifest"> -->
-<link rel="shortcut icon" type="image/x-icon" href="img/favicon-customer.ico">
+<link rel="shortcut icon" type="image/x-icon"
+	href="img/favicon-customer.ico">
 <!-- Place favicon.ico in the root directory -->
 
 <!-- Google Web Fonts by JHS -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Gothic+A1:wght@600&display=swap" rel="stylesheet">
+<link
+	href="https://fonts.googleapis.com/css2?family=Gothic+A1:wght@600&display=swap"
+	rel="stylesheet">
 
 <!-- 별점 api 관련 -->
 <script src="http://code.jquery.com/jquery-latest.min.js"></script>
@@ -65,11 +68,11 @@ $(function() {
 </head>
 
 <body>
-	
-	
-	
-	
-	
+
+
+
+
+
 	<!-- 구글맵 API -->
 	<!--[if lte IE 9]>
             <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
@@ -94,168 +97,151 @@ $(function() {
 				<div class="col-lg-8 posts-list">
 					<div class="single-post">
 						<div class="feature-img">
-							<img class="img-fluid" src="img/blog/single_blog_1.png"
-								alt="크롤링한 사진">
+							<img class="img-fluid" src="${rdatas.resPic}" alt="크롤링한 사진">
 							<!--식당 사진 -->
 						</div>
 						<div class="blog_details">
-							<h2>식당 이름</h2>
-							<div class="starRead">평점</div>
+							<h2>${rdatas.resName}</h2>
+							<div class="starRead">${rdatas.resAvg}</div>
 
-							<div class="quote-wrapper">
-								<div class="quotes">식당 상세 정보 크롤링 식당 주소</div>
-							</div>
-						</div>
-					</div>
-
-
-					<div class="navigation-top">
-						<div class="d-sm-flex justify-content-between text-center">
-							<p class="like-info">
-								<span class="align-middle"><i class="fa fa-heart"></i></span>
-								Lily and 4 people like this
-							</p>
-							<div class="col-sm-4 text-center my-2 my-sm-0">
-								<!-- <p class="comment-count"><span class="align-middle"><i class="fa fa-comment"></i></span> 06 Comments</p> -->
-							</div>
-							<ul class="social-icons">
-								<li><a href="#"><i class="fa fa-facebook-f"></i></a></li>
-								<li><a href="#"><i class="fa fa-twitter"></i></a></li>
-								<li><a href="#"><i class="fa fa-dribbble"></i></a></li>
-								<li><a href="#"><i class="fa fa-behance"></i></a></li>
-							</ul>
-						</div>
-						<div class="navigation-area">
-							<div class="row">
-								<div
-									class="col-lg-6 col-md-6 col-12 nav-left flex-row d-flex justify-content-start align-items-center">
-									<div class="thumb">
-										<a href="#"> <img class="img-fluid"
-											src="img/post/preview.png" alt="">
-										</a>
-									</div>
-									<div class="arrow">
-										<a href="#"> <span class="lnr text-white ti-arrow-left"></span>
-										</a>
-									</div>
-									<div class="detials">
-										<p>Prev Post</p>
-										<a href="#">
-											<h4>Space The Final Frontier</h4>
-										</a>
-									</div>
-								</div>
-								<div
-									class="col-lg-6 col-md-6 col-12 nav-right flex-row d-flex justify-content-end align-items-center">
-									<div class="detials">
-										<p>Next Post</p>
-										<a href="#">
-											<h4>Telescopes 101</h4>
-										</a>
-									</div>
-									<div class="arrow">
-										<a href="#"> <span class="lnr text-white ti-arrow-right"></span>
-										</a>
-									</div>
-									<div class="thumb">
-										<a href="#"> <img class="img-fluid"
-											src="img/post/next.png" alt="">
-										</a>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="blog-author">
-						<div class="media align-items-center">
-							<img src="img/blog/author.png" alt="">
-							<div class="media-body">
-								<h4>사장님의 식당 소개</h4>
-								</a>
-								<p>Second divided from form fish beast made. Every of seas
-									all gathered use saying you're, he our dominion twon Second
-									divided from</p>
-							</div>
-						</div>
-					</div>
-
-					<div class="comments-area">
-						<!-- 리뷰 -->
-						<h4>리뷰</h4>
-						<c:forEach var="v" items="${datas}">
-						<c:set var="vo" value="${v.revVO }"/>
-							<div class="comment-list">
-								<div class="single-comment justify-content-between d-flex">
-									<div class="user justify-content-between d-flex">
-										<div class="thumb">
-											<img src="${vo.revPic}" alt="">
+							<div class="blog-author">
+								<div class="media align-items-center" style="display: inline">
+									<div class="media-body">
+										<div class="quotes">
+											<div>주소: ${rdatas.resAdd}</div>
 										</div>
-										<div class="desc">
-											<p class="comment">${vo.revCont}</p>
-											<div class="d-flex justify-content-between">
-												<div class="d-flex align-items-center">
-													<h5>
-														<p>${vo.memId}</p>
-													</h5>
-													<p class="date">${vo.revDate}</p>
-												</div>
-											</div>
+									</div>
+									<div class="media-body">
+										<div class="quotes">
+											<div>연락처: ${rdatas.resPhone}</div>
+										</div>
+									</div>
+									<div class="media-body">
+										<div class="quotes">
+											<div>카테고리: ${rdatas.resCategory}</div>
+										</div>
+									</div>
+
+
+								</div>
+							</div>
+						</div>
+					</div>
+
+				</div>
+			</div>
+
+
+			<div class="navigation-top">
+
+				<div class="navigation-area">
+
+					<h2>메뉴</h2>
+					<!-- 메뉴등록 -->
+
+					<!-- 식당주인만 보이는 메뉴 -->
+					<c:if test="${rdatas.memId eq memberid}">
+						<a href="menuInsert.jsp?${rdatas.resId}">메뉴등록</a>
+					</c:if>
+					<hr>
+					<c:forEach var="mlist" items="${mdatas}">
+						<div>
+							<div>
+								<a
+									href="menudetail.do?menuId=${mlist.menuId}&resId=${rdatas.resId}"><h4
+										style="text-align: left">${mlist.menuName}</h4> <!-- 식당주인만 보이는 메뉴 -->
+									<c:if test="${rdatas.memId eq memberid}">
+										<!-- 메뉴수정삭제 -->
+										<a href="menuDetail.jsp?${rdatas.resId}">메뉴수정/삭제</a>
+									</c:if> </a>
+
+
+								<h5 style="text-align: right">${mlist.menuPrice}</h5>
+							</div>
+						</div>
+					</c:forEach>
+
+				</div>
+			</div>
+
+
+			<div class="comments-area">
+				<!-- 리뷰 -->
+				<h4>리뷰</h4>
+				<c:forEach var="v" items="${datas}">
+					<c:set var="vo" value="${v.revVO }" />
+					<div class="comment-list">
+						<div class="single-comment justify-content-between d-flex">
+							<div class="user justify-content-between d-flex">
+								<div class="thumb">
+									<img src="${vo.revPic}" alt="">
+								</div>
+								<div class="desc">
+									<p class="comment">${vo.revCont}</p>
+									<div class="d-flex justify-content-between">
+										<div class="d-flex align-items-center">
+											<h5>
+												<p>${vo.memId}</p>
+											</h5>
+											<p class="date">${vo.revDate}</p>
 										</div>
 									</div>
 								</div>
 							</div>
-						</c:forEach>
-						<button type="submit"
-							class="button button-contactForm btn_1 boxed-btn">
-							<a href="detail.do?a=${a}&b=${b+5}">더보기&nbsp;</a>
-						</button>
-
+						</div>
 					</div>
+				</c:forEach>
+				<button type="submit"
+					class="button button-contactForm btn_1 boxed-btn">
+					<a href="detail.do?a=${a}&b=${b+5}">더보기&nbsp;</a>
+				</button>
 
-					<div class="comment-form">
-						<c:set var="vo" value="${v.revVO }"/>
-						<!-- 리뷰 작성 -->
-						<h4>리뷰 남기기</h4>
-						<!-- 리뷰 별점 -->
-						<div class="star"></div>
-						<form method="post" action="revinsert.do"
-							enctype="multipart/form-data">
-							<div class="col-sm-6">
-								<div class="form-group">
-									<rev:detailboard type="board" />
-									<input type="hidden" name="memId" value="${vo.memId}"> <input
-										type="hidden" name="revTitle" value="${vo.revTitle}"> <input
-										class="form-control valid" name="revtitle" id="revtitle"
-										type="text" placeholder="제목">
-								</div>
-							</div>
-							<label for="starRating"> </label><input type="hidden"
-								id="starRating" name="star" value="5" />
-							<div class="row">
-								<div class="col-12">
-								<rev:detailboard type="reply" /> 
-									<input type="hidden" name="memId" value="${vo.memId}"> <input
-										type="hidden" name="revContent" value="${vo.revContent}">
-									<div class="form-group">
-										<textarea class="form-control w-100" id="comment" cols="30"
-											rows="9" placeholder="200자 내외 작성"></textarea>
-									</div>
-								</div>
-							</div>
-							<br>
-							<!-- 이미지 등록 -->
+			</div>
 
-							<div class="image-container">
-								<input style="display: block;" type="file" id="bb">
-							</div>
-							<br> <br>
+			<div class="comment-form">
+				<c:set var="vo" value="${v.revVO }" />
+				<!-- 리뷰 작성 -->
+				<h4>리뷰 남기기</h4>
+				<!-- 리뷰 별점 -->
+				<div class="star"></div>
+				<form method="post" action="revinsert.do"
+					enctype="multipart/form-data">
+					<div class="col-sm-6">
+						<div class="form-group">
+							<rev:detailboard type="board" />
+							<input type="hidden" name="memId" value="${vo.memId}"> <input
+								type="hidden" name="revTitle" value="${vo.revTitle}"> <input
+								class="form-control valid" name="revtitle" id="revtitle"
+								type="text" placeholder="제목">
+						</div>
+					</div>
+					<label for="starRating"> </label><input type="hidden"
+						id="starRating" name="star" value="5" />
+					<div class="row">
+						<div class="col-12">
+							<rev:detailboard type="reply" />
+							<input type="hidden" name="memId" value="${vo.memId}"> <input
+								type="hidden" name="revContent" value="${vo.revContent}">
 							<div class="form-group">
-								<button type="submit" id="save" name="reviewdata"
-									class="button button-contactForm btn_1 boxed-btn">작성</button>
+								<textarea class="form-control w-100" id="comment" cols="30"
+									rows="9" placeholder="200자 내외 작성"></textarea>
 							</div>
-						</form>
-						<!-- 이미지 프리뷰  -->
-						<script type="text/javascript">
+						</div>
+					</div>
+					<br>
+					<!-- 이미지 등록 -->
+
+					<div class="image-container">
+						<input style="display: block;" type="file" id="bb">
+					</div>
+					<br> <br>
+					<div class="form-group">
+						<button type="submit" id="save" name="reviewdata"
+							class="button button-contactForm btn_1 boxed-btn">작성</button>
+					</div>
+				</form>
+				<!-- 이미지 프리뷰  -->
+				<script type="text/javascript">
  
 	function readImage(input) {
 		console.log('확인');
@@ -279,33 +265,33 @@ $(function() {
 	    readImage(e.target)
 	})
 	</script>
-						<img style="width: 300px; height: 300px;" id="cc"
-							src="https://dummyimage.com/500x500/ffffff/000000.png&text=preview+image">
-					</div>
-				</div>
+				<img style="width: 300px; height: 300px;" id="cc"
+					src="https://dummyimage.com/500x500/ffffff/000000.png&text=preview+image">
+			</div>
+		</div>
 
-				<div class="col-lg-4">
-					<div class="blog_right_sidebar">
-						<aside class="single_sidebar_widget search_widget">
-							<form action="#">
-								<div class="form-group">
-									<div class="input-group mb-3">
-										<input type="text" class="form-control"
-											placeholder='Search Keyword' onfocus="this.placeholder = ''"
-											onblur="this.placeholder = 'Search Keyword'">
-										<div class="input-group-append">
-											<button class="btn" type="button">
-												<i class="ti-search"></i>
-											</button>
-										</div>
-									</div>
+		<div class="col-lg-4">
+			<div class="blog_right_sidebar">
+				<aside class="single_sidebar_widget search_widget">
+					<form action="#">
+						<div class="form-group">
+							<div class="input-group mb-3">
+								<input type="text" class="form-control"
+									placeholder='Search Keyword' onfocus="this.placeholder = ''"
+									onblur="this.placeholder = 'Search Keyword'">
+								<div class="input-group-append">
+									<button class="btn" type="button">
+										<i class="ti-search"></i>
+									</button>
 								</div>
-								<button
-									class="button rounded-0 primary-bg text-white w-100 btn_1 boxed-btn"
-									type="submit">Search</button>
-							</form>
-						</aside>
-<!-- 관리자일때 식당 수정 및 삭제 아직 미완성  
+							</div>
+						</div>
+						<button
+							class="button rounded-0 primary-bg text-white w-100 btn_1 boxed-btn"
+							type="submit">Search</button>
+					</form>
+				</aside>
+				<!-- 관리자일때 식당 수정 및 삭제 아직 미완성  
 <aside class=" single_sidebar_widget search_widget">
 							<div class="blog_right_sidebar">
 							<div><rev:detailboard type="adminupdate" /></div>
@@ -315,19 +301,18 @@ $(function() {
 						</aside>
 -->
 
-						<aside class=" single_sidebar_widget search_widget">
-							<div class="blog_right_sidebar">
-								<h4 class="widget_title">식당 지도</h4>
-								<div id="map" style="width: 150px; height: 150px;"></div>
-								    <script
-      src="https://maps.googleapis.com/maps/api/js?&callback=initMap&v=weekly"
-      async
-    ></script>
-							</div>
-						</aside>
+				<aside class=" single_sidebar_widget search_widget">
+					<div class="blog_right_sidebar">
+						<h4 class="widget_title">식당 지도</h4>
+						<div id="map" style="width: 150px; height: 150px;"></div>
+						<script
+							src="https://maps.googleapis.com/maps/api/js?&callback=initMap&v=weekly"
+							async></script>
 					</div>
-				</div>
+				</aside>
 			</div>
+		</div>
+		</div>
 		</div>
 	</section>
 	<!--================ Blog Area end =================-->
@@ -412,4 +397,3 @@ $(function() {
 </script>
 </body>
 </html>
-    

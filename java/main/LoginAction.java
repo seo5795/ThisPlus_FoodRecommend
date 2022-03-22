@@ -34,6 +34,7 @@ public class LoginAction implements Action {
          HttpSession session=request.getSession();
          session.setAttribute("member", mvo.getMemName());
          session.setAttribute("memberid", mvo.getMemId());
+         session.setAttribute("meberRank", mvo.getMemRank());
          forward=new ActionForward();
          System.out.println(mvo.getMemRank());
          if(mvo.getMemRank()==2) {

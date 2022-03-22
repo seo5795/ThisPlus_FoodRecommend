@@ -141,7 +141,7 @@
 					<div class="col-xl-4 col-md-6">
 						<div class="single_service">
 							<div class="service_icon">
-								<a href="restaurantDetails.jsp"> <img alt=""
+								<a href="resdetail.do?resId=${ad.resId}"> <img alt=""
 									src="${ad.resPic}" style="width: 100%; height: auto;"></a>
 							</div>
 							<h4>
@@ -150,9 +150,9 @@
 							<h5>
 								<strong>평점: </strong> ${ad.resAvg}점
 							</h5>
-							<br> <a href="#" class="Choose_restaurant"> <span><strong>위치:
+							<br>  <span><strong>위치:
 								</strong>${ad.resAdd}</span>
-							</a>
+							
 						</div>
 					</div>
 
@@ -209,13 +209,13 @@
 					<div class="col-xl-4 col-md-6">
 						<div class="single_service">
 							<div class="service_icon">
-								<a href="#"> <img alt="" src="${md.resPic}"
+								<a href="resdetail.do?resId=${md.resId}"> <img alt="" src="${md.resPic}"
 									style="width: 100%"></a>
 							</div>
 							<h4>${md.resName}</h4>
 							<h5>평점: ${md.resAvg}점</h5>
-							<br> <a href="#" class="Choose_restaurant"> <span>위치:${md.resAdd}</span>
-							</a>
+							<br>  <span>위치:${md.resAdd}</span>
+							
 						</div>
 					</div>
 
@@ -255,13 +255,13 @@
 					<div class="col-xl-4 col-md-6">
 						<div class="single_service">
 							<div class="service_icon">
-								<a href="#"> <img alt="" src="${ld.resPic}"
+								<a href="resdetail.do?resId=${ld.resId}"> <img alt="" src="${ld.resPic}"
 									style="width: 100%"></a>
 							</div>
 							<h4>${ld.resName}</h4>
 							<h5>평점: ${ld.resAvg}점</h5>
-							<br> <a href="#" class="Choose_restaurant"> <span>위치:${ld.resAdd}</span>
-							</a>
+							<br>  <span>위치:${ld.resAdd}</span>
+							
 						</div>
 					</div>
 

@@ -44,6 +44,7 @@ drop table restaurant;
 -- 식당정보 테이블 생성
 create table restaurant(
 	resId int primary key,
+	memId varchar(100) default 'admin',
 	resName varchar(100) not null,
 	resAvg number(3,2) default 0.0,
 	resAdd varchar(200),
@@ -138,8 +139,9 @@ create table menu(
 	menuPic varchar(200)
 );
 -- 기준 데이터 삽입(아이디 정리용)
-insert into menu (menuId,resId,menuName,menuPrice,menuCategory)
- values (100,100,'기준메뉴',3500,'한식');
+
+ insert into menu (menuId,resId,menuName,menuPrice,menuCategory)
+ values ((select nvl(max(menuId),4000)+1 from menu),1003,'기준메뉴',3500,'한식');
 -- 메뉴 데이터 삽입
 insert into menu (menuId,resId,menuName,menuPrice,menuCategory,menuPic)
  values ((select nvl(max(menuId),4000)+1 from menu),101,'불탄볶음밥',10000,'분식','/images/coupon/ksj.jpeg');

@@ -20,11 +20,11 @@ public class MenuDAO {
 	// 메뉴 내용 조회
 	static final String menuSelectOne = "select * from menu where menuId=?";
 	// 메뉴 리스트 조회(유저용:식당ID 기준으로 소팅)
-	static final String menuSelectAll = "select * from menu";
+	static final String menuSelectAll = "select * from menu where resId=?";
 	// 메뉴 리스트 조회(관리자용:메뉴ID 기준으로 소팅)
 	static final String menuSelectAllAdmin = "select * from menu where menuId=?";
 	// 메뉴 수정
-	static final String menuUpdate = "update menu set menuName=?,menuPrice=?,menuCategory=?',menuPic=? where menuId=?";
+	   static final String menuUpdate = "update menu set menuName=?,menuPrice=?,menuCategory=? where menuId=?";
 	// 메뉴 삭제
 	static final String menuDelete = "delete from menu where menuId=?";
 
@@ -83,6 +83,7 @@ public class MenuDAO {
 		conn=JDBCUtil.connect();
 		try {
 			pstmt=conn.prepareStatement(menuSelectAll);
+			pstmt.setInt(1, vo.getResId());
 			ResultSet rs=pstmt.executeQuery();
 			while(rs.next()) {
 				MenuVO data=new MenuVO(); 
@@ -130,24 +131,24 @@ public class MenuDAO {
 	}
 
 	// 메뉴 수정
-	public boolean menuUpdate(MenuVO vo) {
-		conn = JDBCUtil.connect();
-		try {
-			pstmt = conn.prepareStatement(menuUpdate);
-			pstmt.setString(1, vo.getMenuName());
-			pstmt.setInt(2, vo.getMenuPrice());
-			pstmt.setString(3, vo.getMenuCategory());
-			pstmt.setString(4, vo.getMenuPic());
-			pstmt.setInt(5, vo.getMenuId());
-			pstmt.executeUpdate();
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-			return false;
-		}
-		JDBCUtil.disconnect(pstmt, conn);
-		return true;
-	}
+	   public boolean menuUpdate(MenuVO vo) {
+	      conn = JDBCUtil.connect();
+	      try {
+	         pstmt = conn.prepareStatement(menuUpdate);
+	         pstmt.setString(1, vo.getMenuName());
+	         pstmt.setInt(2, vo.getMenuPrice());
+	         pstmt.setString(3, vo.getMenuCategory());
+	         //pstmt.setString(4, vo.getMenuPic());
+	         pstmt.setInt(4, vo.getMenuId());
+	         pstmt.executeUpdate();
+	      } catch (SQLException e) {
+	         // TODO Auto-generated catch block
+	         e.printStackTrace();
+	         return false;
+	      }
+	      JDBCUtil.disconnect(pstmt, conn);
+	      return true;
+	   }
 
 	// 메뉴 삭제
 	public boolean menuDelete(MenuVO vo) {

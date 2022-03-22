@@ -35,7 +35,7 @@ public class ReslistAction implements Action{
 			 searchList=new ArrayList<String>();
 		 }
 		
-		 searchList.add(search);
+		 searchList.add(0,search);
 		 
 		 //application에 검색리스트 저장
 		 application.setAttribute("searchList", searchList); 
