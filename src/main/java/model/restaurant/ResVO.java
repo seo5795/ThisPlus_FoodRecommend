@@ -2,6 +2,7 @@ package model.restaurant;
 
 public class ResVO {
 	private int resId;			// 식당 번호(고유값)
+	private String memId;
 	private String resName;		// 식당 이름
 	private double resAvg;		// 식당 평점
 	private String resAdd;		// 식당 주소
@@ -59,12 +60,22 @@ public class ResVO {
 	public void setResPic(String resPic) {
 		this.resPic = resPic;
 	}
+	
+	
+	public String getMemId() {
+		return memId;
+	}
+	public void setMemId(String memId) {
+		this.memId = memId;
+	}
+	
 	@Override
 	public String toString() {
-		return "ResVO [resId=" + resId + ", resName=" + resName + ", resAvg=" + resAvg + ", resAdd=" + resAdd
-				+ ", resPhone=" + resPhone + ", resCategory=" + resCategory + ", resPark=" + resPark + ", resPic="
-				+ resPic + "]";
+		return "ResVO [resId=" + resId + ", memId=" + memId + ", resName=" + resName + ", resAvg=" + resAvg
+				+ ", resAdd=" + resAdd + ", resPhone=" + resPhone + ", resCategory=" + resCategory + ", resPark="
+				+ resPark + ", resPic=" + resPic + "]";
 	}
+
 	
 	
 }

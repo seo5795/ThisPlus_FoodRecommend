@@ -30,7 +30,9 @@ public class ResDAO {
 	// 회원 리스트 조회(회원명 검색기능)
 	static final String resSelectAllSearch = "select * from restaurant where resName like '%'||?||'%'";
 	// 식당 수정
-	static final String resUpdate = "update restaurant set resName=?,resAvg=?,resAdd=?,resPhone=?,resCategory=?,resPic=? where resId=?";
+	static final String resUpdate = "update restaurant set resName=?,resAvg=?,resAdd=?,resPhone=?,resCategory=? where resId=?";
+	// 식당 평점 수정
+	static final String resAvgUpdate = "update restaurant set resAvg=? where resId=?";
 	// 식당 삭제
 	static final String resDelete = "delete from restaurant where resId=?";
 
@@ -215,8 +217,7 @@ public class ResDAO {
 			pstmt.setString(3, vo.getResAdd());
 			pstmt.setString(4, vo.getResPhone());
 			pstmt.setString(5, vo.getResCategory());
-			pstmt.setString(6, vo.getResPic());
-			pstmt.setInt(7, vo.getResId());
+			pstmt.setInt(6, vo.getResId());
 			pstmt.executeUpdate();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -226,7 +227,24 @@ public class ResDAO {
 		JDBCUtil.disconnect(pstmt, conn);
 		return true;
 	}
-
+	// 식당 평점 수정
+	public boolean resAvgUpdate(ResVO vo) {
+		conn = JDBCUtil.connect();
+		try {
+			pstmt = conn.prepareStatement(resAvgUpdate);
+			pstmt.setDouble(1, vo.getResAvg());
+			pstmt.setInt(2, vo.getResId());
+			
+			pstmt.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return false;
+		}
+		JDBCUtil.disconnect(pstmt, conn);
+		return true;
+	}
+	
 	// 식당 삭제
 	public boolean resDelete(ResVO vo) {
 		conn = JDBCUtil.connect();

@@ -40,6 +40,7 @@ public class SnsLoginAction implements Action{
 		HttpSession session=req.getSession();
 		session.setAttribute("member", mvo.getMemName());
 		session.setAttribute("memberid", mvo.getMemId());
+		 session.setAttribute("meberRank", mvo.getMemRank());
 		forward=new ActionForward();
 		System.out.println(mvo.getMemRank());
 		forward.setPath("main.do");

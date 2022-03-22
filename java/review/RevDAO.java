@@ -17,9 +17,13 @@ public class RevDAO {
 
 	// 리뷰 sql 쿼리
 	// 리뷰 등록
+	//	static final String revInsert = "insert into review"
+	//			+" (revId,memId,memName,resId,revTitle,revCont,revDate,revScore,revPic)"
+	//			+" values ((select nvl(max(revId),2000)+1 from review),?,?,?,?,?,sysdate,?,?)";
+	// 리뷰 등록
 	static final String revInsert = "insert into review"
-			+" (revId,memId,memName,resId,revTitle,revCont,revDate,revScore,revPic)"
-			+" values ((select nvl(max(revId),2000)+1 from review),?,?,?,?,?,sysdate,?,?)";
+			+" (revId,memId,memName,resId,revTitle,revCont,revScore)"
+			+" values ((select nvl(max(revId),2000)+1 from review),?,?,?,?,?,?)";
 	// 리뷰 내용 조회
 	static final String revSelectOne = "select * from review where revId=?";
 	// 리뷰 리스트 조회(유저용:식당ID 기준으로 소팅)
@@ -27,10 +31,13 @@ public class RevDAO {
 	// 리뷰 리스트 조회(관리자용:리뷰ID 기준으로 소팅)
 	static final String revSelectAllAdmin = "select * from review where revId=?";
 	// 리뷰 수정
-	static final String revUpdate = "update review set revTitle=?,revCont=?,revScore=?,revPic=? where revId=?";
+	static final String revUpdate = "update review set revTitle=?,revCont=?,revScore=?,revPic=? where revId=?";	
 	// 리뷰 삭제
 	static final String revDelete = "delete from review where revId=?";
-
+	//식당당 리뷰평점 평균
+	static final String revAvg = "SELECT ROUND(AVG(revScore),1) AS avg FROM review where resId=? GROUP BY resId";
+	
+	
 	// 리뷰 등록
 	// 고민 : 회원정보와 식당정보는 Contoroller에서 연결해야 겠지?
 	public boolean revInsert(RevVO vo) {
@@ -42,9 +49,8 @@ public class RevDAO {
 			pstmt.setInt(3, vo.getResId());
 			pstmt.setString(4, vo.getRevTitle());
 			pstmt.setString(5, vo.getRevCont());
-			pstmt.setDate(6, (Date)vo.getRevDate()); // String -> Date 형변환
-			pstmt.setDouble(7, vo.getRevScore());
-			pstmt.setString(8, vo.getRevPic());
+			pstmt.setDouble(6, vo.getRevScore());
+			//pstmt.setString(8, vo.getRevPic());
 			pstmt.executeUpdate();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -54,7 +60,26 @@ public class RevDAO {
 		JDBCUtil.disconnect(pstmt, conn);
 		return true;
 	}
-
+	
+	public int revAvg(int resId) {
+		conn = JDBCUtil.connect();
+		int avg=0;
+		try {
+			pstmt = conn.prepareStatement(revAvg);
+			pstmt.setInt(1, resId);
+			ResultSet rs = pstmt.executeQuery();
+			if (rs.next()) {
+				avg = rs.getInt("avg");
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			
+		}
+		JDBCUtil.disconnect(pstmt, conn);
+		return avg;
+	}
+	
 	// 리뷰 내용 조회
 	public RevVO revSelectOne(RevVO vo) {
 		RevVO data = null;
@@ -68,7 +93,7 @@ public class RevDAO {
 				// 날짜 표기 방식 정의
 				SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 				sdf.format(rs.getDate("revDate"));
-				
+
 				data = new RevVO();
 				data.setRevId(rs.getInt("revId"));
 				data.setMemId(rs.getString("memId"));
@@ -99,7 +124,7 @@ public class RevDAO {
 				// 날짜 표기 방식 정의
 				SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 				sdf.format(rs.getDate("revDate"));
-				
+
 				RevVO data=new RevVO(); 
 				data = new RevVO();
 				data.setRevId(rs.getInt("revId"));
@@ -132,7 +157,7 @@ public class RevDAO {
 				// 날짜 표기 방식 정의
 				SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 				sdf.format(rs.getDate("revDate"));
-				
+
 				RevVO data=new RevVO(); 
 				data = new RevVO();
 				data.setRevId(rs.getInt("revId"));
@@ -189,9 +214,9 @@ public class RevDAO {
 		JDBCUtil.disconnect(pstmt, conn);
 		return true;
 	}
-	
+
 	// 예비 메서드(추가 기능 적용)
 	public void unknown() {
-		
+
 	}
 }

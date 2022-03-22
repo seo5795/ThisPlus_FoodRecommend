@@ -33,6 +33,8 @@ public class ResinsertAction implements Action {
 		HttpSession session = request.getSession();
 		rvo.setMemId((String)session.getAttribute("memberid"));
 		
+
+		
 		if(resDAO.resInsert(rvo)) {
 			forward=new ActionForward();
 			forward.setPath("/main.do"); // 식당 등록을 마치면 메인으로 이동

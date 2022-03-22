@@ -50,7 +50,7 @@ media (min-width: 992px)
 									<li><a href="Notice.jsp">더보기<i class="ti-angle-down"></i></a>
 										<ul class="submenu">
 											<li><a href="Notice.jsp#company">회사소개</a></li>
-											<li><a href="Notice.jsp#notice">공지사항</a></li>
+											<li><a href="notice.do" target="_blank">공지사항</a></li>
 											<li><a href="Notice.jsp#faq">FAQ</a></li>
 											<li><a href="Notice.jsp#ask">고객센터</a></li>
 										</ul></li>

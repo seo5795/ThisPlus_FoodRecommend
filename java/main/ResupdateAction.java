@@ -22,19 +22,21 @@ public class ResupdateAction implements Action {
 		ActionForward forward=null;
 		ResDAO resDAO=new ResDAO();
 		ResVO rvo=new ResVO();
+		System.out.println("Action:"+request.getParameter("resId"));
 		rvo.setResName(request.getParameter("resName"));
 		rvo.setResAvg(Double.parseDouble(request.getParameter("resAvg"))); // 더블 형변환하였음
 		rvo.setResAdd(request.getParameter("resAdd")); // 주소
 		rvo.setResPhone(request.getParameter("resPhone"));
 		rvo.setResCategory(request.getParameter("resCategory"));
-		rvo.setResPic(request.getParameter("resPic"));
 		rvo.setResId(Integer.parseInt(request.getParameter("resId")));
+		System.out.println(1);
 		
 		
 		if(resDAO.resUpdate(rvo)) {
+			request.setAttribute("resId", rvo.getResId());
 			forward=new ActionForward();
-			forward.setPath("/main.do"); // 업데이트를 마치면 메인으로 이동
-			forward.setRedirect(true);
+			forward.setPath("resdetail.do"); // 업데이트를 마치면 메인으로 이동
+			forward.setRedirect(false);
 		}
 
 		return forward;

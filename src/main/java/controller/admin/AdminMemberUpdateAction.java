@@ -13,37 +13,41 @@ import model.member.MemVO;
 
 public class AdminMemberUpdateAction implements Action {
 
-	@Override
-	public ActionForward execute(HttpServletRequest req, HttpServletResponse res)
-			throws ServletException, IOException, Exception {
+   @Override
+   public ActionForward execute(HttpServletRequest req, HttpServletResponse res)
+         throws ServletException, IOException, Exception {
 
-		ActionForward forward=new ActionForward();
+      ActionForward forward=new ActionForward();
 
-		String mid = req.getParameter("mid");
-		MemDAO memDAO = new MemDAO();
-		MemVO memVO = new MemVO();
-		System.out.println(req.getParameter("memId"));
-		System.out.println(req.getParameter("memName"));
-		System.out.println(req.getParameter("memRank"));
-		memVO.setMemId(req.getParameter("memId"));
-		memVO.setMemAddress(req.getParameter("memAddress"));
-		memVO.setMemEmail(req.getParameter("memEmail"));
-		memVO.setMemName(req.getParameter("memName"));
-		memVO.setMemPhone(req.getParameter("memPhone"));
-		
-		memVO.setMemPoint(Integer.parseInt(req.getParameter("memPoint")));
-		memVO.setMemPw(req.getParameter("memPw"));
-		
-		
-		
-		
-		if (memDAO.memUpdate(memVO)) {
-			forward.setPath("adminmember.did");
-			forward.setRedirect(true);
-		} else {
-			throw new Exception("로그: AMUAction 업데이트 중 오류 발생!");
-		}
-		return forward;
-	}
+      MemDAO memDAO = new MemDAO();
+      MemVO memVO = new MemVO();
+      memVO.setMemId((String)req.getAttribute("memId"));
+      memVO.setMemName((String)req.getAttribute("memName"));
+      memVO.setMemEmail((String)req.getAttribute("memEmail"));
+      memVO.setMemPhone((String)req.getAttribute("memPhone"));
+      memVO.setMemAddress((String)req.getAttribute("memAddress"));
+      memVO.setMemPoint(Integer.parseInt((String)req.getAttribute("memPoint")));
+      memVO.setMemPw((String)req.getAttribute("memPw"));
+      memVO.setMemPic((String)req.getAttribute("memPic"));
+      //memVO.setMemPw(req.getParameter("memPw"));
+
+      System.out.println("2회원계정 : "+memVO.getMemId());
+      System.out.println("2회원이름 : "+memVO.getMemName());
+      System.out.println("2회원메일 : "+memVO.getMemEmail());
+      System.out.println("2회원전화 : "+memVO.getMemPhone());
+      System.out.println("2회원주소 : "+memVO.getMemAddress());
+      System.out.println("2회원점수 : "+memVO.getMemPoint());
+      System.out.println("2회원비번 : "+memVO.getMemPw());
+      System.out.println("2회원사진 : "+memVO.getMemPic());
+
+
+      if (memDAO.memUpdate(memVO)) {
+         forward.setPath("adminmember.did");
+         forward.setRedirect(true);
+      } else {
+         throw new Exception("로그: AMUAction 업데이트 중 오류 발생!");
+      }
+      return forward;
+   }
 
 }

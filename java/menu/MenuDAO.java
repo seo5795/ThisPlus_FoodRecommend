@@ -59,7 +59,6 @@ public class MenuDAO {
 			pstmt.setInt(1, vo.getMenuId());
 			ResultSet rs = pstmt.executeQuery();
 			if (rs.next()) {
-				if (rs.getInt("menuId")==(vo.getMenuId())) {
 					data = new MenuVO();
 					data.setMenuId(rs.getInt("menuId"));
 					data.setResId(rs.getInt("resId"));
@@ -67,13 +66,14 @@ public class MenuDAO {
 					data.setMenuPrice(rs.getInt("menuPrice"));	
 					data.setMenuCategory(rs.getString("menuCategory"));
 					data.setMenuPic(rs.getString("menuPic"));
-				}
+				
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		JDBCUtil.disconnect(pstmt, conn);
+		System.out.println(data);
 		return data;
 	}
 

@@ -7,14 +7,14 @@
 <title>Insert title here</title>
 
 <style type="text/css">
-	
-	.footer_area .footer_widget ul li a:hover{
-		font-weight: bolder;
-		color: black;
-	}
-	.prohibited {
-		cursor: not-allowed;
-	}
+.footer_area .footer_widget ul li a:hover {
+	font-weight: bolder;
+	color: black;
+}
+
+.prohibited {
+	cursor: not-allowed;
+}
 </style>
 
 </head>
@@ -29,7 +29,8 @@
 						<div class="footer_widget">
 							<h3 class="heading">company</h3>
 							<ul>
-								<li><a href="Notice.jsp#company" class="available">회사 소개</a></li>
+								<li><a href="Notice.jsp#company" class="available">회사
+										소개</a></li>
 								<li><a class="prohibited" onclick="msg();">채용 정보</a></li>
 								<li><a class="prohibited" onclick="msg();">투자 정보</a></li>
 							</ul>
@@ -56,24 +57,25 @@
 							<ul>
 								<li><a class="prohibited" onclick="msg();">이용약관</a></li>
 								<li><a class="prohibited" onclick="msg();">개인정보처리방침</a></li>
-								<li><a class="prohibited" onclick="msg();">위치기반서비스<br>이용약관</a></li>
+								<li><a class="prohibited" onclick="msg();">위치기반서비스<br>이용약관
+								</a></li>
 								<li><a class="prohibited" onclick="msg();">청소년 보호 정책</a></li>
 							</ul>
 						</div>
 					</div>
 
 
-					<!-- 뉴스 레터 -->
+					<!—- 뉴스 레터 -—>
 					<div class="col-xl-4 col-md-12 col-lg-4">
 						<div class="footer_widget">
 							<h3 class="heading">Newsletter</h3>
-							<p class="offer_text">
-								Do you want to be recommended a popular restaurant?
-							</p>
-							
-								<!-- 뉴스 레터 이메일 입력 -->
-							<form action="#">
-								<input type="text" placeholder="Your email address">
+							<p class="offer_text">Do you want to be recommended a popular
+								restaurant?</p>
+
+							<!— 뉴스 레터 이메일 입력 —>
+							<form action="Newsletter.do" method="post">
+								<input name="useremail" type="text"
+									placeholder="Your email address">
 								<button type="submit">
 									<i class="ti-arrow-right"></i>
 								</button>
@@ -119,12 +121,12 @@
 			</div>
 		</div>
 	</footer>
-	
+
 	<script type="text/javascript">
-		function msg(){
+		function msg() {
 			alert('추후 업데이트 예정!');
 		}
 	</script>
-	
+
 </body>
 </html>

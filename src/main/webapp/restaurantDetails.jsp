@@ -31,7 +31,7 @@
 <script type="text/javascript">
 $(function() {
     $('.star').raty({
-    	
+       
         score: 0
         ,path : "star/images"
         ,width : 200
@@ -42,7 +42,7 @@ $(function() {
         starHalf: 'star-half.png'
     });
     $('.starRead').raty({
-    	readOnly: true, score: 3.5 
+       readOnly: true, score: 3.5 
         ,path : "star/images"
             ,width : 200
             ,half:true,
@@ -87,11 +87,19 @@ $(function() {
 
 	<!-- breadcam_area_start -->
 	<!-- header -->
-	<jsp:include page="common/header.jsp" />
+	<div class="breadcam_area breadcam_bg_1 zigzag_bg_2">
+		<div class="breadcam_inner">
+			<div class="breadcam_text">
+				<h3>식당 상세보기</h3>
+				<p>해당식당의 메뉴와 정보, 회원들의 평가를 볼 수 있습니다.</p>
+			</div>
+		</div>
+	</div>
 	<!-- breadcam_area_end -->
 
 	<!--================Blog Area =================-->
 	<section class="blog_area single-post-area section-padding">
+
 		<div class="container">
 			<div class="row">
 				<div class="col-lg-8 posts-list">
@@ -103,7 +111,6 @@ $(function() {
 						<div class="blog_details">
 							<h2>${rdatas.resName}</h2>
 							<div class="starRead">${rdatas.resAvg}</div>
-
 							<div class="blog-author">
 								<div class="media align-items-center" style="display: inline">
 									<div class="media-body">
@@ -121,198 +128,199 @@ $(function() {
 											<div>카테고리: ${rdatas.resCategory}</div>
 										</div>
 									</div>
-
-
 								</div>
 							</div>
+
 						</div>
 					</div>
 
-				</div>
-			</div>
+					<div class="navigation-top">
+
+						<div class="navigation-area">
+
+							<h2>메뉴</h2>
+							<!-- 메뉴등록 -->
+
+							<!-- 식당주인만 보이는 메뉴 -->
+							<c:if test="${rdatas.memId eq memberid}">
+								<a href="menuInsert.jsp?${rdatas.resId}">[메뉴등록]</a>
+							</c:if>
+							<hr>
+							<c:forEach var="mlist" items="${mdatas}">
+								<div>
+									<div>
+										<h4 style="text-align: left">${mlist.menuName}</h4>
+										<!-- 식당주인만 보이는 메뉴 -->
+										<c:if test="${rdatas.memId eq memberid}">
+											<!-- 메뉴수정삭제 -->
+											<a
+												href="menudetail.do?menuId=${mlist.menuId}&resId=${rdatas.resId}">[메뉴수정/삭제]</a>
+										</c:if>
 
 
-			<div class="navigation-top">
-
-				<div class="navigation-area">
-
-					<h2>메뉴</h2>
-					<!-- 메뉴등록 -->
-
-					<!-- 식당주인만 보이는 메뉴 -->
-					<c:if test="${rdatas.memId eq memberid}">
-						<a href="menuInsert.jsp?${rdatas.resId}">메뉴등록</a>
-					</c:if>
-					<hr>
-					<c:forEach var="mlist" items="${mdatas}">
-						<div>
-							<div>
-								<a
-									href="menudetail.do?menuId=${mlist.menuId}&resId=${rdatas.resId}"><h4
-										style="text-align: left">${mlist.menuName}</h4> <!-- 식당주인만 보이는 메뉴 -->
-									<c:if test="${rdatas.memId eq memberid}">
-										<!-- 메뉴수정삭제 -->
-										<a href="menuDetail.jsp?${rdatas.resId}">메뉴수정/삭제</a>
-									</c:if> </a>
-
-
-								<h5 style="text-align: right">${mlist.menuPrice}</h5>
-							</div>
-						</div>
-					</c:forEach>
-
-				</div>
-			</div>
-
-
-			<div class="comments-area">
-				<!-- 리뷰 -->
-				<h4>리뷰</h4>
-				<c:forEach var="v" items="${datas}">
-					<c:set var="vo" value="${v.revVO }" />
-					<div class="comment-list">
-						<div class="single-comment justify-content-between d-flex">
-							<div class="user justify-content-between d-flex">
-								<div class="thumb">
-									<img src="${vo.revPic}" alt="">
+										<h5 style="text-align: right">${mlist.menuPrice}</h5>
+									</div>
 								</div>
-								<div class="desc">
-									<p class="comment">${vo.revCont}</p>
-									<div class="d-flex justify-content-between">
-										<div class="d-flex align-items-center">
-											<h5>
-												<p>${vo.memId}</p>
-											</h5>
-											<p class="date">${vo.revDate}</p>
+							</c:forEach>
+
+						</div>
+					</div>
+
+
+					<div class="comments-area">
+						<!-- 리뷰 -->
+						<h4>리뷰</h4>
+						<c:forEach var="rev" items="${revdatas}">
+							<div class="comment-list">
+								<div class="single-comment justify-content-between d-flex">
+									<div class="user justify-content-between d-flex">
+										<div class="thumb">
+											<img src="${rev.revPic}" alt="">
+										</div>
+										<div class="desc">
+											<p class="comment">제목 ${rev.revTitle}</p>
+											<div class="d-flex justify-content-between">
+												<div class="d-flex align-items-center">
+													<h5>
+														<p>작성자 ${rev.memId}</p>
+														<p>평점 ${rev.revScore}</p>
+														<p>내용 ${rev.revCont}</p>
+													</h5>
+													<p class="date">${rev.revDate}</p>
+												</div>
+											</div>
 										</div>
 									</div>
 								</div>
 							</div>
-						</div>
-					</div>
-				</c:forEach>
-				<button type="submit"
-					class="button button-contactForm btn_1 boxed-btn">
-					<a href="detail.do?a=${a}&b=${b+5}">더보기&nbsp;</a>
-				</button>
+						</c:forEach>
+						<button type="submit"
+							class="button button-contactForm btn_1 boxed-btn">
+							<a href="detail.do?a=${a}&b=${b+5}">더보기&nbsp;</a>
+						</button>
 
-			</div>
+					</div>
 
-			<div class="comment-form">
-				<c:set var="vo" value="${v.revVO }" />
-				<!-- 리뷰 작성 -->
-				<h4>리뷰 남기기</h4>
-				<!-- 리뷰 별점 -->
-				<div class="star"></div>
-				<form method="post" action="revinsert.do"
-					enctype="multipart/form-data">
-					<div class="col-sm-6">
-						<div class="form-group">
-							<rev:detailboard type="board" />
-							<input type="hidden" name="memId" value="${vo.memId}"> <input
-								type="hidden" name="revTitle" value="${vo.revTitle}"> <input
-								class="form-control valid" name="revtitle" id="revtitle"
-								type="text" placeholder="제목">
-						</div>
-					</div>
-					<label for="starRating"> </label><input type="hidden"
-						id="starRating" name="star" value="5" />
-					<div class="row">
-						<div class="col-12">
-							<rev:detailboard type="reply" />
-							<input type="hidden" name="memId" value="${vo.memId}"> <input
-								type="hidden" name="revContent" value="${vo.revContent}">
-							<div class="form-group">
-								<textarea class="form-control w-100" id="comment" cols="30"
-									rows="9" placeholder="200자 내외 작성"></textarea>
-							</div>
-						</div>
-					</div>
-					<br>
-					<!-- 이미지 등록 -->
 
-					<div class="image-container">
-						<input style="display: block;" type="file" id="bb">
-					</div>
-					<br> <br>
-					<div class="form-group">
-						<button type="submit" id="save" name="reviewdata"
-							class="button button-contactForm btn_1 boxed-btn">작성</button>
-					</div>
-				</form>
-				<!-- 이미지 프리뷰  -->
-				<script type="text/javascript">
- 
-	function readImage(input) {
-		console.log('확인');
-	    // 인풋 태그에 파일이 있는 경우
-	    if(input.files && input.files[0]) {
-	        // 이미지 파일인지 검사 (생략)
-	        // FileReader 인스턴스 생성
-	        const reader = new FileReader()
-	        // 이미지가 로드가 된 경우
-	        reader.onload = e => {
-	            const previewImage = document.getElementById("cc")
-	            previewImage.src = e.target.result
-	        }
-	        // reader가 이미지 읽도록 하기
-	        reader.readAsDataURL(input.files[0])
-	    }                      
-	}
-	// input file에 change 이벤트 부여
-	const inputImage = document.getElementById("bb")
-	inputImage.addEventListener("change", e => {
-	    readImage(e.target)
-	})
-	</script>
-				<img style="width: 300px; height: 300px;" id="cc"
-					src="https://dummyimage.com/500x500/ffffff/000000.png&text=preview+image">
-			</div>
-		</div>
+					<div class="comment-form">
+						<c:set var="vo" value="${v.revVO }" />
+						<!-- 리뷰 작성 -->
+						<h4>리뷰 남기기</h4>
+						<!-- 리뷰 별점 -->
 
-		<div class="col-lg-4">
-			<div class="blog_right_sidebar">
-				<aside class="single_sidebar_widget search_widget">
-					<form action="#">
-						<div class="form-group">
-							<div class="input-group mb-3">
-								<input type="text" class="form-control"
-									placeholder='Search Keyword' onfocus="this.placeholder = ''"
-									onblur="this.placeholder = 'Search Keyword'">
-								<div class="input-group-append">
-									<button class="btn" type="button">
-										<i class="ti-search"></i>
-									</button>
+						<form method="get" action="revinsert.do"
+							enctype="multipart/form-data">
+							<div class="star"></div>
+							<div class="col-sm-6">
+								<div class="form-group">
+									<rev:detailboard type="board" />
+									<input type="hidden" name="memId" value="${memberid}">
+									<input type="hidden" name="memName" value="${member}">
+									<input type="hidden" name="resId" value="${rdatas.resId}">
+									<input class="form-control valid" name="revtitle" id="revtitle"
+										type="text" placeholder="제목">
 								</div>
 							</div>
+							<label for="starRating"> </label><input type="hidden"
+								id="starRating" name="revScore" value="5" />
+							<div class="row">
+								<div class="col-12">
+									<rev:detailboard type="reply" />
+									<div class="form-group">
+										<textarea class="form-control w-100" id="comment" cols="30"
+											rows="9" placeholder="200자 내외 작성" name="revContent"></textarea>
+									</div>
+								</div>
+							</div>
+							<br>
+							<!-- 이미지 등록 -->
+
+							<div class="image-container">
+								<input style="display: block;" type="file" id="bb">
+							</div>
+							<br> <br>
+							<div class="form-group">
+								<button type="submit" id="save" name="reviewdata"
+									class="button button-contactForm btn_1 boxed-btn">작성</button>
+							</div>
+						</form>
+						<!-- 이미지 프리뷰  -->
+						<script type="text/javascript">
+ 
+   function readImage(input) {
+      console.log('확인');
+       // 인풋 태그에 파일이 있는 경우
+       if(input.files && input.files[0]) {
+           // 이미지 파일인지 검사 (생략)
+           // FileReader 인스턴스 생성
+           const reader = new FileReader()
+           // 이미지가 로드가 된 경우
+           reader.onload = e => {
+               const previewImage = document.getElementById("cc")
+               previewImage.src = e.target.result
+           }
+           // reader가 이미지 읽도록 하기
+           reader.readAsDataURL(input.files[0])
+       }                      
+   }
+   // input file에 change 이벤트 부여
+   const inputImage = document.getElementById("bb")
+   inputImage.addEventListener("change", e => {
+       readImage(e.target)
+   })
+   </script>
+						<img style="width: 300px; height: 300px;" id="cc"
+							src="https://dummyimage.com/500x500/ffffff/000000.png&text=preview+image">
+					</div>
+					<c:if test="${rdatas.memId eq memberid}">
+						<!-- 메뉴수정삭제 -->
+						<div class="button-group-area mt-10">
+							
+
+							<a href="resdetail.do?resId=${rdatas.resId}&act=1"
+								class="genric-btn primary-border e-large">식당 수정</a> <a
+								href="resdelete.do?resId=${rdatas.resId}"
+								class="genric-btn primary e-large">식당 삭제</a>
 						</div>
-						<button
-							class="button rounded-0 primary-bg text-white w-100 btn_1 boxed-btn"
-							type="submit">Search</button>
-					</form>
-				</aside>
-				<!-- 관리자일때 식당 수정 및 삭제 아직 미완성  
-<aside class=" single_sidebar_widget search_widget">
+
+
+					</c:if>
+				</div>
+				<div class="col-lg-4">
+					<div class="blog_right_sidebar">
+						<aside class="single_sidebar_widget search_widget">
+							<form action="#">
+								<div class="form-group">
+									<div class="input-group mb-3">
+										<input type="text" class="form-control"
+											placeholder='Search Keyword' onfocus="this.placeholder = ''"
+											onblur="this.placeholder = 'Search Keyword'">
+										<div class="input-group-append">
+											<button class="btn" type="button">
+												<i class="ti-search"></i>
+											</button>
+										</div>
+									</div>
+								</div>
+								<button
+									class="button rounded-0 primary-bg text-white w-100 btn_1 boxed-btn"
+									type="submit">Search</button>
+							</form>
+						</aside>
+						<aside class=" single_sidebar_widget search_widget">
 							<div class="blog_right_sidebar">
-							<div><rev:detailboard type="adminupdate" /></div>
-							<div><rev:detailboard type="admindelete" /></div>
-								
+								<h4 class="widget_title">식당 지도</h4>
+								<div id="map" style="width: 150px; height: 150px;"></div>
+								<script
+									src="https://maps.googleapis.com/maps/api/js?&callback=initMap&v=weekly"
+									async></script>
 							</div>
 						</aside>
--->
-
-				<aside class=" single_sidebar_widget search_widget">
-					<div class="blog_right_sidebar">
-						<h4 class="widget_title">식당 지도</h4>
-						<div id="map" style="width: 150px; height: 150px;"></div>
-						<script
-							src="https://maps.googleapis.com/maps/api/js?&callback=initMap&v=weekly"
-							async></script>
 					</div>
-				</aside>
+
+				</div>
+
 			</div>
-		</div>
-		</div>
 		</div>
 	</section>
 	<!--================ Blog Area end =================-->
@@ -367,15 +375,15 @@ $(function() {
    
   
    document.querySelector('#content').addEventListener('keydown',function(){
-	      //리뷰 200자 초과 안되게 자동 자름
-	      let review = document.querySelector('.review_textarea');
-	      let lengthCheckEx = /^.{200,}$/;
-	      if(lengthCheckEx.test(review.value)){
-	          //200자 초과 컷
-	          review.value = review.value.substr(0,200);
-	      }
-	  });
-	     
+         //리뷰 200자 초과 안되게 자동 자름
+         let review = document.querySelector('.review_textarea');
+         let lengthCheckEx = /^.{200,}$/;
+         if(lengthCheckEx.test(review.value)){
+             //200자 초과 컷
+             review.value = review.value.substr(0,200);
+         }
+     });
+        
    //저장 전송전 필드 체크 이벤트 리스너
    document.querySelector('#content').addEventListener('click', function(e){
        //별점 선택 안했으면 메시지 표시
@@ -389,10 +397,10 @@ $(function() {
            return false;
        }
        //폼 서밋
-		//실제로는 서버에 폼을 전송하고 완료 메시지가 표시되지만 저장된 것으로 간주하고 폼을 초기화 함.
-		alert("리뷰 작성 완료!");
-		rating.setRate(0);
-		document.querySelector('.review_textarea').value = '';
+      //실제로는 서버에 폼을 전송하고 완료 메시지가 표시되지만 저장된 것으로 간주하고 폼을 초기화 함.
+      alert("리뷰 작성 완료!");
+      rating.setRate(0);
+      document.querySelector('.review_textarea').value = '';
    });
 </script>
 </body>

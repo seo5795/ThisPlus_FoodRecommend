@@ -70,6 +70,10 @@ delete from restaurant where resId=101;
 
 -- 리뷰 테이블 조회
 select * from review;
+--resId가 1005인 리뷰 평균
+SELECT ROUND(AVG(revScore),1) AS avg
+FROM review where resId='1005'
+GROUP BY resId;
 -- 리뷰 테이블 삭제
 drop table review;
 -- 리뷰 테이블 생성
@@ -89,7 +93,7 @@ create table review(
     revCol02 varchar(20)
 );
 -- 기준 데이터 삽입(아이디 정리용)
-insert into review (revId,memId,memName,resId,revTitle,revCont) values (100,'muscleboy','기준작성자',100,'기준제목','기준글');
+insert into review (revId,memId,memName,resId,revTitle,revCont,revScore) values ((select nvl(max(revId),2000)+1 from review),'admin','기준작성자',1002,'기준제목','기준글','5');
 -- 리뷰 데이터 삽입
 insert into review (revId,memId,memName,resId,revTitle,revCont,revScore,revPic) values ((select nvl(max(revId),2000)+1 from review),'muscleboy','근육남',101,'울지마','근손실온다',3.5,'/images/review/ksj.jpeg');
 -- 리뷰 데이터 수정
@@ -152,36 +156,7 @@ delete from menu where menuId=101;
 
 -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
 
--- 쿠폰 테이블 조회
-select * from coupon;
--- 쿠폰  테이블 삭제
-drop table coupon;
--- 쿠폰  테이블 생성
-create table coupon(
-	cpnId int primary key,
-	resName varchar(100) not null,
-	cpnName varchar(100) not null,
-	discount int not null,
-	price int not null,
-	disprice int not null,
-	cpnPic varchar(200)
-);
--- 기준 데이터 삽입(아이디 정리용)
-insert into coupon (cpnId,resName,cpnName,discount,price,disprice)
- values (100,'기준식당','기준쿠폰',10,2000,1800);
--- 쿠폰 데이터 삽입(크롤링 필요)
-insert into coupon (cpnId,resName,cpnName,discount,price,disprice,cpnPic)
- values ((select nvl(max(cpnId),5000)+1 from coupon),'김밥파라다이스','김밥만반값',50,2000,1000,'/images/coupon/ksj.jpeg');
--- 쿠폰 데이터 수정
-update coupon set resName='김밥지옥',cpnName='할인은무슨',discount=0,price=2000,disprice=2000 where cpnId=101;
--- 쿠폰 데이터 삭제
-delete from coupon where cpnId=101;
 
--- 6자리 난수 생성(중복처리는 아직 안함)
-SELECT TRUNC(DBMS_RANDOM.VALUE(100000, 999999)) FROM DUAL;
--- cpnId에 난수가 들어가도록 데이터 삽입(중복발생시 에러)
-insert into coupon (cpnId,resName,cpnName,discount,price,disprice,cpnPic)
- values ((SELECT TRUNC(DBMS_RANDOM.VALUE(100000, 999999)) FROM DUAL),'김밥파라다이스','김밥만반값',50,2000,1000,'/images/coupon/ksj.jpeg');
 
 -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
 

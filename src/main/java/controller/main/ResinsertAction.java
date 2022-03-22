@@ -5,6 +5,7 @@ import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import controller.common.Action;
 import controller.common.ActionForward;
@@ -29,7 +30,10 @@ public class ResinsertAction implements Action {
 		rvo.setResPhone(request.getParameter("resPhone"));
 		rvo.setResCategory(request.getParameter("resCategory"));
 		rvo.setResPic(request.getParameter("resPic"));
+		HttpSession session = request.getSession();
+		rvo.setMemId((String)session.getAttribute("memberid"));
 		
+
 		
 		if(resDAO.resInsert(rvo)) {
 			forward=new ActionForward();

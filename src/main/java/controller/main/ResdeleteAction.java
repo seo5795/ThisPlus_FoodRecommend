@@ -26,7 +26,7 @@ public class ResdeleteAction implements Action {
 		
 		if(resDAO.resDelete(rvo)) {
 			forward=new ActionForward();
-			forward.setPath("/main.do");	// 삭제를 완료했으면 메인으로 이동해도 됨
+			forward.setPath("main.do");	// 삭제를 완료했으면 메인으로 이동해도 됨
 			System.out.println("로그 : 식당 삭제 액션 완료");
 			forward.setRedirect(true);
 		}

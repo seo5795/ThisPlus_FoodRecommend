@@ -17,9 +17,12 @@ import javax.servlet.http.HttpServletResponse;
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
+import controller.admin.AdminRestaurantSearchAction;
+import controller.main.CustomerServiceAction;
 import controller.main.LoginAction;
 import controller.main.LogoutAction;
 import controller.main.MainAction;
+import controller.main.MemNoticeAction;
 import controller.main.MemdeleteAction;
 import controller.main.MemmypageAction;
 import controller.main.MemmypageupdateAction;
@@ -27,6 +30,7 @@ import controller.main.MenudeleteAction;
 import controller.main.MenudetailAction;
 import controller.main.MenuinsertAction;
 import controller.main.MenuupdateAction;
+import controller.main.NewsletterAction;
 import controller.main.ResdeleteAction;
 import controller.main.ResdetailAction;
 import controller.main.ResinsertAction;
@@ -278,6 +282,31 @@ public class FrontController extends HttpServlet {
 			System.out.println("FC: 식당상세페이지");
 			forward = new ResdetailAction().execute(request, response);
 		}
+		 else if (command.equals("/notice.do")) {
+	         System.out.println("로그 FCAdmin 식당검색요청");
+	         try {
+				forward = new MemNoticeAction().execute(request, response);
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+	      }else if(command.equals("/Newsletter.do")) {
+				try {
+					forward=new NewsletterAction().execute(request, response);
+				} catch (Exception e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+			else if(command.equals("/CustomerService.do")) {
+				try {
+					System.out.println("로로로로로로로그그그그그그");
+					forward=new CustomerServiceAction().execute(request, response);
+				} catch (Exception e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
 		else {
 			throw new ServletException("command 요청에러!");
 		}
