@@ -27,7 +27,7 @@ public class RevDAO {
 	// 리뷰 내용 조회
 	static final String revSelectOne = "select * from review where revId=?";
 	// 리뷰 리스트 조회(유저용:식당ID 기준으로 소팅)
-	static final String revSelectAll = "select * from review";
+	static final String revSelectAll = "select * from review where resId=?";
 	// 리뷰 리스트 조회(관리자용:리뷰ID 기준으로 소팅)
 	static final String revSelectAllAdmin = "select * from review where revId=?";
 	// 리뷰 수정
@@ -119,6 +119,7 @@ public class RevDAO {
 		conn=JDBCUtil.connect();
 		try {
 			pstmt=conn.prepareStatement(revSelectAll);
+			pstmt.setInt(1, vo.getResId());
 			ResultSet rs=pstmt.executeQuery();
 			while(rs.next()) {
 				// 날짜 표기 방식 정의

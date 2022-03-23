@@ -181,23 +181,7 @@
                                  id="resAdd" name="resAdd" value="${res.resAdd}">
                            </div>
                         </div>
-                        <fieldset class="row mb-3">
-                           <legend class="col-form-label col-sm-2 pt-0">주차여부</legend>
-                           <div class="col-sm-10">
-                              <div class="form-check">
-                                 <input class="form-check-input" type="radio"
-                                    name="resPark" id="gridRadios1" value="option1" checked>
-                                 <label class="form-check-label" for="gridRadios1">
-                                    주차가능 </label>
-                              </div>
-                              <div class="form-check">
-                                 <input class="form-check-input" type="radio"
-                                    name="resPark" id="gridRadios2" value="option2">
-                                 <label class="form-check-label" for="gridRadios2">
-                                    주차불가능 </label>
-                              </div>
-                           </div>
-                        </fieldset>
+                     
                         
                         <!-- <input type="submit" class="btn btn-outline-primary m-2" value="식당 정보 변경"> -->
                       <!--  <input type="button" class="btn btn-outline-danger m-2" value="식당 삭제" onClick="resDelete()"> -->

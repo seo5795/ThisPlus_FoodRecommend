@@ -28,7 +28,7 @@ public class NewsletterAction implements Action {
 		final String user = "jdaaaaun1@naver.com"; // ID
 		final String password = "jung000422"; // PW
 
-		String to = "jdaaaaun1@naver.com"; // 보낼 이메일 주소
+		String to = req.getParameter("useremail"); // 보낼 이메일 주소
 
 
 		// Get the session object

@@ -22,15 +22,12 @@ public class MenuinsertAction implements Action {
       
       System.out.println(req.getParameter("menuPrice"));
       System.out.println(req.getParameter("menuCategory"));
-      System.out.println(req.getParameter("uploadfile"));
       
       
       mevo.setMenuName(req.getParameter("menuName"));
-      //mevo.setResId(Integer.parseInt(req.getParameter("resId")));
-      mevo.setResId(1003);
+      mevo.setResId(Integer.parseInt(req.getParameter("resId")));
       mevo.setMenuPrice(Integer.parseInt(req.getParameter("menuPrice")));
       mevo.setMenuCategory(req.getParameter("menuCategory"));
-      mevo.setMenuPic(req.getParameter("uploadfile"));
       
       
 

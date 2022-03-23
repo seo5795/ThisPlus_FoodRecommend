@@ -32,9 +32,10 @@ public class LoginAction implements Action {
       System.out.println("2:"+mvo);
       if(mvo!=null){
          HttpSession session=request.getSession();
-         session.setAttribute("member", mvo.getMemName());
-         session.setAttribute("memberid", mvo.getMemId());
-         session.setAttribute("meberRank", mvo.getMemRank());
+         session.setAttribute("member", mvo.getMemName());//회원 이름
+         session.setAttribute("memberid", mvo.getMemId());//회원id
+         session.setAttribute("memberRank", mvo.getMemRank());//회원등급 
+         session.setAttribute("memberPw", mvo.getMemPw());//회원비밀번호
          forward=new ActionForward();
          System.out.println(mvo.getMemRank());
          if(mvo.getMemRank()==2) {
@@ -45,11 +46,9 @@ public class LoginAction implements Action {
             forward.setPath("main.do");
          }
          forward.setRedirect(true);
+                 
          
-         
-         
-      }
-      
+      }      
       return forward;
 
    }

@@ -133,10 +133,10 @@
                                     <label for="exampleInputText2" class="form-label">내용</label>
                                     <input type="text" class="form-control" name="notContent" placeholder="내용을 작성하세요" required style="height:200px;">
                                 </div>
-                                <div class="mb-3 form-check">
+                                <!-- <div class="mb-3 form-check">
                                     <input type="checkbox" class="form-check-input" id="exampleCheck1">
                                     <label class="form-check-label" for="exampleCheck1">내용을 다시 한번 검수하고 체크해주세요</label>
-                                </div>
+                                </div> -->
                                 <button type="submit" class="btn btn-primary">등록</button> <!-- 제출을 누르면 공지사항 DB에 데이터가 저장되게 연결 -->
                             </form>
                         </div>

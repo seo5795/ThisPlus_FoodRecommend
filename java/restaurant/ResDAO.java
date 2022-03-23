@@ -95,12 +95,14 @@ public class ResDAO {
 		conn=JDBCUtil.connect();
 		try {
 			if(vo.getResName()!=null) {//이름검색
+				System.out.println("이름");
 				String resSelectAllName = "select * from (select * from restaurant where resName like '%'||?||'%' order by resAvg DESC) where rownum<=?";
 				pstmt=conn.prepareStatement(resSelectAllName);
 				pstmt.setString(1,vo.getResName());
 				pstmt.setInt(2, num);
 			}
 			else if(vo.getResCategory()!=null) {//카테고리 검색
+				System.out.println("카테고리");
 				pstmt=conn.prepareStatement(resSelectAllCategory);
 				pstmt.setString(1,vo.getResCategory());
 				pstmt.setInt(2, num);

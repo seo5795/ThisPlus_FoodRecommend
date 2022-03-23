@@ -24,9 +24,11 @@ public class CustomerServiceAction {
 		
 		
 		String host = "smtp.naver.com"; // 사용할 사이트
-		final String adminEmail = "jdaaaaun1@naver.com"; // ID
+		final String fromEmail = "jdaaaaun1@naver.com"; // ID
 		final String password = "jung000422"; // PW
-
+		final String toEmail = "berean2000@naver.com";//받는 이메일
+				
+		
 		// Get the session object
 		Properties props = new Properties();
 		props.put("mail.smtp.starttls.enable", "true");
@@ -37,18 +39,18 @@ public class CustomerServiceAction {
 
 		Session session = Session.getDefaultInstance(props, new javax.mail.Authenticator() {
 			protected PasswordAuthentication getPasswordAuthentication() {
-				return new PasswordAuthentication(adminEmail, password);
+				return new PasswordAuthentication(fromEmail, password);
 			}
 		});
 
 		// Compose the message
 		try {
 			MimeMessage message = new MimeMessage(session);
-			message.setFrom(new InternetAddress(adminEmail));
-			message.addRecipient(Message.RecipientType.TO, new InternetAddress(adminEmail));
+			message.setFrom(new InternetAddress(fromEmail));
+			message.addRecipient(Message.RecipientType.TO, new InternetAddress(toEmail));
 
 			// Subject
-			message.setSubject("문의가 접수되었습니다.");
+			message.setSubject(userName+"님의 문의가 도착했습니다");
 
 			// Text
 			message.setText("문의자 : "+userName+"\n문의 내용 : "+userMessage);
@@ -70,14 +72,14 @@ public class CustomerServiceAction {
 
 		Session session1 = Session.getDefaultInstance(props1, new javax.mail.Authenticator() {
 			protected PasswordAuthentication getPasswordAuthentication() {
-				return new PasswordAuthentication(userEmail, password);
+				return new PasswordAuthentication(fromEmail, password);
 			}
 		});
 
 		// Compose the message
 		try {
 			MimeMessage message = new MimeMessage(session1);
-			message.setFrom(new InternetAddress(userEmail));
+			message.setFrom(new InternetAddress(fromEmail));
 			message.addRecipient(Message.RecipientType.TO, new InternetAddress(userEmail));
 
 			// Subject

@@ -8,19 +8,22 @@
 <head>
 <meta charset="utf-8">
 <meta http-equiv="x-ua-compatible" content="ie=edge">
-<title>this+ | 오늘의메뉴</title>
+<title>This+ | 오늘의메뉴</title>
 <meta name="description" content="">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 
 <!-- <link rel="manifest" href="site.webmanifest"> -->
-<link rel="shortcut icon" type="image/x-icon" href="img/favicon-customer.ico">
+<link rel="shortcut icon" type="image/x-icon"
+	href="img/favicon-customer.ico">
 <!-- Place favicon.ico in the root directory -->
 
 <!-- Google Web Fonts by JHS -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Gothic+A1:wght@600&display=swap" rel="stylesheet">
+<link
+	href="https://fonts.googleapis.com/css2?family=Gothic+A1:wght@600&display=swap"
+	rel="stylesheet">
 
 <!-- CSS here -->
 <link rel="stylesheet" href="css/bootstrap.min.css">
@@ -36,13 +39,12 @@
 <!-- <link rel="stylesheet" href="css/responsive.css"> -->
 
 <style type="text/css">
-
 .single_about_area {
-    padding-top: 100px;
-    padding-bottom: 100px;
+	padding-top: 100px;
+	padding-bottom: 100px;
 }
 
-*{
+* {
 	font-family: 'Gothic A1', sans-serif;
 }
 </style>
@@ -72,7 +74,9 @@
 
 
 
-	<!-- 팀 프로젝트 소개 start -->
+
+
+	<!-- 팀 멤버 소개 start -->
 	<div class="single_about_area">
 		<div class="container">
 			<div class="row align-items-center">
@@ -85,49 +89,13 @@
 						<br>
 
 						<!-- 내용 -->
-						<p class="about_text1">Lorem ipsum dolor sit amet, consectetur
-							adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-							dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-							exercitation ullamco laboris nisi ut aliquip ex ea commodo
-							consequat.</p>
-						<p class="about_text2">Lorem ipsum dolor sit amet, consectetur
-							adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-							dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-							exercitation.</p>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-	<hr>
-	<!--  팀 프로젝트 소개 end -->
-
-
-
-
-
-	<!-- 팀 멤버 소개 start -->
-	<div class="single_about_area">
-		<div class="container">
-			<div class="row align-items-center">
-				<div class="Team_introduction">
-					<div class="single_about_text">
-
-						<!-- 제목 -->
-						<h1>우리팀은 이렇게 역할 분담을 하였어요!</h1>
-						<hr>
-						<br>
-
-						<!-- 내용 -->
-						<p class="about_text1">Lorem ipsum dolor sit amet, consectetur
-							adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-							dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-							exercitation ullamco laboris nisi ut aliquip ex ea commodo
-							consequat.</p>
-						<p class="about_text2">Lorem ipsum dolor sit amet, consectetur
-							adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-							dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-							exercitation.</p>
+						<p class="about_text1">
+							오늘도 점심 무엇을 먹어야할 지 고민하는 당신을 위해!<br> 저희 THIS+는 최적의 식당을 추천드리고자
+							합니다.<br> <br> 전국 각지의 엄선된 맛집과 다채로운 메뉴들, 그저 가까이에 있는 맛집이
+							무엇인지 판단만 하시면 됩니다.<br> <br> 오늘부터 점심 무엇을 먹을지 고민하실 필요는
+							없습니다. <br>이 편리한 홈페이지를 누구에게 추천하실 지 고민해 주십시오.<br> <br>
+							<br> THIS+ 일동.
+						</p>
 					</div>
 				</div>
 
@@ -145,12 +113,7 @@
 			<div class="row">
 				<div class="col-xl-12">
 					<div class="section_title white mb-60">
-						<h3>Feedback from Customers</h3>
-						<p>
-							inappropriate behavior is often laughed off as “boys will be
-							boys,” women face higher conduct standards <br> especially
-							in the workplace. That’s why it’s crucial that, as women.
-						</p>
+						<h3>우리팀을 소개합니다!</h3>
 					</div>
 				</div>
 			</div>
@@ -159,74 +122,85 @@
 					<div class="testmonial_active owl-carousel">
 						<div class="single_testmonial d-flex">
 							<div class="testmonial_thumb">
-								<img src="img/testmonial/1.png" alt="">
+								<img src="img/testmonial/profile01.png" alt="">
 							</div>
 							<div class="testmonial_author">
-								<h3>Adame Nesane</h3>
-								<span>Chief Customer</span>
-								<p>You're had. Subdue grass Meat us winged years you'll
-									doesn't. fruit two also won one yielding creepeth third give
-									may never lie alternet food.</p>
+								<h3>심승현</h3>
+								<span>팀장</span> <span><a
+									href="https://blog.naver.com/tladhehd">https://blog.naver.com/tladhehd</a></span>
+
 							</div>
 						</div>
+
 						<div class="single_testmonial d-flex">
 							<div class="testmonial_thumb">
-								<img src="img/testmonial/2.png" alt="">
+								<img src="img/testmonial/profile02.png" alt="">
 							</div>
 							<div class="testmonial_author">
-								<h3>Adam Nahan</h3>
-								<span>Chief Customer</span>
-								<p>You're had. Subdue grass Meat us winged years you'll
-									doesn't. fruit two also won one yielding creepeth third give
-									may never lie alternet food.</p>
+								<h3>김신정</h3>
+								<span>Design</span> <span><a
+									href="https://keiren2022.tistory.com">https://keiren2022.tistory.com</a></span>
+
 							</div>
 						</div>
+
 						<div class="single_testmonial d-flex">
 							<div class="testmonial_thumb">
-								<img src="img/testmonial/1.png" alt="">
+								<img src="img/testmonial/profile03.png" alt="">
 							</div>
 							<div class="testmonial_author">
-								<h3>Adame Nesane</h3>
-								<span>Chief Customer</span>
-								<p>You're had. Subdue grass Meat us winged years you'll
-									doesn't. fruit two also won one yielding creepeth third give
-									may never lie alternet food.</p>
+								<h3>노준</h3>
+								<span>Engineer</span> <span><a
+									href="https://junroh.tistory.com">https://junroh.tistory.com</a></span>
+
 							</div>
 						</div>
+
 						<div class="single_testmonial d-flex">
 							<div class="testmonial_thumb">
-								<img src="img/testmonial/2.png" alt="">
+								<img src="img/testmonial/profile04.png" alt="">
 							</div>
 							<div class="testmonial_author">
-								<h3>Adam Nahan</h3>
-								<span>Chief Customer</span>
-								<p>You're had. Subdue grass Meat us winged years you'll
-									doesn't. fruit two also won one yielding creepeth third give
-									may never lie alternet food.</p>
+								<h3>서정민</h3>
+								<span>Engineer</span> <span><a
+									href="https://code-learning.tistory.com/manage">https://code-learning.tistory.com/manage</a></span>
+
 							</div>
 						</div>
+
 						<div class="single_testmonial d-flex">
 							<div class="testmonial_thumb">
-								<img src="img/testmonial/1.png" alt="">
+								<img src="img/testmonial/profile05.png" alt="">
 							</div>
 							<div class="testmonial_author">
-								<h3>Adame Nesane</h3>
-								<span>Chief Customer</span>
-								<p>You're had. Subdue grass Meat us winged years you'll
-									doesn't. fruit two also won one yielding creepeth third give
-									may never lie alternet food.</p>
+								<h3>인치선</h3>
+								<span>Engineer</span> <span><a
+									href="https://blog.naver.com/soo980201">https://blog.naver.com/soo980201</a></span>
+
 							</div>
 						</div>
+
 						<div class="single_testmonial d-flex">
 							<div class="testmonial_thumb">
-								<img src="img/testmonial/2.png" alt="">
+								<img src="img/testmonial/profile06.png" alt="">
 							</div>
 							<div class="testmonial_author">
-								<h3>Adam Nahan</h3>
-								<span>Chief Customer</span>
-								<p>You're had. Subdue grass Meat us winged years you'll
-									doesn't. fruit two also won one yielding creepeth third give
-									may never lie alternet food.</p>
+								<h3>정다운</h3>
+								<span>Design</span> <span><a
+									href="https://daunee.tistory.com">https://daunee.tistory.com</a></span>
+
+							</div>
+						</div>
+
+						<div class="single_testmonial d-flex">
+							<div class="testmonial_thumb">
+								<img src="img/testmonial/profile07.png" alt="">
+							</div>
+							<div class="testmonial_author">
+								<h3>진현수</h3>
+								<span>Design</span> <span><a
+									href="https://blog.naver.com/soo980201">https://blog.naver.com/soo980201</a></span>
+
 							</div>
 						</div>
 					</div>
@@ -236,93 +210,13 @@
 	</div>
 	<!-- testmonial_area_end -->
 
-	<!-- brand_area-start -->
-	<div class="brand_area">
-		<div class="container">
-			<div class="row">
-				<div class="col-xl-12">
-					<div class="section_title mb-70">
-						<h3>Brands love to take Our Services</h3>
-						<p>
-							inappropriate behavior is often laughed off as “boys will be
-							boys,” women face higher conduct standards <br> especially
-							in the workplace. That’s why it’s crucial that, as women.
-						</p>
-					</div>
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-xl-2 col-md-6 col-lg-3">
-					<div class="single_brand">
-						<img src="img/brand/1.png" alt="">
-					</div>
-				</div>
-				<div class="col-xl-2 col-md-6 col-lg-3">
-					<div class="single_brand">
-						<img src="img/brand/02.png" alt="">
-					</div>
-				</div>
-				<div class="col-xl-2 col-md-6 col-lg-3">
-					<div class="single_brand">
-						<img src="img/brand/03.png" alt="">
-					</div>
-				</div>
-				<div class="col-xl-2 col-md-6 col-lg-3">
-					<div class="single_brand">
-						<img src="img/brand/04.png" alt="">
-					</div>
-				</div>
-				<div class="col-xl-2 col-md-6 col-lg-3">
-					<div class="single_brand">
-						<img src="img/brand/05.png" alt="">
-					</div>
-				</div>
-				<div class="col-xl-2 col-md-6 col-lg-3">
-					<div class="single_brand">
-						<img src="img/brand/06.png" alt="">
-					</div>
-				</div>
-				<div class="col-xl-2 col-md-6 col-lg-3">
-					<div class="single_brand">
-						<img src="img/brand/7.png" alt="">
-					</div>
-				</div>
-				<div class="col-xl-2 col-md-6 col-lg-3">
-					<div class="single_brand">
-						<img src="img/brand/12.png" alt="">
-					</div>
-				</div>
-				<div class="col-xl-2 col-md-6 col-lg-3">
-					<div class="single_brand">
-						<img src="img/brand/9.png" alt="">
-					</div>
-				</div>
-				<div class="col-xl-2 col-md-6 col-lg-3">
-					<div class="single_brand">
-						<img src="img/brand/10.png" alt="">
-					</div>
-				</div>
-				<div class="col-xl-2 col-md-6 col-lg-3">
-					<div class="single_brand">
-						<img src="img/brand/11.png" alt="">
-					</div>
-				</div>
-				<div class="col-xl-2 col-md-6 col-lg-3">
-					<div class="single_brand">
-						<img src="img/brand/8.png" alt="">
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-	<!-- brand_area-end -->
-
+	
 	<!-- footer-start -->
 	<jsp:include page="common/footer.jsp" />
-	<!-- footer-end -->
+	<!— footer-end —>
 
 
-	<!-- JS here -->
+	<!— JS here —>
 	<script src="js/vendor/modernizr-3.5.0.min.js"></script>
 	<script src="js/vendor/jquery-1.12.4.min.js"></script>
 	<script src="js/popper.min.js"></script>
@@ -341,7 +235,7 @@
 	<script src="js/jquery.magnific-popup.min.js"></script>
 	<script src="js/plugins.js"></script>
 
-	<!--contact js-->
+	<!—contact js—>
 	<script src="js/contact.js"></script>
 	<script src="js/jquery.ajaxchimp.min.js"></script>
 	<script src="js/jquery.form.js"></script>

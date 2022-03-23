@@ -53,12 +53,13 @@
 	display: none;
 }
 
-#recent{
+#recent {
 	font-weight: bold;
 	font-size: 30px;
 }
-
-
+.title-score {
+	font-size:20px;
+}
 </style>
 </head>
 
@@ -97,15 +98,17 @@
 							</div>
 						</form>
 						<div>
-						<br>
+							<br>
 							<h5 class="searchList" id="recent">최근 검색 리스트</h5>
-							
+
 							<ul>
-								<c:forEach var="sl" items="${rsearchList}" begin="0" end="4"><!-- 최근검색 5개까지 출력 -->
-									<a href="reslist.do?scategory=name&search=${sl}"><li class="searchList">${sl}</li></a>
+								<c:forEach var="sl" items="${rsearchList}" begin="0" end="4">
+									<!-- 최근검색 5개까지 출력 -->
+									<a href="reslist.do?scategory=name&search=${sl}"><li
+										class="searchList">${sl}</li></a>
 									<hr class="searchList">
 								</c:forEach>
-								
+
 							</ul>
 						</div>
 					</div>
@@ -118,8 +121,8 @@
 
 
 
-	<!-- 평점 순위 top6 start -->
-	<div class="service_area">
+	<!-- 평점 Best6 start -->
+	<div class="service_area" id="score">
 		<div class="container">
 			<div class="row">
 				<div class="col-xl-12">
@@ -127,8 +130,8 @@
 
 						<!-- 리스트 타이틀 -->
 
-						<h3>평점 top6</h3>
-						<p>고객님들이 직접 뽑은 전국 최고의 맛집!</p>
+						<h3>평점이 높은 맛집 Best6</h3>
+						<p>회원님들이 직접 뽑은 전국 최고의 맛집을 소개합니다!</p>
 					</div>
 				</div>
 			</div>
@@ -145,14 +148,13 @@
 									src="${ad.resPic}" style="width: 100%; height: auto;"></a>
 							</div>
 							<h4>
-								<strong>${ad.resName}</strong>
-							</h4>
-							<h5>
-								<strong>평점: </strong> ${ad.resAvg}점
+								<a href="resdetail.do?resId=${ad.resId}"><strong>${ad.resName}</strong></a>
+							</h4><br>
+							<h5 class="title-score">
+								<strong>평점: </strong> ${ad.resAvg}
 							</h5>
-							<br>  <span><strong>위치:
-								</strong>${ad.resAdd}</span>
-							
+							<span><strong>위치: </strong>${ad.resAdd}</span>
+
 						</div>
 					</div>
 
@@ -160,7 +162,7 @@
 			</div>
 		</div>
 	</div>
-	<!-- 평점 순위 top6 end -->
+	<!-- 평점 Best6 end -->
 
 
 
@@ -175,7 +177,7 @@
 							<div class="info">
 								<div class="info_inner">
 									<h4>광고 영상 보기</h4>
-									<p>You will love our execution</p>
+									<p>우측 버튼을 클릭해보세요.</p>
 								</div>
 								<div class="icon_video">
 									<a class="popup-video"
@@ -193,14 +195,14 @@
 
 
 
-	<!-- 맛집 Best5 start -->
-	<div class="service_area">
+	<!-- 양식맛집 Best6 start -->
+	<div class="service_area" id="category">
 		<div class="container">
 			<div class="row">
 				<div class="col-xl-12">
 					<div class="section_title mb-70">
 						<h3>양식 맛집 Best6</h3>
-						<p>오맛이가 추천하는 양식 맛집 Best6</p>
+						<p>오늘의 메뉴가 추천하는 양식 맛집을 소개합니다!</p>
 					</div>
 				</div>
 			</div>
@@ -209,13 +211,17 @@
 					<div class="col-xl-4 col-md-6">
 						<div class="single_service">
 							<div class="service_icon">
-								<a href="resdetail.do?resId=${md.resId}"> <img alt="" src="${md.resPic}"
-									style="width: 100%"></a>
+								<a href="resdetail.do?resId=${md.resId}"> <img alt=""
+									src="${md.resPic}" style="width: 100%"></a>
 							</div>
-							<h4>${md.resName}</h4>
-							<h5>평점: ${md.resAvg}점</h5>
-							<br>  <span>위치:${md.resAdd}</span>
-							
+							<h4>
+								<a href="resdetail.do?resId=${ad.resId}"><strong>${md.resName}</strong></a>
+							</h4><br>
+							<h5 class="title-score">
+								<strong>평점: </strong> ${md.resAvg}
+							</h5>
+							<span><strong>위치: </strong> ${md.resAdd}</span>
+
 						</div>
 					</div>
 
@@ -225,14 +231,14 @@
 			</div>
 		</div>
 	</div>
-	<!-- 맛집 Best5 end -->
+	<!-- 양식맛집 Best6 end -->
 
 
 
 
 
-	<!-- 지역별 Best6 start -->
-	<div class="service_area">
+	<!-- 서울맛집 Best6 start -->
+	<div class="service_area" id="area">
 		<div class="container">
 			<div class="row">
 				<div class="col-xl-12">
@@ -241,7 +247,7 @@
 						<!-- 리스트 타이틀 -->
 
 						<h3>서울 인기맛집 Best6</h3>
-						<p>한국의 중심! 서울의 인기맛집 Best6</p>
+						<p>한국의 중심, 서울의 인기맛집을 소개합니다!</p>
 					</div>
 				</div>
 			</div>
@@ -255,13 +261,14 @@
 					<div class="col-xl-4 col-md-6">
 						<div class="single_service">
 							<div class="service_icon">
-								<a href="resdetail.do?resId=${ld.resId}"> <img alt="" src="${ld.resPic}"
-									style="width: 100%"></a>
+								<a href="resdetail.do?resId=${ld.resId}"> <img alt=""
+									src="${ld.resPic}" style="width: 100%"></a>
 							</div>
-							<h4>${ld.resName}</h4>
-							<h5>평점: ${ld.resAvg}점</h5>
-							<br>  <span>위치:${ld.resAdd}</span>
-							
+							<h4><a href="resdetail.do?resId=${ad.resId}"><strong>${ld.resName}</strong></a></h4>
+							<br>
+							<h5 class="title-score"><strong>평점: </strong> ${ld.resAvg}</h5>
+							<span><strong>위치: </strong>${ld.resAdd}</span>
+
 						</div>
 					</div>
 
@@ -272,8 +279,7 @@
 
 		</div>
 	</div>
-	</div>
-	<!-- 지역별 Best6 end -->
+	<!-- 서울맛집 Best6 end -->
 
 
 
@@ -317,21 +323,20 @@
 	<script src="js/mail-script.js"></script>
 
 	<script src="js/main.js"></script>
-	
+
 	<script type="text/javascript">
 		var searchList = document.querySelector(".searchList");
 		var search = document.querySelector("#search");
-		
-		search.onfocus =function(){//검색창 클릭시 검색리스트 출력			
+
+		search.onfocus = function() {//검색창 클릭시 검색리스트 출력			
 			$('.searchList').show();
 		};
-		
-		search.onblur=function(){//검색창에서 나올시 검색리스트 숨기기
+
+		search.onblur = function() {//검색창에서 나올시 검색리스트 숨기기
 			setTimeout(function() {//함수 실행속도를 늦춰 a태그 실행가능하게 설정
 				$('.searchList').hide();
-				}, 500);	
+			}, 500);
 		};
-	
 	</script>
 
 </body>

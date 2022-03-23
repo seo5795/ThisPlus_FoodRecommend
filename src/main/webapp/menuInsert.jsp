@@ -110,8 +110,9 @@ function preview(input) {
    		<!-- 입력한 내용은 menuAdd액션으로 전달 -->
    		<!-- <form action="menuAdd.do" method="post" enctype="multipart/form-data"> -->
    		<!-- 임시로 업로드체크 페이지로 이동, 컨트롤러 적용시 제거 예정 -->
-   		<form action="menuinsert.do" method="post" enctype="multipart/form-data">
-			<input type="hidden" name="resId" value="${rdata.resId}">
+   		${param.resId}
+   		<form action="menuinsert.do" method="post">
+			<input type="hidden" name="resId" value="${param.resId}">
 	   		<h3>메뉴 등록</h3>
 	   		<hr>
 	   		
@@ -130,13 +131,10 @@ function preview(input) {
 	   		<input name="menuPrice" class="menuPrice" type="text" placeholder="메뉴 가격 입력" oninput="this.value = this.value.replaceAll(/\D/g, '')" required>원
 	   		</div><br>
 	   		
-	   		<div class="mPic">
-	   		<span>메뉴 사진</span><br>
-	   		<input type="file" name="uploadfile" onchange="preview(this);" accept="image/*" >
-			</div>
+	   		
 	   		
 	   		<br>
-	   		<input type="submit" value="메뉴 등록" style="float: right;">
+	   		<input type="submit" value="메뉴 등록" style="float: center;">
    		</form>
 	   	
 			

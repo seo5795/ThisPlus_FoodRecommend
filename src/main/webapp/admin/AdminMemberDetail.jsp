@@ -132,7 +132,7 @@ function preview(input) {
 
          <!-- Table Start -->
          <form method="post"
-            action="adminmemberupdate.did?memId=${memdata.memId}" enctype="multipart/form-data" >
+            action="adminmemberupdate.did?memId=${memdata.memId}"  >
 
             <div class="container-fluid pt-4 px-4" style="display: inline">
                <div class="row g-4">
@@ -207,9 +207,7 @@ function preview(input) {
                               placeholder="${memdata.memPoint}" value="${memdata.memPoint}" name="memPoint">
                            <label for="floatingInput">회원포인트</label>
                         </div>
-                        <div class="form-floating mb-3 col-xl-10">
-                           <input type="file" name="uploadfile" onchange="preview(this);" accept="image/*" >
-                        </div>
+                       
                         <input type="submit" class="btn btn-outline-primary m-2"
                            value="수정"> <a
                            href="adminmemberdelete.did?memId=${memdata.memId }"
@@ -222,10 +220,7 @@ function preview(input) {
             </div>
          </form>
       
-      <div class="imgPreview">
-            <img id="preview" width="400px" height="300px"/>
-            이미지 미리보기
-         </div>
+ 
       
          <!-- Table End -->
 

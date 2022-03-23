@@ -21,14 +21,13 @@ public class AdminMemberUpdateAction implements Action {
 
       MemDAO memDAO = new MemDAO();
       MemVO memVO = new MemVO();
-      memVO.setMemId((String)req.getAttribute("memId"));
-      memVO.setMemName((String)req.getAttribute("memName"));
-      memVO.setMemEmail((String)req.getAttribute("memEmail"));
-      memVO.setMemPhone((String)req.getAttribute("memPhone"));
-      memVO.setMemAddress((String)req.getAttribute("memAddress"));
-      memVO.setMemPoint(Integer.parseInt((String)req.getAttribute("memPoint")));
-      memVO.setMemPw((String)req.getAttribute("memPw"));
-      memVO.setMemPic((String)req.getAttribute("memPic"));
+      memVO.setMemId((String)req.getParameter("memId"));
+      memVO.setMemName((String)req.getParameter("memName"));
+      memVO.setMemEmail((String)req.getParameter("memEmail"));
+      memVO.setMemPhone((String)req.getParameter("memPhone"));
+      memVO.setMemAddress((String)req.getParameter("memAddress"));
+      memVO.setMemPoint(Integer.parseInt((String)req.getParameter("memPoint")));
+      memVO.setMemPw((String)req.getParameter("memPw"));
       //memVO.setMemPw(req.getParameter("memPw"));
 
       System.out.println("2회원계정 : "+memVO.getMemId());

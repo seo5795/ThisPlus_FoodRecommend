@@ -256,6 +256,7 @@ public class MemDAO {
 			pstmt.setString(3, vo.getMemPhone());
 			pstmt.setString(4, vo.getMemAddress());			
 			pstmt.setString(5, vo.getMemName());
+			
 			pstmt.setString(6, vo.getMemId());
 			pstmt.executeUpdate();
 		} catch (SQLException e) {

@@ -12,13 +12,16 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <!-- <link rel="manifest" href="site.webmanifest"> -->
-<link rel="shortcut icon" type="image/x-icon" href="img/favicon-customer.ico">
+<link rel="shortcut icon" type="image/x-icon"
+	href="img/favicon-customer.ico">
 <!-- Place favicon.ico in the root directory -->
 
 <!-- Google Web Fonts by JHS -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Gothic+A1:wght@600&display=swap" rel="stylesheet">
+<link
+	href="https://fonts.googleapis.com/css2?family=Gothic+A1:wght@600&display=swap"
+	rel="stylesheet">
 
 <!-- CSS here -->
 <link rel="stylesheet" href="css/bootstrap.min.css">
@@ -34,20 +37,22 @@
 <!-- <link rel="stylesheet" href="css/responsive.css"> -->
 
 <style type="text/css">
-*{
+* {
 	font-family: 'Gothic A1', sans-serif;
 }
-	.section-padding {
-    padding-top: 100px;
-    padding-bottom: 100px;
+
+.section-padding {
+	padding-top: 100px;
+	padding-bottom: 100px;
 }
-	.col-lg-4 {
-		padding-left: 80px;
-	}
-	
-	.blog_right_sidebar .widget_title {
-    font-size: 20px;
-    margin-bottom: 24px;
+
+.col-lg-4 {
+	padding-left: 80px;
+}
+
+.blog_right_sidebar .widget_title {
+	font-size: 20px;
+	margin-bottom: 24px;
 }
 </style>
 </head>
@@ -85,25 +90,27 @@
 						<article class="blog_item">
 							<c:choose>
 								<c:when test="${ empty resDatas }">
-								<!-- 식당리스트가 존재하지 않을 때 -->
+									<!-- 식당리스트가 존재하지 않을 때 -->
 									<h1>해당 식당이 존재하지 않습니다😥😥😥</h1>
 									<h1>빠른 시일 내에 준비하겠습니다😊😊😊</h1>
 								</c:when>
 								<c:otherwise>
-								<!-- 식당리스트가 존재할 때 start -->
+									<!-- 식당리스트가 존재할 때 start -->
 									<c:forEach var="rd" items="${resDatas}">
 										<div class="blog_item_img">
-											<a href="resdetail.do?resId=${rd.resId}"><img class="card-img rounded-0" src="${rd.resPic}"
+											<a href="resdetail.do?resId=${rd.resId}"><img
+												class="card-img rounded-0" src="${rd.resPic}"
 												alt="${rd.resName}"></a> <a href="#"
 												class="blog_item_date">
 												<h3>평점</h3>
 												<p>${rd.resAvg}</p>
 											</a>
-											
+
 										</div>
 
 										<div class="blog_details">
-											<a class="d-inline-block" href="resdetail.do?resId=${rd.resId}">
+											<a class="d-inline-block"
+												href="resdetail.do?resId=${rd.resId}">
 												<h2>${rd.resName}</h2>
 											</a>
 											<p>${rd.resAdd}</p>
@@ -114,14 +121,26 @@
 											Comments</a></li> -->
 											</ul>
 										</div>
-										<br><br><br><br>
+										<br>
+										<br>
+										<br>
+										<br>
 									</c:forEach>
-								<!-- 식당리스트가 존재할 때 end -->	
+									<!-- 식당리스트가 존재할 때 end -->
 								</c:otherwise>
-								</c:choose>
+							</c:choose>
 						</article>
+				${num}  ${cnt}
+						<c:choose>
+							<c:when test="${ num eq cnt }">
+     
+							</c:when>
+							<c:otherwise>
+							 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><a
+									href="reslist.do?scategory=${category}&num=${num+1}&search=${search}">더보기&nbsp;&gt;&gt;</a></strong>
+							</c:otherwise>
+						</c:choose>
 
-						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><a href="reslist.do?scategory=${category}&num=${num+1}&search=${search}">더보기&nbsp;&gt;&gt;</a></strong>
 					</div>
 				</div>
 				<!-- ===========사이드바============= -->
@@ -272,7 +291,7 @@
 							</form>
 						</aside>
 						 -->
-						 
+
 					</div>
 				</div>
 			</div>

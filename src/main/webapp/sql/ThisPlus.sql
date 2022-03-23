@@ -24,7 +24,9 @@ create table member(
 );
 -- 회원 데이터 삽입
 insert into member (memId,memPw,memName,memEmail,memAddress,memPic)
- values ('muscleboy1234','1111','김꺽정','muscle@naver.com','서울시 관악구','/admin/img/testimonial-1.jpa');
+ values ('muscleboy','1111','김꺽정','muscle@naver.com','서울시 관악구','/admin/img/testimonial-1.jpa');
+ insert into member (memId,memPw,memName,memEmail,memAddress,memPic)
+ values ('muscleboy','1111','김꺽정','muscle@naver.com','서울시 관악구','/admin/img/testimonial-1.jpa');
  insert into member (memId,memPw,memName,memEmail,memAddress,memPic,memRank)
  values ('admin','1234','admin','muscle@naver.com','서울시 관악구','/images/member/ksj.jpeg',2);
 -- 회원 데이터 수정(회원권한)

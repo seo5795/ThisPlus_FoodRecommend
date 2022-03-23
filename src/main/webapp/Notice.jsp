@@ -25,6 +25,7 @@
 	href="https://fonts.googleapis.com/css2?family=Gothic+A1:wght@600&display=swap"
 	rel="stylesheet">
 
+
 <!-- 아코디언 플러그인 -->
 <script
 	src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
@@ -44,33 +45,42 @@
 <link rel="stylesheet" href="css/style.css">
 <!-- <link rel="stylesheet" href="css/responsive.css"> -->
 </head>
+<style>
+.outer {
+  text-align: center;
+}
 
-	<script type="text/javascript">
-   $.ajax({
-      type: "GET", // 데이터를 로드해오는 방식
-      url: "faq.json", // 로드할 파일이름
-      dataType: "json", // 현재 다루는 데이터 타입
-      success: function(data){ // 로드 성공시 수행할 메서드
-         // function()에 인자를 두면, 로드성공한 json데이터가 저장됨!
-         var ele = "";
-      
-         // $.each( 타깃 데이터(로드한 json 데이터) , 수행할 메서드 );
-         $.each(data,function(){
-            ele+="<li class="this.class1">";
-            ele+="<h5 class="this.class2">"+this.title+"</h5>";
-            ele+="<div class="this.class3">"+this.content+"</td>";
-            ele+="</li>";     
-         });
-         
-         $("#json").append(ele);
-      },
-      error: function(err){ // 로드 실패시 수행할 메서드
-         // function()에 인자를 두면, 로드실패시 예외정보가 저장됨!
-         // 에러의 상태,내용에 대한 메세지 등을 출력
-         console.log('에러발생!');
-         console.log(err.status+" | "+err.errText);
-      }
-   });
+.inner {
+  display: inline-block;
+}
+
+</style>
+<script type="text/javascript">
+	$.ajax({
+		type : "GET", // 데이터를 로드해오는 방식
+		url : "faq.json", // 로드할 파일이름
+		dataType : "json", // 현재 다루는 데이터 타입
+		success : function(data) { // 로드 성공시 수행할 메서드
+			// function()에 인자를 두면, 로드성공한 json데이터가 저장됨!
+			var ele = "";
+
+			// $.each( 타깃 데이터(로드한 json 데이터) , 수행할 메서드 );
+			$.each(data, function() {
+				ele += "<li class="this.class1">";
+				ele += "<h5 class="this.class2">" + this.title + "</h5>";
+				ele += "<div class="this.class3">" + this.content + "</td>";
+				ele += "</li>";
+			});
+
+			$("#json").append(ele);
+		},
+		error : function(err) { // 로드 실패시 수행할 메서드
+			// function()에 인자를 두면, 로드실패시 예외정보가 저장됨!
+			// 에러의 상태,내용에 대한 메세지 등을 출력
+			console.log('에러발생!');
+			console.log(err.status + " | " + err.errText);
+		}
+	});
 </script>
 
 <style type="text/css">
@@ -122,7 +132,9 @@
 
 
 <body>
-<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"
+		integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+		crossorigin="anonymous"></script>
 
 	<!--[if lte IE 9]>
             <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
@@ -148,31 +160,8 @@
 
 
 
-	<!-- 회사 소개 시작 -->
-	<a id="company"></a>
-	<section class="sample-text-area">
-
-		<div class="container box_1170">
-			<h2>회사소개</h2>
-			<hr>
-			<br> <br> <br>
-			<p class="sample-text">
-				우리는 좋은 음식을 통해 더 나은 삶을 만들 수 있다고 믿습니다.<br> 외식업의 본질인 좋은 음식과 서비스에만
-				집중할 수 있는 환경을 만들기 위해, 외식 사업자들의 파트너로서 신뢰할 수 있는 외식 통합 플랫폼을 만들어나가고 있습니다.<br>
-				<br> 매일 무엇을 먹을지 고민하는 이들에게는 더 나은 선택을 위한 가이드를 제공하며,<br> 좋은
-				음식과 서비스를 제공하는 외식 사업자에게는 실질적인 도움을 제공하는 파트너가 되고자 합니다.
-			</p>
-
-			<br> <br> <br> <br> <br> <br> <br>
-			<br>
-		</div>
-	</section>
-	<!-- 회사 소개 끝 -->
-
-
-
 	<!-- 공지사항 시작 -->
-	<a id="notice"></a>
+	
 	<div class="whole-wrap">
 		<div class="container box_1170">
 
@@ -184,15 +173,75 @@
 				<hr>
 				<br>
 				<div class="row">
-					<div class="col-md-9" id="json">
+					<div class="col-md-9">
 
+						<ul class="accodian">
+							<li class="accodian--box">
+								<!-- 질문 제목 -->
+								<h5 class="question">[리뷰] 리뷰 수정 또는 작성 어떻게 하나요?</h5> <!-- 질문 답변 -->
+								<div class="answer">
+									작성하신 리뷰를 수정 혹은 삭제하고 싶으신
+									경우, <br> <br> 내정보 페이지에서 수정/삭제 하실 리뷰를 선택하신 후 우측 하단에 삭제
+									및 수정 아이콘을 누르시면 변경 가능합니다. <br> <br> 앞으로도 지속적인 서비스 이용과
+									관심 부탁드립니다.<br> <br> 감사합니다.
+								</div>
+							</li>
+							<br>
+
+
+							<li class="accodian--box">
+								<!-- 질문 제목 -->
+								<h5 class="question">[탈퇴] 탈퇴는 어떻게 하나요?</h5> <!-- 질문 답변 -->
+								<div class="answer">
+									마이페이지 > 회원탈퇴를 통해 오늘의 맛집 회원 탈퇴가 가능합니다.<br> 탈퇴 후에는 계정 복구가
+									불가능하오니 신중히 선택해주시기 바랍니다.
+								</div>
+							</li>
+							<br>
+
+
+							<li class="accodian--box">
+								<!-- 질문 제목 -->
+								<h5 class="question">[리뷰] 리뷰 또는 사진 신고가 필요한 경우</h5> <!-- 질문 답변 -->
+								<div class="answer">
+									모든 사용자는 오늘의 맛집 커뮤니티 가이드 라인에 위배 되는 리뷰나 사진을 신고할 수 있습니다. <br>
+									이 가이드라인 방침에 따라 다음과 같은 경우 콘텐츠가 삭제될 수 있습니다. <br> <br>
+									1. 리뷰 또는 사진이 다른 레스토랑인 경우 <br> <br> 2. 리뷰 또는 사진이 스팸인
+									경우 <br> <br> 3. 리뷰 또는 사진에 개인정보, 명예훼손 또는 사생활 침해 또는 홍보권
+									침해가 포함되는 경우 <br> <br>4. 리뷰 또는 사진이 실제 식사 경험을 기반으로 하지
+									않았을 경우 <br> <br> 5. 리뷰 또는 사진이 지불댓가로 업로드 된 경우 <br>
+									<br> 오늘의 메뉴는 신고 접수가 된 후 내부적으로 신고 대상 리뷰를 검토하고 커뮤니티 가이드라인을
+									준수하지 않은 경우 신고된 콘텐츠를 제거합니다.
+								</div>
+							</li>
+							<br>
+
+							<li class="accodian--box">
+								<!-- 질문 제목 -->
+								<h5 class="question">[리뷰] 오늘의 맛집 평점 기준은 어떻게 되나요?</h5> <!-- 질문 답변 -->
+								<div class="answer">
+									오늘의 맛집 레스토랑의 평점은 사용자의 리뷰를 기반으로 레스토랑의 품질과 인기를 측정한 통계지수입니다.<br>
+									<br> 이 지수는 기록된 리뷰뿐만 아니라 과거에 리뷰 작성자가 얼마나 활발하게 리뷰를 작성했는지,<br>
+									<br>특정 점수에 편향되어 있는지를 포함한 리뷰 히스토리를 고려합니다 따라서 이 점수는 작성된 리뷰의
+									단순한 평균값이 아닙니다.
+								</div>
+							</li>
+						</ul>
 						<!-- 자주 묻는 list 끝 -->
+
+
 					</div>
 				</div>
 			</div>
 			<hr>
 			<br> <br> <br>
 			<!-- 자주 묻는 질문 끝 -->
+					</div>
+				</div>
+			
+			
+			<br> <br> <br>
+		
 			<div>
 				<a id="ask"></a>
 			</div>
@@ -201,13 +250,14 @@
 
 			<!-- 빠르게 문의하기 시작 -->
 			<br> <br> <br>
-			<div class="row">
+			<div class="whole-wrap" class="outer">
+			
 				<div class="col-12">
 					<h2 class="contact-title">빠르게 문의하기</h2>
 				</div>
+				</div>
 				<div class="col-lg-8">
-					<form class=""
-						action="CustomerService.do" method="post" id="">
+					<form class="" action="CustomerService.do" method="post" id="">
 
 						<div class="row">
 							<!-- 문의 사항 작성 -->
@@ -249,18 +299,18 @@
 						</div>
 
 					</form>
-					
-					
-					
-					
-					
-				</div>
-			</div>
 
+
+
+
+
+				</div>
+			
+			
 			<!-- 빠르게 문의하기 끝 -->
 
 		</div>
-	</div>
+	
 	<!-- End Align Area -->
 
 
@@ -338,7 +388,7 @@
 	<script src="js/mail-script.js"></script>
 
 	<script src="js/main.js"></script>
-	
+
 
 
 </body>

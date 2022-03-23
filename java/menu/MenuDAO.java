@@ -15,8 +15,8 @@ public class MenuDAO {
 
 	// 메뉴 sql 쿼리
 	// 메뉴 등록
-	static final String menuInsert = "insert into menu (menuId,resId,menuName,menuPrice,menuCategory,menuPic)"
-		+" values ((select nvl(max(menuId),4000)+1 from menu),?,?,?,?,?)";
+	static final String menuInsert = "insert into menu (menuId,resId,menuName,menuPrice,menuCategory)"
+		+" values ((select nvl(max(menuId),4000)+1 from menu),?,?,?,?)";
 	// 메뉴 내용 조회
 	static final String menuSelectOne = "select * from menu where menuId=?";
 	// 메뉴 리스트 조회(유저용:식당ID 기준으로 소팅)
@@ -38,7 +38,7 @@ public class MenuDAO {
 			pstmt.setString(2, vo.getMenuName());
 			pstmt.setInt(3, vo.getMenuPrice());
 			pstmt.setString(4, vo.getMenuCategory());
-			pstmt.setString(5, vo.getMenuPic());
+			
 			pstmt.executeUpdate();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block

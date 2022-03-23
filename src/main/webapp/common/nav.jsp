@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="tag" tagdir="/WEB-INF/tags" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="tag" tagdir="/WEB-INF/tags"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -17,7 +17,6 @@ media (min-width: 992px)
 .row {
 	margin-left: 90px;
 }
-
 </style>
 </head>
 <body>
@@ -40,16 +39,37 @@ media (min-width: 992px)
 
 
 
-									<!-- 팀 소개 -->
-									<li><a href="about.jsp">this+</a></li>
+									<!-- 메인에서 구역 이동 -->
+									<li><a>Best6<i class="ti-angle-down"></i></a>
+										<ul class="submenu">
+											<li><a href="main.do#score">평점</a></li>
+											<li><a href="main.do#category">양식</a></li>
+											<li><a href="main.do#area">서울</a></li>
+										</ul></li>
 
 
-
+									<!-- 음식 카테고리 -->
+									<li><a>카테고리<i class="ti-angle-down"></i></a>
+										<ul class="submenu">
+											<li><a
+												href="reslist.do?scategory=menuCategory&search=한식">한식</a></li>
+											<li><a
+												href="reslist.do?scategory=menuCategory&search=양식">양식</a></li>
+											<li><a
+												href="reslist.do?scategory=menuCategory&search=중식">중식</a></li>
+											<li><a
+												href="reslist.do?scategory=menuCategory&search=일식">일식</a></li>
+											<li><a
+												href="reslist.do?scategory=menuCategory&search=분식">분식</a></li>
+											<li><a
+												href="reslist.do?scategory=menuCategory&search=카페">카페</a></li>
+										</ul></li>
+	
+	
 									<!-- 더 보기 -->
-
 									<li><a href="Notice.jsp">더보기<i class="ti-angle-down"></i></a>
 										<ul class="submenu">
-											<li><a href="Notice.jsp#company">회사소개</a></li>
+											<li><a href="about.jsp">회사소개</a></li>
 											<li><a href="notice.do" target="_blank">공지사항</a></li>
 											<li><a href="Notice.jsp#faq">FAQ</a></li>
 											<li><a href="Notice.jsp#ask">고객센터</a></li>
@@ -57,27 +77,13 @@ media (min-width: 992px)
 
 
 
-
-									<!-- 음식 카테고리 -->
-									<li><a href="#">카테고리<i class="ti-angle-down"></i></a>
-										<ul class="submenu">
-											<li><a href="reslist.do?scategory=menuCategory&search=한식">한식</a></li>
-											<li><a href="reslist.do?scategory=menuCategory&search=양식">양식</a></li>
-											<li><a href="reslist.do?scategory=menuCategory&search=중식">중식</a></li>
-											<li><a href="reslist.do?scategory=menuCategory&search=일식">일식</a></li>
-											<li><a href="reslist.do?scategory=menuCategory&search=분식">분식</a></li>
-											<li><a href="reslist.do?scategory=menuCategory&search=카페">카페</a></li>
-										</ul></li>
-
-
-
 									<!-- 내정보 -->
-									<tag:myPage/>
+									<tag:myPage />
 
 
 									<!-- 로그인 start -->
 									<div class="col-xl-2 col-lg-2 d-none d-lg-block">
-										<tag:login/>
+										<tag:login />
 									</div>
 									<!-- 로그인 end -->
 

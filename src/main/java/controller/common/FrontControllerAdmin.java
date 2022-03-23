@@ -97,68 +97,6 @@ public class FrontControllerAdmin extends HttpServlet {
   
       else if (command.equals("/admin/adminmemberupdate.did")) {
          System.out.println("로그 FCAdmin 회원수정요청");
-         // 이미지 업로드 파트
-         // JSP에서 application(내장객체,scope)을 이용하는 코드 -> sc객체
-         ServletContext sc=request.getServletContext();
-
-         // MultipartRequest에는 5가지 인자 필요
-         String path=sc.getRealPath("imgUpload"); // server.core 폴더명
-         int maxSize=1024*1024*200; // 200mb
-         String encType="UTF-8";
-         DefaultFileRenamePolicy originname=new DefaultFileRenamePolicy();
-
-         MultipartRequest mr=new MultipartRequest(request,path,maxSize,encType,originname);
-
-         // 저장한 파일명 스트링으로 추출
-         Enumeration files = mr.getFileNames();
-         String nameStr = (String)files.nextElement();
-         String saveName = mr.getFilesystemName(nameStr);
-
-         String filename=mr.getOriginalFileName("imgUpload"); // 원래 이름
-         String realname=mr.getFilesystemName("imgUpload"); // 저장된 이름
-
-         // 이미지 경로를 변경
-         // movePath에 원하는 경로를 기입
-         String movePath="D:\\2021_ksj\\resource\\thisfood\\src\\main\\webapp\\imgUpload\\memPic\\";
-         try {
-            FileInputStream fis=new FileInputStream(path+"\\"+saveName);
-            FileOutputStream fos=new FileOutputStream(movePath+saveName);
-
-            byte[] buff=new byte[3000];
-            int len;
-            while((len=fis.read(buff))!=-1) {
-               fos.write(buff, 0, len);
-            }
-
-            fos.flush();
-            fos.close();
-         }catch (Exception e) {
-            e.printStackTrace();
-         }
-         finally {
-            System.out.println("이미지 복사 완료");
-            System.out.println("최종 저장경로 : "+movePath);
-         }
-
-         // 멀티리퀘스트의 파라미터를 리퀘스트에 삽입
-         System.out.println("아잇!"+mr.getParameter("memPw"));
-         request.setAttribute("memId",mr.getParameter("memId"));
-         request.setAttribute("memName",mr.getParameter("memName"));
-         request.setAttribute("memEmail",mr.getParameter("memEmail"));
-         request.setAttribute("memPhone",mr.getParameter("memPhone"));
-         request.setAttribute("memAddress",mr.getParameter("memAddress"));
-         request.setAttribute("memPoint",mr.getParameter("memPoint"));
-         request.setAttribute("memPw",mr.getParameter("memPw"));
-         request.setAttribute("memPic",movePath+saveName);
-
-         System.out.println("1회원계정 : "+request.getAttribute("memId"));
-         System.out.println("1회원이름 : "+request.getAttribute("memName"));
-         System.out.println("1회원메일 : "+request.getAttribute("memEmail"));
-         System.out.println("1회원전화 : "+request.getAttribute("memPhone"));
-         System.out.println("1회원주소 : "+request.getAttribute("memAddress"));
-         System.out.println("1회원점수 : "+request.getAttribute("memPoint"));
-         System.out.println("1회원비번 : "+request.getAttribute("memPw"));
-         System.out.println("1회원사진 : "+request.getAttribute("memPic"));
 
          forward=new AdminMemberUpdateAction().execute(request, response);
 

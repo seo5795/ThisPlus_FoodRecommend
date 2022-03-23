@@ -58,6 +58,7 @@ public class ResdetailAction implements Action {
       
       //리뷰정보
       ArrayList<RevVO> revlist = new ArrayList<RevVO>();
+      revVO.setResId(Integer.parseInt(request.getParameter("resId")));
       revlist= revDAO.revSelectAll(revVO);
       request.setAttribute("revdatas", revlist);
       

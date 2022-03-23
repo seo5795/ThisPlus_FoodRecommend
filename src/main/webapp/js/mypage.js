@@ -75,7 +75,8 @@
          
       };
       
-      input[0].addEventListener('keyup', idCh);
+      //input[0].addEventListener('keyup', idCh);
+      //sns로그인 시 수정때문에 삭제
       input[1].addEventListener('keyup', pw1Ch);
       input[2].addEventListener('keyup', pw2Ch);
       input[3].addEventListener('keyup', nameCh);
@@ -102,12 +103,14 @@
             error[i].innerHTML = "";
          }
          
-         if (!regId.test(input[0].value)){//            
+        /* if (!regId.test(input[0].value)){//            
             var err = document.querySelector('#idError');
             err.innerText = "5~15자 (a~z, A~Z, 0~9, -, _만 입력가능) ";
             input[0].focus();
             return false;
          }
+         //sns로그인 시 수정때문에 삭제
+         */
    
          
          if (!regPw.test(input[1].value)) {
