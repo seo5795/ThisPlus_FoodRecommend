@@ -76,34 +76,6 @@
 
 
 
-	<!-- 팀 멤버 소개 start -->
-	<div class="single_about_area">
-		<div class="container">
-			<div class="row align-items-center">
-				<div class="Team_introduction">
-					<div class="single_about_text">
-
-						<!-- 제목 -->
-						<h1>우리의 프로젝트를 소개합니다!</h1>
-						<hr>
-						<br>
-
-						<!-- 내용 -->
-						<p class="about_text1">
-							오늘도 점심 무엇을 먹어야할 지 고민하는 당신을 위해!<br> 저희 THIS+는 최적의 식당을 추천드리고자
-							합니다.<br> <br> 전국 각지의 엄선된 맛집과 다채로운 메뉴들, 그저 가까이에 있는 맛집이
-							무엇인지 판단만 하시면 됩니다.<br> <br> 오늘부터 점심 무엇을 먹을지 고민하실 필요는
-							없습니다. <br>이 편리한 홈페이지를 누구에게 추천하실 지 고민해 주십시오.<br> <br>
-							<br> THIS+ 일동.
-						</p>
-					</div>
-				</div>
-
-			</div>
-		</div>
-	</div>
-	<!--  팀 멤버 소개 end -->
-
 
 
 
@@ -126,7 +98,7 @@
 							</div>
 							<div class="testmonial_author">
 								<h3>심승현</h3>
-								<span>팀장</span> <span><a
+								<span>팀장 | Engineer</span> <span><a
 									href="https://blog.naver.com/tladhehd">https://blog.naver.com/tladhehd</a></span>
 
 							</div>
@@ -138,7 +110,7 @@
 							</div>
 							<div class="testmonial_author">
 								<h3>김신정</h3>
-								<span>Design</span> <span><a
+								<span>Engineer</span> <span><a
 									href="https://keiren2022.tistory.com">https://keiren2022.tistory.com</a></span>
 
 							</div>
@@ -186,7 +158,7 @@
 							</div>
 							<div class="testmonial_author">
 								<h3>정다운</h3>
-								<span>Design</span> <span><a
+								<span>Engineer</span> <span><a
 									href="https://daunee.tistory.com">https://daunee.tistory.com</a></span>
 
 							</div>
@@ -198,7 +170,7 @@
 							</div>
 							<div class="testmonial_author">
 								<h3>진현수</h3>
-								<span>Design</span> <span><a
+								<span>Engineer</span> <span><a
 									href="https://blog.naver.com/soo980201">https://blog.naver.com/soo980201</a></span>
 
 							</div>
@@ -210,8 +182,37 @@
 	</div>
 	<!-- testmonial_area_end -->
 
-	
-	<!-- footer-start -->
+	<!-- 팀 멤버 소개 start -->
+	<div class="single_about_area">
+		<div class="container">
+			<div class="row align-items-center">
+				<div class="Team_introduction">
+					<div class="single_about_text">
+
+						<!-- 제목 -->
+						<h1>우리의 프로젝트를 소개합니다!</h1>
+						<hr>
+						<br>
+
+						<!-- 내용 -->
+						<p class="about_text1">
+							오늘도 점심 무엇을 먹어야할 지 고민하는 당신을 위해!<br> 저희 THIS+는 최적의 식당을 추천드리고자
+							합니다.<br> <br> 전국 각지의 엄선된 맛집과 다채로운 메뉴들, 그저 가까이에 있는 맛집이
+							무엇인지 판단만 하시면 됩니다.<br> <br> 오늘부터 점심 무엇을 먹을지 고민하실 필요는
+							없습니다. <br>이 편리한 홈페이지를 누구에게 추천하실 지 고민해 주십시오.<br> <br>
+							<br> THIS+ 일동.
+						</p>
+					</div>
+				</div>
+
+			</div>
+		</div>
+	</div>
+	<!--  팀 멤버 소개 end -->
+
+
+
+	<!— footer-start —>
 	<jsp:include page="common/footer.jsp" />
 	<!— footer-end —>
 

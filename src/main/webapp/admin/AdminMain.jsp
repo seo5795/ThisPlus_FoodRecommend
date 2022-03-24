@@ -6,18 +6,21 @@
 
 <head>
 <meta charset="utf-8">
-<title>관리자</title>
+<title>관리자 : 메인</title>
 <meta content="width=device-width, initial-scale=1.0" name="viewport">
 <meta content="" name="keywords">
 <meta content="" name="description">
 
 <!-- Favicon -->
-<link rel="shortcut icon" type="image/x-icon" href="img/favicon-admin.ico">
+<link rel="shortcut icon" type="image/x-icon"
+	href="img/favicon-admin.ico">
 
 <!-- Google Web Fonts by JHS -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Gothic+A1:wght@600&display=swap" rel="stylesheet">
+<link
+	href="https://fonts.googleapis.com/css2?family=Gothic+A1:wght@600&display=swap"
+	rel="stylesheet">
 
 
 <link
@@ -44,9 +47,12 @@
 <!-- Template Stylesheet -->
 <link href="css/style.css" rel="stylesheet">
 <style type="text/css">
-	*{
-		font-family: 'Gothic A1', sans-serif;
-	}
+* {
+	font-family: 'Gothic A1', sans-serif;
+}
+.prohibited {
+    cursor: not-allowed;
+}
 </style>
 </head>
 
@@ -80,45 +86,42 @@
 				</a> <a href="#" class="sidebar-toggler flex-shrink-0"> <i
 					class="fa fa-bars"></i>
 				</a>
-				<form class="d-none d-md-flex ms-4">
-					<input class="form-control border-0" type="search"
-						placeholder="Search">
+				<form class="d-none d-md-flex ms-6" method="post" name="search" action="adminsearch.did">				
+					<table class="pull-right">
+					<tr>
+						<td>
+						<select class="form-control" name="searchField">
+								<option value="memName">회원명</option>
+								<option value="resName">식당명</option>
+						</select>
+						</td>
+						<td><input type="text" class="form-control border-0" placeholder="검색어 입력" name="searchText" maxlength="100"></td>
+						<td><button type="submit" class="btn btn-outline-primary m-2">검색</button></td>
+					</tr>
+
+				</table>
+
+					
 				</form>
 				<div class="navbar-nav align-items-center ms-auto">
 
 
 					<div class="nav-item dropdown">
-						<a href="#" class="nav-link dropdown-toggle"
+						<a class="prohibited" onclick="msg();"
 							data-bs-toggle="dropdown"> <i class="fa fa-bell me-lg-2"></i>
 							<span class="d-none d-lg-inline-flex">Notifications</span>
 						</a>
-						<div
-							class="dropdown-menu dropdown-menu-end bg-light border-0 rounded-0 rounded-bottom m-0">
-							<a href="#" class="dropdown-item">
-								<h6 class="fw-normal mb-0">Profile updated</h6> <small>15
-									minutes ago</small>
-							</a>
-							<hr class="dropdown-divider">
-							<a href="#" class="dropdown-item">
-								<h6 class="fw-normal mb-0">New user added</h6> <small>15
-									minutes ago</small>
-							</a>
-							<hr class="dropdown-divider">
-							<a href="#" class="dropdown-item">
-								<h6 class="fw-normal mb-0">Password changed</h6> <small>15
-									minutes ago</small>
-							</a>
-							<hr class="dropdown-divider">
-							<a href="#" class="dropdown-item text-center">See all
-								notifications</a>
-						</div>
 					</div>
 
 				</div>
 			</nav>
 			<!-- Navbar End -->
 
-
+			<script type="text/javascript">
+      function msg() {
+         alert('추후 업데이트 예정!');
+      }
+   </script>
 
 
 
@@ -144,25 +147,25 @@
 											<h6 class="mb-0">${mem.memName}</h6>
 											<c:choose>
 												<c:when test="${mem.memRank == 0}">
-													
-														<small>일반회원</small>
-													
+
+													<small>일반회원</small>
+
 
 												</c:when>
 												<c:when test="${mem.memRank == 1}">
-												
-														<small>식당점주</small>
-													
+
+													<small>식당점주</small>
+
 												</c:when>
 
 												<c:otherwise>
-												
-														<small>관리자</small>
-													
+
+													<small>관리자</small>
+
 												</c:otherwise>
 											</c:choose>
 
-											
+
 
 
 										</div>
@@ -202,14 +205,7 @@
 								<h6 class="mb-0">공지사항</h6>
 								<a href="adminnotice.did" target="_blank">Show All</a>
 							</div>
-							<div class="d-flex align-items-center border-bottom py-2">
-								<div class="w-100 ms-3">
-									<div
-										class="d-flex w-100 align-items-center justify-content-between">
-										<span> 공지사항제목</span><small>등록날짜</small>
-									</div>
-								</div>
-							</div>
+							
 							<c:forEach var="no" items="${notdatas}" begin="0" end="5"
 								varStatus="st">
 								<div class="d-flex align-items-center border-bottom py-2">

@@ -65,13 +65,12 @@ public class ReslistAction implements Action{
 			rvo.setResCategory(search);
 		}		
 
-		ArrayList<ResVO> resDatas = resDAO.resSelectAll(rvo,num);
-		ResVO vo=new ResVO();
-		ArrayList<ResVO> allresDatas = resDAO.resSelectAll(vo, 0);
-		req.setAttribute("num", num);
-		req.setAttribute("cnt", allresDatas.size() );
-		req.setAttribute("category", category);
-		req.setAttribute("resDatas",resDatas);
+		ArrayList<ResVO> resDatas = resDAO.resSelectAll(rvo,num);//검색으로 화면에 보여줄 데이터
+		ArrayList<ResVO> allresDatas = resDAO.resSelectAll(rvo, 0);//검색으로 인해 
+		req.setAttribute("resDatas",resDatas);//검색으로 화면에 보여줄 데이터
+		req.setAttribute("num", num);//보여줄 데이터 숫자
+		req.setAttribute("cnt", allresDatas.size() );//검색데이터 크기
+		req.setAttribute("category", category);	
 		req.setAttribute("search", search);
 
 

@@ -5,7 +5,7 @@
 <html lang="ko">
 <head>
 <meta charset="UTF-8">
-<title>관리자: 공지사항</title>
+<title>관리자 : 공지사항</title>
 
 <!-- Favicon -->
 <link rel="shortcut icon" type="image/x-icon" href="img/favicon-admin.ico">

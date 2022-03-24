@@ -73,6 +73,8 @@
 				}
 			
 		};
+		
+		//keyup이벤트를 사용하여 매번 자판을 입력한후, 유효성 검사 진행
 		input[0].addEventListener('keyup', idCh);
 		input[1].addEventListener('keyup', pw1Ch);
 		input[2].addEventListener('keyup', pw2Ch);
@@ -91,7 +93,7 @@
 		
 			console.log(input);
          for (var i = 0; i < input.length-1; i++) { // -1 == submit제외 
-            if (!input[i].value) { 
+            if (!input[i].value) { //입력하지 않은값 유효성처리
 			
               error[i].innerHTML = errorStr[i]+ " 입력해 주세요.";
                input[i].focus(); // 포커스 이동
@@ -101,8 +103,10 @@
 
             error[i].innerHTML = "";
          }
-         
-			if (!regId.test(input[0].value)){//				
+         	
+         	
+         	//유효성 처리
+			if (!regId.test(input[0].value)){//	아이디		
 				var err = document.querySelector('#idError');
 				err.innerText = "5~15자 (a~z, A~Z, 0~9, -, _만 입력가능) ";
 				input[0].focus();
@@ -110,14 +114,14 @@
 			}
 	
 			
-			if (!regPw.test(input[1].value)) {
+			if (!regPw.test(input[1].value)) {//패스워드
 				var err = document.querySelector('#pw1Error');
 				err.innerText = "8자이상 (숫자, 특수문자, 영문 1개이상)";
 				input[1].focus();
 				return false;
 				}
 	
-			if (input[1].value !== input[2].value) {
+			if (input[1].value !== input[2].value) {//패스워드 일치여부
 			var err = document.querySelector('#pw2Error');
 				err.innerText = "비밀번호가 일치하지 않습니다.";
 				input[2].focus();
@@ -127,7 +131,7 @@
 		
 			
 			
-			if (!regName.test(input[3].value)) {
+			if (!regName.test(input[3].value)) {//이름
 				var err = document.querySelector('#nameError');
 				err.innerText = "한글 2단어 이상 입력해 주세요.";
 				input[3].focus();
@@ -136,14 +140,14 @@
 			
 	
 			
-			if (!regEmail.test(input[4].value)) {
+			if (!regEmail.test(input[4].value)) {//이메일
 				var err = document.querySelector('#emailError');	
 				err.innerText = "5글자이상 숫자, 영문자, -, _, .내에서만 입력가능";
 				input[4].focus();
 				return false;
 			}
 			
-			if (!regPhone.test(input[5].value)) {
+			if (!regPhone.test(input[5].value)) {//핸드폰
 				var err = document.querySelector('#phoneNumError');
 				err.innerText = "전화번호 형식에 맞지 않습니다.";
 				input[5].focus();
@@ -151,12 +155,12 @@
 			}
 			
 			
-			if(!checkbox.checked){
+			if(!checkbox.checked){//개인정보처리 동의 여부
 				alert("개인정보처리에 동의 하신분만 회원가입이 가능합니다");
 				return false;
 			}
 			
-			if(idCheck.value == false){
+			if(idCheck.value == false){//중복아이디 여부
 				console.log(typeof idCheck.value);
 				console.log(phoneCheck.value);
 				alert("중복id입니다!");
@@ -168,7 +172,7 @@
 				console.log(phoneCheck.value)
 			}
 			
-			if(phoneCheck.value == false){
+			if(phoneCheck.value == false){//인증번호 여부
 				alert("인증번호가 일치하지 않습니다!");
 				return false;
 			}else{
@@ -179,7 +183,7 @@
 			
 			
          
-				alert("회원가입이 완료되었습니다. this+조의 멤버가 되신 것을 환영합니다!! :D");
+				alert("회원가입이 완료되었습니다. 오늘의 메뉴의 멤버가 되신 것을 환영합니다!! :D");
 			}
 		}
 		

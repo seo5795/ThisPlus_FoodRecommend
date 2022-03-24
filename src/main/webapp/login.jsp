@@ -61,15 +61,24 @@
    margin-top: 20px;
    margin-bottom: 20px;
    background: #78b455;
-   font-size: 16px;
+   font-size: 14px;
 }
 
-.register{
+.btn2{
+	margin-left: 40px;
+}
+
+.register, .findPw{
    text-decoration: none;
+   font-size: 14px;
 }
 .register:hover{
    text-decoration:underline;
 }
+.findPw:hover{
+   text-decoration:underline;
+}
+
 </style>
 </head>
 <body>
@@ -122,7 +131,9 @@
             
             <div style="text-align: center">
                <button class="submit">로그인</button>
-               <a href="findPw.jsp" class="findPw">비번찾기</a>
+            </div>
+            <div class="btn2">
+               <a href="findPw.jsp" class="findPw">비밀번호 찾기</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
                <a href="register.jsp" class="register">회원가입</a>
             </div>
          </form>

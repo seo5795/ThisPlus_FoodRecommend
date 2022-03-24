@@ -89,6 +89,7 @@
 								<div class="input-group mb-3">
 									<input type="text" class="form-control" id="search"
 										placeholder='식당 이름 검색' name="search" autocomplete=off>
+									<!-- 브라우저 자체제공 검색리스트 삭제: autocomplete=off -->
 									<div class="input-group-append">
 										<button class="btn" type="submit">
 											<i class="ti-search"></i>
@@ -104,8 +105,9 @@
 							<ul>
 								<c:forEach var="sl" items="${rsearchList}" begin="0" end="4">
 									<!-- 최근검색 5개까지 출력 -->
-									<a href="reslist.do?scategory=name&search=${sl}"><li
-										class="searchList">${sl}</li></a>
+									<a href="reslist.do?scategory=name&search=${sl}">
+									<!-- 출력 리스트를 클릭하면 해당 검색 실행 -->
+									<li class="searchList">${sl}</li></a>
 									<hr class="searchList">
 								</c:forEach>
 

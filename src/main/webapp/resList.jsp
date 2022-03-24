@@ -130,15 +130,13 @@
 								</c:otherwise>
 							</c:choose>
 						</article>
-				${num}  ${cnt}
+
 						<c:choose>
-							<c:when test="${ num eq cnt }">
-     
-							</c:when>
-							<c:otherwise>
-							 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><a
+							<c:when test="${ num+1 le cnt }">
+     						<!-- 받아온 데이터 수 <= 검색 결과의 데이터 수 일때 더보기 보이게 처리 -->
+     						 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><a
 									href="reslist.do?scategory=${category}&num=${num+1}&search=${search}">더보기&nbsp;&gt;&gt;</a></strong>
-							</c:otherwise>
+							</c:when>
 						</c:choose>
 
 					</div>

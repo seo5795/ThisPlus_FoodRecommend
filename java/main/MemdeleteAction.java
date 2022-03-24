@@ -30,6 +30,8 @@ public class MemdeleteAction implements Action {
       
       
       if(memDAO.memDelete(mvo)) {
+    	  session.invalidate();
+    	  
          forward=new ActionForward();
          forward.setPath("main.do");   // 삭제를 완료했으면
          System.out.println("로그 : 회원 삭제 완료");

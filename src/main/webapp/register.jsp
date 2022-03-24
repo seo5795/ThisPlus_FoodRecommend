@@ -460,11 +460,13 @@ select {
 					},
 					contentType : 'application/json; charset=UTF-8',
 					success : function(result) {
-						//성공시 인증번호 콘솔창으로 띄움
-						//실제 서비스 할때는 지워야함
+						//핸드폰 번호를 AjaxController에 넘기고 랜덤번호를 받아올 때 나오는 창 
+						
 						console.log("데이터 도착");
 						console.log(result.randomNum);
+						//에러메시지 창에서 나오는 텍스트
 						$("#phonCheckError").text("인증번호를 입력한 뒤 본인인증을 눌러주십시요");
+						//disalbed처리되어있던 번호입력 iniput 해제
 						$("input[name=phoneCheck]").attr("disabled", false);
 
 						code = result.randomNum;
@@ -479,8 +481,10 @@ select {
 
 		$(function() {
 			$("#sms2").on("click", function() {
+				//문자인증을 클릭한다면
 				console.log("코드값:" + code);
 				console.log("입력값:" + $("input[name=phoneCheck]").val());
+				//입력값과 난수를 비교
 				if ($("input[name=phoneCheck]").val() == code) {
 					$("#phonCheckError").text("인증번호가 일치합니다");
 					$("#phoneDoubleChk").val("true");

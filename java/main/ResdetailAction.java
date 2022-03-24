@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import controller.common.Action;
 import controller.common.ActionForward;
@@ -31,8 +32,15 @@ public class ResdetailAction implements Action {
       RevVO revVO = new RevVO();
       ResVO rvo=new ResVO();
       MenuVO mvo = new MenuVO();
+      int num = 5;//맨 처음 출력할 리뷰수
       
+      if(request.getParameter("num")!=null) {//더보기값이 있을경우
+			num=Integer.parseInt(request.getParameter("num"));
+		}
+      request.setAttribute("num", num);
       
+      System.out.println( request.getParameter("num"));
+      System.out.println( request.getParameter("resId"));
       
       //식당 정보
       System.out.println("로그 ResdetailAction "+request.getParameter("resId"));
@@ -59,9 +67,18 @@ public class ResdetailAction implements Action {
       //리뷰정보
       ArrayList<RevVO> revlist = new ArrayList<RevVO>();
       revVO.setResId(Integer.parseInt(request.getParameter("resId")));
-      revlist= revDAO.revSelectAll(revVO);
+      revlist= revDAO.revSelectAll(revVO, num);
       request.setAttribute("revdatas", revlist);
-      
+            
+      //리뷰를 작성했을시 다시 못작성하게 하기위한 멤버 리뷰 작성 여부 정보
+      HttpSession session = request.getSession();
+      String memberid = (String) session.getAttribute("memberid");
+      RevVO ynrevVO = new RevVO();
+      ynrevVO.setMemId(memberid);
+      ynrevVO.setResId(Integer.parseInt(request.getParameter("resId")));
+      ynrevVO=revDAO.revSelectOne(ynrevVO);
+      System.out.println(ynrevVO);
+      request.setAttribute("ynrevVO", ynrevVO);
       
       if(rvo!=null) {
          System.out.println("rvo:"+rvo);

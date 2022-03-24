@@ -136,7 +136,7 @@ public class MemDAO {
 				pstmt.setInt(8, vo.getMemRank());
 				pstmt.executeUpdate();
 				
-				
+				//회원가입 후 가입된 계정 select
 				pstmt = conn.prepareStatement(memSnsSelectOne);
 				pstmt.setString(1, vo.getMemId());
 				System.out.println("이름"+vo.getMemName());

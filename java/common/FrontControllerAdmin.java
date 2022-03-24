@@ -1,34 +1,26 @@
 package controller.common;
 
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.Enumeration;
 
 import javax.servlet.RequestDispatcher;
-import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.oreilly.servlet.MultipartRequest;
-import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
-
 import controller.admin.AdminMainAction;
 import controller.admin.AdminMemberAction;
 import controller.admin.AdminMemberDeleteAction;
 import controller.admin.AdminMemberDetailAction;
-import controller.admin.AdminMemberSearchAction;
 import controller.admin.AdminMemberUpdateAction;
 import controller.admin.AdminNoticeAction;
 import controller.admin.AdminNoticeInsertAction;
 import controller.admin.AdminRestaurantAction;
 import controller.admin.AdminRestaurantDeleteAction;
 import controller.admin.AdminRestaurantDetailAction;
-import controller.admin.AdminRestaurantSearchAction;
+import controller.admin.AdminSearchAction;
 
 /**
  * Servlet implementation class FrontControllerAd
@@ -113,11 +105,7 @@ public class FrontControllerAdmin extends HttpServlet {
          forward = new AdminMemberDeleteAction().execute(request, response);
       }
 
-      // 관리자 회원 검색
-      else if (command.equals("/admin/adminmembersearch.did")) {
-         System.out.println("로그 FCAdmin 회원검색요청");
-         forward = new AdminMemberSearchAction().execute(request, response);
-      }
+     
 
       // 관리자 공지사항페이지
       else if (command.equals("/admin/adminnotice.did")) {
@@ -149,10 +137,12 @@ public class FrontControllerAdmin extends HttpServlet {
          forward = new AdminRestaurantDeleteAction().execute(request, response);
       }
 
-      // 관리자 식당 검색
-      else if (command.equals("/admin/adminrestaurantsearch.did")) {
-         System.out.println("로그 FCAdmin 식당검색요청");
-         forward = new AdminRestaurantSearchAction().execute(request, response);
+     
+      
+   // 관리자  검색
+      else if (command.equals("/admin/adminsearch.did")) {
+         System.out.println("로그 FCAdmin 총검색요청");
+         forward = new AdminSearchAction().execute(request, response);
       }
 
       else {
