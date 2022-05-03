@@ -60,7 +60,29 @@
 .menuName,.menuCategory,.menuPrice{
    border-radius: 5px;
 }
-
+.memId {
+	border: 1px solid #ced4da;
+	width: 528px;
+	height: 42px;
+	padding-top: 0px;
+    padding-right: 20px;
+    padding-bottom: 0px;
+    padding-left: 20px;
+}
+.memId:focus {
+	border: 1px solid #78b454;
+}
+.genric-btn.primary-border {
+    color: #78b454;
+    border: 1px solid #78b454;
+    background: #fff;
+    float:left;
+}
+.genric-btn.primary-border:hover {
+    color: #fff;
+    border: 1px solid #78b454;
+    background: #78b454;
+}
 </style>
 </head>
 <body>
@@ -96,12 +118,11 @@
             <h3>비밀번호 찾기</h3>
             <hr>
             <div class="mId">
-            <span>메뉴 이름</span><br>
-            <input name="memId" class="memId" type="text" placeholder="아이디 입력" required>
+            <input name="memId" class="memId" type="text" placeholder="회원님의 아이디를 입력해주세요" required>
             </div><br>
          
             <br>
-            <input type="submit" value="비번 찾기" style="float: right;">
+            <input type="submit" class="genric-btn primary-border e-large" value="확인">
          </form>
          
          

@@ -28,7 +28,8 @@ public class AdminSearchAction implements Action{
 	      
 	      
 
-	      if(searchField.equals("memName")) {
+	      if(searchField.equals("memName")) {//검색카테고리가 회원명이면
+	    	  //검색어 set
 		   memVO.setMemName(req.getParameter("searchText"));
 
 	    	// 회원 검색
@@ -48,7 +49,8 @@ public class AdminSearchAction implements Action{
 		      }
 	      }
 	      
-	      else {
+	      else {//검색카테고리가 식당명이면
+	    	  //검색어 set
 		      resVO.setResName(req.getParameter("searchText"));
 
 	    	  //식당검색

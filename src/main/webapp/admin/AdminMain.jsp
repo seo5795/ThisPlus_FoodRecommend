@@ -140,7 +140,7 @@
 							<c:forEach var="mem" items="${memdatas}" begin="0" end="5"
 								varStatus="st">
 								<div class="d-flex align-items-center border-bottom py-3">
-									<img class="rounded-circle flex-shrink-0" src="${mem.memPic}"
+									<img class="rounded-circle flex-shrink-0" src="../${mem.memPic}"
 										alt="" style="width: 40px; height: 40px;">
 									<div class="w-100 ms-3">
 										<div class="d-flex w-100 justify-content-between">
@@ -212,7 +212,7 @@
 									<div class="w-100 ms-3">
 										<div
 											class="d-flex w-100 align-items-center justify-content-between">
-											<span>${no.notTitle}</span><small>${no.notRegDate}</small>
+											<span>${no.notTitle}</span>
 										</div>
 									</div>
 								</div>

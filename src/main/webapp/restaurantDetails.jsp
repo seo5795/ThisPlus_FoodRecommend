@@ -185,7 +185,7 @@
 
 							<!-- 식당주인만 보이는 메뉴 -->
 							<c:if test="${rdatas.memId eq memberid}">
-								<a href="menuInsert.jsp?${rdatas.resId}">[메뉴등록]</a>
+								<a href="menuInsert.jsp?resId=${rdatas.resId}">[메뉴등록]</a>
 							</c:if>
 
 							<hr>
@@ -242,10 +242,10 @@
 									</div>
 								</div>
 						</c:forEach>
-						<button type="submit"
+						<!--<button type="submit"
 							class="button button-contactForm btn_1 boxed-btn">
-							<a href="resdetail.do?resId=${rdata.resId}&num=${num+2}">더보기&nbsp;</a>
-						</button>
+							 <a href="resdetail.do?resId=${rdata.resId}&num=${num+2}">더보기&nbsp;</a>
+						</button> -->
 					</div>
 
 

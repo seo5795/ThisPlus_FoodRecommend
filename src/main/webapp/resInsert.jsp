@@ -165,7 +165,7 @@ function preview(input) {
          <!-- 입력한 내용은 resAdd액션으로 전달 -->
          <!-- <form action="resAdd.do" method="post" enctype="multipart/form-data"> -->
          <!-- 임시로 업로드체크 페이지로 이동, 컨트롤러 적용시 제거 예정 -->
-         <form action="uploadCheck.jsp" method="post" enctype="multipart/form-data">
+         <form action="resinsert.do" method="post" enctype="multipart/form-data">
             <h2 class="contact-title">식당 등록</h2>
            
             

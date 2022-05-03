@@ -23,12 +23,28 @@ create table member(
 	memCol2 varchar(20)
 );
 -- 회원 데이터 삽입
+  insert into member (memId,memPw,memName,memEmail,memAddress,memPic,memRank)
+ values ('junroh','qwer1234!','노준','junroh@naver.com','경기도 용인시 기흥수','/img/testmonial/profile03.png',0);
+  insert into member (memId,memPw,memName,memEmail,memAddress,memPic,memRank)
+ values ('codelearning','qwer1234!','심승현','tmdgus@naver.com','서울시 관악구','/img/testmonial/profile01.png',1);
+  insert into member (memId,memPw,memName,memEmail,memAddress,memPic,memRank)
+ values ('tlswjd','qwer1234!','김신정','muscle@naver.com','서울시 관악구','/img/testmonial/profile02.png',2);
+  insert into member (memId,memPw,memName,memEmail,memAddress,memPic,memRank)
+ values ('gustn','qwer1234!','정현수','gustn@naver.com','서울시 관악구','/img/testmonial/profile07.png',1);
+  insert into member (memId,memPw,memName,memEmail,memAddress,memPic,memRank)
+ values ('ekdns','qwer1234!','정다운','ekdns@naver.com','서울시 관악구','/img/testmonial/profile06.png',2);
+   insert into member (memId,memPw,memName,memEmail,memAddress,memPic,memRank)
+ values ('wjdals','qwer1234!','서정민','wjdals@naver.com','안양시 만안구','/img/testmonial/profile04.png',0);
+    insert into member (memId,memPw,memName,memEmail,memAddress,memPic,memRank)
+ values ('cltjs','qwer1234!','인치선','cltjs@naver.com','서울시 관악구','/img/testmonial/profile05.png',0);
+
+
 insert into member (memId,memPw,memName,memEmail,memAddress,memPic)
  values ('muscleboy','1111','김꺽정','muscle@naver.com','서울시 관악구','/admin/img/testimonial-1.jpa');
  insert into member (memId,memPw,memName,memEmail,memAddress,memPic)
  values ('muscleboy','1111','김꺽정','muscle@naver.com','서울시 관악구','/admin/img/testimonial-1.jpa');
  insert into member (memId,memPw,memName,memEmail,memAddress,memPic,memRank)
- values ('admin','1234','admin','muscle@naver.com','서울시 관악구','/images/member/ksj.jpeg',2);
+ values ('admin','1234','admin','muscle@naver.com','서울시 관악구','/images/member/ksj.jpeg',1);
 -- 회원 데이터 수정(회원권한)
 update member set memPw='1234',memEmail='muscle@gmail.com',memPhone='010-1111-2222',memAddress='경기도 안산시 상록구',memPic='' where memId='muscleboy';
 -- 회원 데이터 수정(관리자권한)
@@ -47,6 +63,7 @@ drop table restaurant;
 create table restaurant(
 	resId int primary key,
 	memId varchar(100) default 'admin',
+	constraint memFk2 foreign key (memId) references member (memId) on delete cascade,
 	resName varchar(100) not null,
 	resAvg number(3,2) default 0.0,
 	resAdd varchar(200),
@@ -112,8 +129,8 @@ drop table notice;
 -- 공지 테이블 생성
 create table notice(
 	notId int primary key,
-	notTitle varchar(100) not null,
-	notContent varchar(500) not null,
+	notTitle varchar(200) not null,
+	notContent varchar(1000) not null,
 	notDate date DEFAULT SYSDATE,
 	notShow int default 0,
 	nCol varchar(20)
@@ -157,7 +174,7 @@ update menu set menuName='파멸의짬뽕',menuPrice=4000,menuCategory='중식',
 delete from menu where menuId=101;
 
 -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
-
+drop table *;
 
 
 -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --

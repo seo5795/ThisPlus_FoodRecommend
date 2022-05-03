@@ -6,5 +6,20 @@
 		<param-name>encoding</param-name>
 		<param-value>UTF-8</param-value>
 	</context-param>
-
+	
+		
+	<error-page>
+    <error-code>404</error-code>
+    <location>/error404.jsp</location>
+</error-page>
+<error-page>
+    <error-code>500</error-code>
+    <location>/error500.jsp</location>
+</error-page>
 </web-app>
+
+
+
+
+
+

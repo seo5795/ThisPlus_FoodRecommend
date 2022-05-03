@@ -24,12 +24,12 @@ public class ResinsertAction implements Action {
 		ActionForward forward=null;
 		ResDAO resDAO=new ResDAO();
 		ResVO rvo=new ResVO();
-		rvo.setResName(request.getParameter("resName"));
-		rvo.setResAvg(Double.parseDouble(request.getParameter("resAvg"))); // 더블 형변환하였음
-		rvo.setResAdd(request.getParameter("resAdd")); // 주소
-		rvo.setResPhone(request.getParameter("resPhone"));
-		rvo.setResCategory(request.getParameter("resCategory"));
-		rvo.setResPic(request.getParameter("resPic"));
+		rvo.setResName((String)request.getAttribute("resName"));
+		rvo.setResAvg(Double.parseDouble("0.0")); // 더블 형변환하였음
+		rvo.setResAdd((String)request.getAttribute("resAdd")); // 주소
+		rvo.setResPhone((String)request.getAttribute("resPhone"));
+		rvo.setResCategory((String)request.getAttribute("resCategory"));
+		rvo.setResPic((String)request.getAttribute("resPic"));
 		HttpSession session = request.getSession();
 		rvo.setMemId((String)session.getAttribute("memberid"));
 		
@@ -37,7 +37,7 @@ public class ResinsertAction implements Action {
 		
 		if(resDAO.resInsert(rvo)) {
 			forward=new ActionForward();
-			forward.setPath("/main.do"); // 식당 등록을 마치면 메인으로 이동
+			forward.setPath("main.do"); // 식당 등록을 마치면 메인으로 이동
 			forward.setRedirect(true);
 		}
 

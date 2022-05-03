@@ -63,13 +63,13 @@
                </div>
 
 
-               <!—- 뉴스 레터 -—>
+               <!-- 뉴스 레터 -->
                <div class="col-xl-4 col-md-12 col-lg-4">
                   <div class="footer_widget">
                      <h3 class="heading"></h3>
                      <p class="offer_text">[구독] 이메일을 통해 알림을 받아보세요!</p>
 
-                     <!— 뉴스 레터 이메일 입력 —>
+                     <!--   뉴스 레터 이메일 입력 -->
                      <form action="Newsletter.do" method="post">
                         <input name="useremail" type="text"
                            placeholder="이메일을 입력해주세요">

@@ -110,7 +110,7 @@ function preview(input) {
    		<!-- 입력한 내용은 menuAdd액션으로 전달 -->
    		<!-- <form action="menuAdd.do" method="post" enctype="multipart/form-data"> -->
    		<!-- 임시로 업로드체크 페이지로 이동, 컨트롤러 적용시 제거 예정 -->
-   		${param.resId}
+   		
    		<form action="menuinsert.do" method="post">
 			<input type="hidden" name="resId" value="${param.resId}">
 	   		<h3>메뉴 등록</h3>
@@ -145,10 +145,7 @@ function preview(input) {
    		</div>
    		<!-- 이미지 미리보기 영역 -->
    		<!-- 우측에 별도로 표시하기 위해 DIV를 분할 -->
-   		<div class="imgPreview">
-   			<img id="preview" width="400px" height="300px"/>
-   			이미지 미리보기
-   		</div>
+   		
    </div>
    
    <!-- 메뉴등록 end -->

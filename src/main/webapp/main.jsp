@@ -217,13 +217,12 @@
 									src="${md.resPic}" style="width: 100%"></a>
 							</div>
 							<h4>
-								<a href="resdetail.do?resId=${ad.resId}"><strong>${md.resName}</strong></a>
+								<a href="resdetail.do?resId=${md.resId}"><strong>${md.resName}</strong></a>
 							</h4><br>
 							<h5 class="title-score">
 								<strong>평점: </strong> ${md.resAvg}
 							</h5>
-							<span><strong>위치: </strong> ${md.resAdd}</span>
-
+							<span><strong>위치: </strong>${md.resAdd}</span>
 						</div>
 					</div>
 
@@ -266,7 +265,7 @@
 								<a href="resdetail.do?resId=${ld.resId}"> <img alt=""
 									src="${ld.resPic}" style="width: 100%"></a>
 							</div>
-							<h4><a href="resdetail.do?resId=${ad.resId}"><strong>${ld.resName}</strong></a></h4>
+							<h4><a href="resdetail.do?resId=${ld.resId}"><strong>${ld.resName}</strong></a></h4>
 							<br>
 							<h5 class="title-score"><strong>평점: </strong> ${ld.resAvg}</h5>
 							<span><strong>위치: </strong>${ld.resAdd}</span>

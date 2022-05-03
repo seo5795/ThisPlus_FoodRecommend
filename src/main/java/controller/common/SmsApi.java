@@ -15,19 +15,19 @@ public class SmsApi {
       //int randomNum = (int)(Math.random() * (99999 - 10000 + 1)) + 10000;
       //random()은 타입이 double인 값을 반환하므로 int타입으로 형변환
       
-      String api_key = "NCSQDE8WXL8ACGHT";
+      String api_key = "";
                     //▲ 본인의 API 키 작성 (※타인에게 노출 되지 않게 주의※)
-      String api_secret = "YUBOEDZGIEK3ZKIBHHJ6JRU1NCDU88EA";
+      String api_secret = "";
                        //▲ 본인의 API Secret코드 작성 (※타인에게 노출 되지 않게 주의※)
       Message coolsms = new Message(api_key, api_secret);
 
       // 4 params(to, from, type, text) are mandatory. must be filled
       HashMap<String, String> params = new HashMap<String, String>();
            // <key, value>
-      
+      System.out.println("로그");
       params.put("to", phone);
                   // ▲ 수신자번호 작성(※본인번호)      
-      params.put("from", "01089231256");   
+      params.put("from", "");   
                   // ▲ 발신자번호 작성
       params.put("type", "SMS");   
       params.put("text", "[오늘의메뉴]본인확인 인증번호는\n" + randomNum + "입니다.정확히 입력해주세요.");

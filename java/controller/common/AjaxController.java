@@ -15,7 +15,6 @@ import javax.servlet.http.HttpServletResponse;
 import org.json.simple.JSONObject;
 
 import model.common.JDBCUtil;
-import model.member.MemVO;
 
 /**
  * Servlet implementation class AjaxController
@@ -43,7 +42,6 @@ public class AjaxController extends HttpServlet {
 		System.out.println(command);
 
 		if(command.equals("/ajax.a")) {
-			System.out.println("안녕");
 			String phone = request.getParameter("phone");
 			System.out.println("phone: "+phone);
 
@@ -51,20 +49,24 @@ public class AjaxController extends HttpServlet {
 			int randomNum = (int)(Math.random() * (99999 - 10000 + 1)) + 10000;
 			//random()은 타입이 double인 값을 반환하므로 int타입으로 형변환
 			System.out.println(randomNum);
+			System.out.println("1");
 
 			PrintWriter out = response.getWriter();
 			JSONObject jobj = new JSONObject();
-			
-			// 문자열 register.jsp에 전송
+			System.out.println("2");
+			// 문자열 전송
+			//	jobj.put("str", str);
 			jobj.put("randomNum", randomNum);
-			out.print(jobj.toString()); 
-			out.flush();
+			 out.print(jobj.toString()); 
+			 out.flush();
 
 			System.out.println("2");
 						
 			//문자보내는 메서드
-			//SmsApi msg = new SmsApi();
-			//msg.sms(randomNum, phone);
+			SmsApi msg = new SmsApi();
+			msg.sms(randomNum, phone);
+			
+			
 			
 			
 		}else if(command.equals("/check.a")){

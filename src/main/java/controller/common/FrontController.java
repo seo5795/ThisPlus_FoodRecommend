@@ -342,6 +342,6 @@ public class FrontController extends HttpServlet {
 
       PrintWriter out=response.getWriter();
 
-      out.println("<script>alert('command 요청처리실패!');history.go(-1);</script>");
+     out.println("<script>alert('command 요청처리실패!');history.go(-1);</script>");
    }
 }

@@ -31,10 +31,7 @@ public class Crawling {
 			+" values ((select nvl(max(menuId),4000)+1 from menu),?,?,?,?,?)";
 
 	public static void start() throws IOException {
-		// 크롤링할 첫번째 페이지
-		int subURL=151;
-		// 크롤링할 마지막 페이지
-		int subURLend=160;
+		
 
 		conn=JDBCUtil.connect();
 		try {
@@ -46,7 +43,13 @@ public class Crawling {
 			}
 			else {
 				System.out.println("초기 데이터 미존재");
-
+				
+				
+				// 크롤링할 첫번째 페이지
+				int subURL=151;
+				// 크롤링할 마지막 페이지
+				int subURLend=160;
+				
 				for(int i=subURL;i<=subURLend;i++) {
 					System.out.println(i+"번 식당");
 

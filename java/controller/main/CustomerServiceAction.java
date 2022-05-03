@@ -24,9 +24,9 @@ public class CustomerServiceAction {
 		
 		
 		String host = "smtp.naver.com"; // 사용할 사이트
-		final String fromEmail = "jdaaaaun1@naver.com"; // ID
-		final String password = "jung000422"; // PW
-		final String toEmail = "berean2000@naver.com";//받는 이메일
+		final String fromEmail = ""; // ID
+		final String password = ""; // PW
+		final String toEmail = "";//받는 이메일
 				
 		
 		// Get the session object

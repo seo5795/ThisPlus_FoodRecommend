@@ -65,7 +65,7 @@
 }
 
 .btn2{
-	margin-left: 40px;
+   margin-left: 40px;
 }
 
 .register, .findPw{
@@ -152,7 +152,7 @@
       
       <script>
       //============카카오 로그인=================
-         Kakao.init('67246f110a18e1d72d72ac6d2ca2f74e'); //발급받은 키 중 javascript키를 사용해준다.
+         Kakao.init(''); //발급받은 키 중 javascript키를 사용해준다.
          console.log(Kakao.isInitialized()); // sdk초기화여부판단
          
          function kakaoLogin() {
@@ -215,7 +215,7 @@
          //-----------네이버 로그인--------
          var naverLogin = new naver.LoginWithNaverId(
                {
-                  clientId : "uWtf3aKRwUyyzIsivDzN", //내 애플리케이션 정보에 cliendId를 입력해줍니다.
+                  clientId : "", //내 애플리케이션 정보에 cliendId를 입력해줍니다.
                   callbackUrl : "http://localhost:8010/pr4_foodRecommend/login.jsp", // 내 애플리케이션 API설정의 Callback URL 을 입력해줍니다.
                   isPopup : false,
                   callbackHandle : true
@@ -319,7 +319,7 @@
 
          window.fbAsyncInit = function() {
             FB.init({
-               appId : '4872709812825483', // 내 앱 ID를 입력한다.
+               appId : '', // 내 앱 ID를 입력한다.
                cookie : true,
                xfbml : true,
                version : 'v10.0'

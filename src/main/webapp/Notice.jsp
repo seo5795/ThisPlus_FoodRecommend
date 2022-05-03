@@ -161,7 +161,7 @@
       <div class="breadcam_inner">
          <div class="breadcam_text">
             <h3>더보기</h3>
-            <p>회사소개/공지사항/FAQ/빠르게 이용하기를 확인 및 이용가능합니다.</p>
+            <p>FAQ/빠르게 문의하기를 확인 및 이용가능합니다.</p>
          </div>
       </div>
    </div>
@@ -275,7 +275,7 @@
                               id="message" cols="30" rows="9"
                               onfocus="this.placeholder = ''"
                               onblur="this.placeholder = 'Enter Message'"
-                              placeholder=" 문의 내용 "></textarea>
+                              placeholder=" 문의 내용을 입력해주세요 "></textarea>
                         </div>
                      </div>
 
@@ -300,7 +300,7 @@
                      </div>
                      <!-- 문의 사항 전송 -->
                      <div align="right" class="form-group mt-3">
-                        <button type="submit" class="boxed-btn" id="send-btn">Send</button>
+                        <button type="submit" class="boxed-btn" id="send-btn">제출</button>
                      </div>
                   </div>
                </div>
